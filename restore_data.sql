@@ -47,13 +47,20 @@ INSERT INTO explore_parakou.tourisme (id, title, category, description, image_ur
 ('ae37268c-3a7a-416b-8b0f-b6a98f3b5ef4', 'Saveurs du Borgou', 'Restaurant • Local', 'Découvrez la vraie igname pilée et le fromage peuhl dans un cadre authentique.', 'assets/images/cat-food.png', '', '', '2026-02-28T10:56:35.809106+00:00')
 ON CONFLICT (id) DO NOTHING;
 
--- Table: histoire_timeline (4 lignes)
+-- Table: histoire_timeline (8 lignes)
 INSERT INTO explore_parakou.histoire_timeline (id, period, title, description, created_at) VALUES
-('bc80467a-80a7-4d9d-bb10-8e7649b418d7', 'XVIe Siècle', 'Fondation de Parakou', 'La ville est fondée par des commerçants Wassangari. Le royaume de Parakou (KƆRƆKU TEM) s''organise autour du Sinaguruu et du Kpebie.', '2026-02-28T07:34:15.463961+00:00'),
-('5fab56f6-caf3-42c1-b4d3-78cefcb2335b', '1898', 'Présence Coloniale', 'L''administration française s''installe dans la région. C''est le temps de la résistance avec des figures héroïques comme Bio Guerra.', '2026-02-28T07:34:15.463961+00:00'),
-('a41b5749-b1c7-4d93-98a5-4404f9c96684', '1960', 'L''Indépendance', 'L''Aube d''une nouvelle nation. Hubert Maga, originaire de la région, devient le premier président de la République du Dahomey.', '2026-02-28T07:34:15.463961+00:00'),
-('64ff134d-afde-4437-9745-014750fabb4f', 'Années 2000', 'Hub Commercial et Métropole', 'La ville connaît un boom démographique et économique. Le Marché Arzeke devient le poumon financier du Nord, transformant Parakou en véritable carrefour.', '2026-02-28T07:34:15.463961+00:00')
-ON CONFLICT (id) DO NOTHING;
+('bc80467a-80a7-4d9d-bb10-8e7649b418d7', 'XVIe Siècle', 'Fondation de Parakou', 'La ville est fondée par des commerçants Wassangari. Le royaume de Parakou (KƆRƆKU TEM) s''organise autour du Sinaguruu et du Kpebie.', '2026-02-28T07:34:15.000000+00:00'),
+('d1a2b3c4-e5f6-4a7b-8c9d-0e1f2a3b4c5d', '1894', 'Traité d''Alliance', 'Signature du traité d''alliance et de protection avec la France en novembre 1894, marquant le début de l''influence coloniale.', '2026-02-28T07:34:16.000000+00:00'),
+('5fab56f6-caf3-42c1-b4d3-78cefcb2335b', '1898', 'Administration Coloniale', 'L''administration française s''installe officiellement. La ville devient un poste administratif stratégique pour le Haut-Dahomey.', '2026-02-28T07:34:17.000000+00:00'),
+('e2f3g4h5-i6j7-k8l9-m0n1-o2p3q4r5s6t7', '1934', 'L''épopée du Rail', 'Arrivée du premier train à Parakou. La ville devient le terminus de la ligne ferroviaire du Nord, boostant son essor commercial.', '2026-02-28T07:34:18.000000+00:00'),
+('a41b5749-b1c7-4d93-98a5-4404f9c96684', '1960', 'L''Indépendance', 'Accession à la souveraineté internationale. Hubert Maga, originaire de Parakou, devient le premier président de la République.', '2026-02-28T07:34:19.000000+00:00'),
+('u1v2w3x4-y5z6-a7b8-c9d0-e1f2g3h4i5j6', '1970', 'Pôle Universitaire', 'Création des premiers centres d''enseignement supérieur qui jetteront les bases de l''Université de Parakou actuelle.', '2026-02-28T07:34:20.000000+00:00'),
+('k7l8m9n0-o1p2-q3r4-s5t6-u7v8w9x0y1z2', '2003', 'Municipalité à Statut Particulier', 'Parakou obtient le statut de municipalité à statut particulier, renforçant son autonomie et ses pouvoirs de développement local.', '2026-02-28T07:34:21.000000+00:00'),
+('64ff134d-afde-4437-9745-014750fabb4f', 'Années 2020', 'Hub Commercial & Métropole', 'La ville connaît une modernisation accélérée avec de grands projets d''infrastructures, confirmant son rôle de carrefour régional.', '2026-02-28T07:34:22.000000+00:00')
+ON CONFLICT (id) DO UPDATE SET 
+    period = EXCLUDED.period,
+    title = EXCLUDED.title,
+    description = EXCLUDED.description;
 
 -- Vérification rapide
 SELECT 'talents' as table_name, count(*) as total FROM explore_parakou.talents
