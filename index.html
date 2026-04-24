@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Bienvenue à Parakou. Explorez l'histoire, la culture et les opportunités de la Cité des Kobourou.">
+    <title>Accueil | Explore Parakou</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* Internal Page Specific Overrides applied to Home */
+        .hero-internal {
+            height: 85vh;
+            /* Home is impactful */
+            min-height: 500px;
+        }
+
+        /* Hub Card Styles */
+        .hub-card:hover .hub-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.2));
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html">Tourisme</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="carte.html" class="btn btn-primary">Carte Interactive</a>
+                <button class="mobile-menu-toggle" aria-label="Menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero hero-internal" style="height: 90vh; position: relative;">
+            <img src="assets/images/hero-bg.png" alt="Parakou Discovery" class="hero-bg"
+                style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+            <div class="hero-overlay" style="background: linear-gradient(to top, #0A192F 10%, transparent 80%);"></div>
+
+            <div class="hero-content" style="position:relative; z-index:2; padding-top:15vh;">
+                <!-- No Breadcrumb for Home -->
+                <h1 class="hero-title"
+                    style="font-size:6rem; margin-bottom:1.5rem; line-height: 1.1; font-weight: 800;">Parakou</h1>
+                <p class="hero-subtitle" style="font-size:2.2rem; max-width:900px; font-weight: 400; opacity: 0.95;">Le
+                    cœur battant du Bénin</p>
+            </div>
+        </section>
+        <section class="discovery-hub" style="padding: 60px 0; background-color: #fafbfc;">
+            <div class="container">
+                <div class="section-desc" style="text-align:center; max-width:900px; margin: 0 auto 2.5rem auto;">
+                    <h2
+                        style="font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--color-primary); font-weight: 700;">
+                        Qui sommes nous ?</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.8; color: var(--color-text-dark); opacity: 0.85;">
+                        Explore Parakou est une initiative citoyenne innovante portée par la structure ITA INNOVATE
+                        dédiée à la valorisation touristique, culturelle, numérique et économique de la ville de
+                        Parakou. Ce projet, pensé pour renforcer l’image de Parakou et la positionner comme un centre
+                        majeur d’attractivité dans le nord du Bénin, ambitionne d’impliquer les institutions locales,
+                        les acteurs culturels, la jeunesse, les créateurs et les partenaires techniques dans une
+                        dynamique commune de rayonnement.
+                    </p>
+                    <div class="mayor-container" style="margin-bottom: 3rem;">
+                        <div class="mayor-image-wrapper">
+                            <img src="assets/images/MAIRE DE PARAKOU.jpg" alt="Maire de Parakou" class="mayor-image">
+                        </div>
+                        <div class="mayor-content">
+                            <i class="ph ph-quotes mayor-quote-icon"></i>
+                            <span class="mayor-title-sub">Le Mot du Maire</span>
+                            <h2 class="mayor-name">Zul-Kifly ZAKARI</h2>
+                            <div class="mayor-message">
+                                <p>
+                                    "Chers citoyens et visiteurs, c'est avec une immense fierté que je vous invite à
+                                    découvrir Parakou,
+                                    la cité des Kobourou. Notre ville est un carrefour de cultures, d'histoire et
+                                    d'opportunités.
+                                    À travers 'Explore Parakou', nous ouvrons les portes de notre patrimoine et de notre
+                                    dynamisme
+                                    économique au monde entier. Ensemble, bâtissons une ville moderne, accueillante et
+                                    rayonnante."
+                                </p>
+                            </div>
+                            <div class="mayor-signature">
+                                <span class="mayor-role">Maire de la Commune de Parakou</span>
+                                <span class="mayor-city">République du Bénin</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mayor-container reverse" style="margin-bottom: 3rem;">
+                        <div class="mayor-image-wrapper">
+                            <img src="assets/images/arafath_imorou.jpg" alt="CEO Explore Parakou" class="mayor-image">
+                        </div>
+                        <div class="mayor-content">
+                            <i class="ph ph-quotes mayor-quote-icon"></i>
+                            <span class="mayor-title-sub">Le Mot du CEO</span>
+                            <h2 class="mayor-name">Arafath IMOROU</h2>
+                            <div class="mayor-message">
+                                <p>
+                                    "Notre mission chez Explore Parakou est de connecter le talent, la culture et
+                                    l'innovation
+                                    de notre ville au reste du monde. En tant qu'initiative portée par ITA INNOVATE,
+                                    nous
+                                    croyons fermement que le numérique est le levier essentiel pour révéler le potentiel
+                                    inexploité de la cité des Kobourou et créer des opportunités durables pour sa
+                                    jeunesse."
+                                </p>
+                            </div>
+                            <div class="mayor-signature">
+                                <span class="mayor-role">CEO Explore Parakou</span>
+                                <span class="mayor-city">Directeur Général de ITA INNOVATE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards-grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+
+                        <!-- Card 1: Histoire -->
+                        <a href="histoire.html" class="hub-card"
+                            style="text-decoration:none; color:inherit; display:block; position:relative; height:400px; border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                            <img src="assets/images/history-hero.png" alt="Histoire"
+                                style="width:100%; height:100%; object-fit:cover; transition: transform 0.5s;">
+                            <div class="hub-overlay"
+                                style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.9), transparent); display:flex; flex-direction:column; justify-content:flex-end; padding:30px;">
+                                <h3 style="color:white; font-size:2rem; margin-bottom:10px;">Histoire & Patrimoine</h3>
+                                <p style="color:rgba(255,255,255,0.8); font-size:1rem;">Les origines, les rois et les
+                                    traditions séculaires.</p>
+                                <span class="btn-text"
+                                    style="color:var(--color-accent); margin-top:15px; font-weight:600;">Découvrir <i
+                                        class="ph ph-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- Card 2: Tourisme -->
+                        <a href="tourisme.html" class="hub-card"
+                            style="text-decoration:none; color:inherit; display:block; position:relative; height:400px; border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                            <img src="assets/images/tourisme-hero.png" alt="Tourisme"
+                                style="width:100%; height:100%; object-fit:cover;">
+                            <div class="hub-overlay"
+                                style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.9), transparent); display:flex; flex-direction:column; justify-content:flex-end; padding:30px;">
+                                <h3 style="color:white; font-size:2rem; margin-bottom:10px;">Lieux & Loisirs</h3>
+                                <p style="color:rgba(255,255,255,0.8); font-size:1rem;">Que faire et où aller à Parakou
+                                    ?
+                                </p>
+                                <span class="btn-text"
+                                    style="color:var(--color-accent); margin-top:15px; font-weight:600;">Explorer <i
+                                        class="ph ph-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- Card 3: Carte -->
+                        <a href="carte.html" class="hub-card"
+                            style="text-decoration:none; color:inherit; display:block; position:relative; height:400px; border-radius:16px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                            <div
+                                style="width:100%; height:100%; background:#2c3e50; display:flex; align-items:center; justify-content:center;">
+                                <img src="assets/images/map-interface.png"
+                                    style="width:100%; height:100%; object-fit:cover; opacity:0.6;" alt="Carte">
+                            </div>
+                            <div class="hub-overlay"
+                                style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.9), transparent); display:flex; flex-direction:column; justify-content:flex-end; padding:30px;">
+                                <h3 style="color:white; font-size:2rem; margin-bottom:10px;">Carte de la Ville</h3>
+                                <p style="color:rgba(255,255,255,0.8); font-size:1rem;">Naviguez à travers les quartiers
+                                    et
+                                    points d'intérêt.</p>
+                                <span class="btn-text"
+                                    style="color:var(--color-accent); margin-top:15px; font-weight:600;">Ouvrir la carte
+                                    <i class="ph ph-map-trifold"></i></span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+        </section>
+        <!-- Stats Section -->
+        <section style="background-color: var(--color-primary); padding: 50px 0; color: white; text-align: center;">
+            <div class="container">
+                <div style="display:flex; justify-content:center; gap:4rem; flex-wrap:wrap;">
+                    <div class="stat-item">
+                        <div style="font-size:3rem; font-weight:700; color:var(--color-accent); line-height:1;">3ème
+                        </div>
+                        <div style="text-transform:uppercase; letter-spacing:1px; margin-top:10px; opacity:0.8;">Ville
+                            du Bénin</div>
+                    </div>
+                    <div class="stat-item">
+                        <div style="font-size:3rem; font-weight:700; color:var(--color-accent); line-height:1;">1941
+                        </div>
+                        <div style="text-transform:uppercase; letter-spacing:1px; margin-top:10px; opacity:0.8;">
+                            Création de la commune</div>
+                    </div>
+                    <div class="stat-item">
+                        <div style="font-size:3rem; font-weight:700; color:var(--color-accent); line-height:1;">+300k
+                        </div>
+                        <div style="text-transform:uppercase; letter-spacing:1px; margin-top:10px; opacity:0.8;">
+                            Habitants</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2026 Explore Parakou. <a href="admin.html" style="color:var(--color-primary); text-decoration:none; margin-left:1rem; font-weight:bold;"><i class="ph ph-lock-key"></i> Accès Admin</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+</body>
+
+</html>

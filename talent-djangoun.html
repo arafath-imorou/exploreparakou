@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Président Djangoun | Explore Parakou</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .header {
+            background: rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .header .logo,
+        .header .nav-list a,
+        .header .mobile-menu-toggle {
+            color: white !important;
+        }
+
+        .talent-hero {
+            position: relative;
+            background: #0A192F;
+            padding: 180px 0 100px;
+            color: white;
+            overflow: hidden;
+        }
+
+        .talent-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/images/PRESIDENT DJANGOUN.png') center top/cover;
+            opacity: 0.1;
+            filter: blur(15px);
+        }
+
+        .talent-hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-portrait {
+            text-align: center;
+        }
+
+        .hero-portrait img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            object-fit: cover;
+            object-position: top center;
+            aspect-ratio: 4/5;
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+
+        .talent-profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .talent-hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .talent-profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .talent-img-box img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .award-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .award-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .award-card i {
+            font-size: 3rem;
+            color: #E85D04;
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .bio-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html">Tourisme</a></li>
+                    <li><a href="culture.html" class="active">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="carte.html" class="btn btn-outline" style="border-color:white; color:white;">Carte</a>
+                <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="talent-hero">
+            <div class="container">
+                <div class="hero-text">
+                    <span class="talent-role"
+                        style="color: #E85D04; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Mode &
+                        Entrepreneuriat</span>
+                    <h1 style="font-size: 4rem; margin: 20px 0;">Président Djangoun</h1>
+                    <p class="lead-text" style="font-size: 1.25rem; opacity: 0.9;">Créateur de mode et entrepreneur
+                        béninois, célèbre pour ses créations vestimentaires à partir de matériaux recyclés et non
+                        conventionnels.</p>
+                </div>
+                <div class="hero-portrait">
+                    <img src="assets/images/PRESIDENT DJANGOUN.png" alt="Visage de Président Djangoun">
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <div class="talent-profile-grid">
+                    <div class="talent-bio">
+                        <div class="bio-text">
+                            <h2 style="margin-bottom: 30px; font-size: 2.5rem; color: #222;">Biographie & Parcours</h2>
+                            <p><strong>Djangoun Zinli Roberto</strong>, couramment appelé <strong>Président
+                                    Djangoun</strong>, est un créateur de mode et entrepreneur béninois. Originaire
+                                d’Abomey, il a fait des études de marketing et action commerciale avant de s’installer à
+                                Parakou.</p>
+                            <p>À Parakou, il fonde l’<strong>Institut Djangoun Décor</strong>, un centre de formation
+                                spécialisé dans les métiers de l’événementiel. L'établissement propose des formations
+                                variées en hôtellerie, cuisine, pâtisserie et décoration événementielle.</p>
+                            <p>Il commence à utiliser le pseudonyme <em>Président Djangoun</em> lorsqu’il développe des
+                                créations vestimentaires fondées sur l’assemblage de matériaux divers, souvent issus du
+                                recyclage.</p>
+
+                            <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 2rem; color: #222;">Le Style
+                                Djangoun</h3>
+                            <p>Le style Djangoun se caractérise par l’usage de matériaux hétérogènes tels que des
+                                canettes, tuyaux, fragments de tôle, billets de banque ou autres objets du quotidien.
+                                Ces éléments sont réassemblés pour former des tenues considérées comme expérimentales ou
+                                atypiques.</p>
+                            <p>Le créateur associe cette démarche à une volonté de promouvoir la réutilisation de
+                                matériaux et d’explorer des formes alternatives d’expression vestimentaire. Il diffuse
+                                ses réalisations principalement via les réseaux sociaux, où il publie régulièrement des
+                                photos et vidéos de ses créations.</p>
+                        </div>
+                    </div>
+                    <div class="talent-img-box">
+                        <img src="assets/images/PRESIDENT DJANGOUN.png" alt="Créations de Président Djangoun">
+                    </div>
+                </div>
+
+                <div style="margin-top: 80px;">
+                    <h2 style="text-align: center; font-size: 2.5rem; color: #222;">Prix et Reconnaissances</h2>
+                    <div class="awards-grid">
+                        <div class="award-card">
+                            <i class="ph ph-trophy"></i>
+                            <h3 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">2023</h3>
+                            <p style="color: #666; font-size: 1.1rem;">Prix du meilleur créateur de mode en Afrique de
+                                l’Ouest.</p>
+                        </div>
+                        <div class="award-card">
+                            <i class="ph ph-medal"></i>
+                            <h3 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">2024</h3>
+                            <p style="color: #666; font-size: 1.1rem;">Prix de la Créativité Africaine.</p>
+                        </div>
+                        <div class="award-card">
+                            <i class="ph ph-star"></i>
+                            <h3 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">2025</h3>
+                            <p style="color: #666; font-size: 1.1rem;">Mention d’honneur au Festival de mode de Lagos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Explore Parakou</h3>
+                    <p>La vitrine numérique de la cité des Kobourou.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Explore Parakou. <a href="admin.html" style="color:var(--color-primary); text-decoration:none; margin-left:1rem; font-weight:bold;"><i class="ph ph-lock-key"></i> Accès Admin</a> Fait avec passion.</div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+</body>
+
+</html>

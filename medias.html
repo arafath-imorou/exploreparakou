@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Médias & Galerie | Explore Parakou</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* Immersive specific overrides */
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-media {
+            height: 70vh;
+            background: url('assets/images/tourisme-hero.png') no-repeat center center/cover;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            position: relative;
+            margin-top: 0;
+            padding-bottom: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html">Tourisme</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html" class="active">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#downloads" class="btn btn-outline" style="color:white; border-color:white;">Espace Presse</a>
+                <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Immersive Hero -->
+        <section class="hero-media">
+            <div class="hero-overlay" style="background: rgba(0,0,0,0.5);"></div>
+            <div class="container text-center" style="position:relative; z-index:2;">
+                <h1 style="font-size: 3.5rem; font-weight:700; margin-bottom: 20px;">Galerie & Médias</h1>
+                <p style="font-size: 1.25rem; opacity:0.9; max-width:600px; margin:0 auto;">Plongez au cœur de Parakou à
+                    travers nos reportages, vidéos et ressources officielles.</p>
+            </div>
+        </section>
+
+        <!-- 2. Masonry Gallery -->
+        <section class="media-gallery-section">
+            <div class="container">
+                <div class="gallery-filters">
+                    <button class="filter-link active" data-filter="all">Tout voir</button>
+                    <button class="filter-link" data-filter="city">Ville & Paysages</button>
+                    <button class="filter-link" data-filter="culture">Culture</button>
+                    <button class="filter-link" data-filter="people">Portraits</button>
+                </div>
+
+                <div class="gallery-grid-masonry">
+                    <!-- Item 1 -->
+                    <div class="gallery-item" data-category="people">
+                        <img src="https://images.unsplash.com/photo-1517506972230-01c6014b2d38?q=80&w=2670&auto=format&fit=crop"
+                            alt="Portrait">
+                        <div class="item-overlay">
+                            <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="gallery-item" data-category="city">
+                        <img src="https://images.unsplash.com/photo-1577189874947-f0802c2e08cc?q=80&w=2574&auto=format&fit=crop"
+                            alt="City">
+                        <div class="item-overlay">
+                            <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="gallery-item" data-category="culture">
+                        <img src="https://images.unsplash.com/photo-1550955295-a83ad366f059?q=80&w=2574&auto=format&fit=crop"
+                            alt="Culture">
+                        <div class="item-overlay">
+                            <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="gallery-item" data-category="city">
+                        <img src="https://images.unsplash.com/photo-1574704381395-5ae8938166c8?q=80&w=2574&auto=format&fit=crop"
+                            alt="Market">
+                        <div class="item-overlay">
+                            <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="gallery-item" data-category="people">
+                        <img src="https://images.unsplash.com/photo-1510006240217-17eb48991f8c?q=80&w=2670&auto=format&fit=crop"
+                            alt="People">
+                        <div class="item-overlay">
+                            <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
+                        </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="gallery-item" data-category="culture">
+                        <img src="https://images.unsplash.com/photo-1506596324888-5c4a5c531475?q=80&w=2670&auto=format&fit=crop"
+                            alt="Tradition">
+                        <div class="item-overlay">
+                            <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center" style="margin-top:40px;">
+                    <button class="btn btn-outline-dark">Charger plus de photos</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Video Library -->
+        <section class="video-library">
+            <div class="container">
+                <div class="section-header center" style="color:white;">
+                    <h2>Vidéothèque Officielle</h2>
+                    <p style="opacity:0.8;">Reportages, aftermovies et documentaires.</p>
+                </div>
+
+                <div class="video-grid">
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2670&auto=format&fit=crop"
+                                alt="Video Thumb">
+                            <div class="play-btn"><i class="ph ph-play-fill"></i></div>
+                            <span class="video-duration">02:45</span>
+                        </div>
+                        <div class="video-info">
+                            <h3>Parakou, Terre de Culture</h3>
+                            <p>Découvrez la richesse culturelle de la cité des Kobourou.</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <img src="https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=2670&auto=format&fit=crop"
+                                alt="Video Thumb">
+                            <div class="play-btn"><i class="ph ph-play-fill"></i></div>
+                            <span class="video-duration">04:12</span>
+                        </div>
+                        <div class="video-info">
+                            <h3>Festival International 2025</h3>
+                            <p>Retour en images sur l'édition précédente.</p>
+                        </div>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-thumb">
+                            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2670&auto=format&fit=crop"
+                                alt="Video Thumb">
+                            <div class="play-btn"><i class="ph ph-play-fill"></i></div>
+                            <span class="video-duration">01:30</span>
+                        </div>
+                        <div class="video-info">
+                            <h3>Investir à Parakou</h3>
+                            <p>Opportunités économiques et témoignages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Press & Downloads -->
+        <section id="downloads" class="section-downloads">
+            <div class="container">
+                <div class="downloads-layout">
+                    <div class="downloads-info">
+                        <h2>Espace Presse & Ressources</h2>
+                        <p>Journalistes, créateurs, partenaires : accédez aux éléments officiels de la marque Explore
+                            Parakou.</p>
+                        <div class="contact-press">
+                            <h4>Contact Presse</h4>
+                            <p><i class="ph ph-envelope-open"></i> presee@exploreparakou.bj</p>
+                            <p><i class="ph ph-phone"></i> +229 23 00 00 00</p>
+                        </div>
+                    </div>
+                    <div class="downloads-grid">
+                        <div class="download-card">
+                            <div class="icon-box"><i class="ph ph-image"></i></div>
+                            <div class="dl-details">
+                                <h4>Pack Photos HD</h4>
+                                <span>ZIP • 145 MB</span>
+                            </div>
+                            <button class="btn-dl"><i class="ph ph-download-simple"></i></button>
+                        </div>
+                        <div class="download-card">
+                            <div class="icon-box"><i class="ph ph-pen-nib"></i></div>
+                            <div class="dl-details">
+                                <h4>Charte & Logos</h4>
+                                <span>PDF/AI • 25 MB</span>
+                            </div>
+                            <button class="btn-dl"><i class="ph ph-download-simple"></i></button>
+                        </div>
+                        <div class="download-card">
+                            <div class="icon-box"><i class="ph ph-file-text"></i></div>
+                            <div class="dl-details">
+                                <h4>Dossier de Presse 2026</h4>
+                                <span>PDF • 12 MB</span>
+                            </div>
+                            <button class="btn-dl"><i class="ph ph-download-simple"></i></button>
+                        </div>
+                        <div class="download-card">
+                            <div class="icon-box"><i class="ph ph-film-strip"></i></div>
+                            <div class="dl-details">
+                                <h4>B-Roll & Rushs Vidéo</h4>
+                                <span>Lien Drive</span>
+                            </div>
+                            <button class="btn-dl"><i class="ph ph-arrow-square-out"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CTA Social -->
+        <section class="social-cta">
+            <div class="container text-center">
+                <h2>Suivez l'aventure en temps réel</h2>
+                <div class="social-links-lg">
+                    <a href="#" class="social-btn instagram"><i class="ph ph-instagram-logo"></i> Instagram</a>
+                    <a href="https://web.facebook.com/profile.php?id=100080326988614" target="_blank"
+                        class="social-btn facebook"><i class="ph ph-facebook-logo"></i> Facebook</a>
+                    <a href="#" class="social-btn youtube"><i class="ph ph-youtube-logo"></i> YouTube</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 Explore Parakou. <a href="admin.html" style="color:var(--color-primary); text-decoration:none; margin-left:1rem; font-weight:bold;"><i class="ph ph-lock-key"></i> Accès Admin</a> Service Communication.</div>
+        </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Simple Gallery Filter
+        const filters = document.querySelectorAll('.filter-link');
+        const items = document.querySelectorAll('.gallery-item');
+
+        filters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                filters.forEach(f => f.classList.remove('active'));
+                filter.classList.add('active');
+
+                const category = filter.getAttribute('data-filter');
+                items.forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+</body>
+
+</html>

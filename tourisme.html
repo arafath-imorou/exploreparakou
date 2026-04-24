@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourisme & Évasion | Explore Parakou</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* Specific overrides for this page */
+        body {
+            background-color: #fafbfc;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html" class="active">Tourisme</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="carte.html" class="btn btn-outline" style="border-width:1px;">Carte <i
+                        class="ph ph-map-trifold"></i></a>
+                <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Immersive Hero -->
+        <section class="hero" style="height: 60vh;">
+            <img src="assets/images/tourisme-hero.png" alt="Vue aérienne Parakou" class="hero-bg">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Découvrir Parakou</h1>
+                <p class="hero-subtitle">Préparez votre séjour et explorez les lieux incontournables.</p>
+                <div class="hero-buttons">
+                    <a href="#visiter" class="btn btn-primary">Visiter & Loisirs</a>
+                    <a href="#sejourner" class="btn btn-outline"
+                        style="background:rgba(255,255,255,0.1); backdrop-filter:blur(5px); border-color:white; color:white;">Où
+                        Dormir & Manger</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Sticky Filter Bar -->
+        <div class="sticky-filters">
+            <div class="container">
+                <div class="filter-scroll" style="display:flex; gap:10px; overflow-x:auto;">
+                    <a href="#visiter" class="filter-chip active" style="text-decoration:none;"><i
+                            class="ph ph-compass"></i> Visiter & Loisirs</a>
+                    <a href="#sejourner" class="filter-chip"
+                        style="text-decoration:none; background:white; border:1px solid #ddd;"><i class="ph ph-bed"></i>
+                        Hôtels & Restos</a>
+                    <a href="carte.html" class="filter-chip"
+                        style="text-decoration:none; background:white; border:1px solid #ddd;"><i
+                            class="ph ph-map-trifold"></i> Carte Interactive</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+
+            <!-- 3. Category Grid (Entry Points) -->
+            <div class="cards-grid"
+                style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem;">
+                <div class="category-entry">
+                    <img src="assets/images/cat-sites.png" alt="Sites">
+                    <div class="category-label">Sites Touristiques</div>
+                </div>
+                <div class="category-entry">
+                    <img src="assets/images/cat-hotels.png" alt="Hotels">
+                    <div class="category-label">Hébergements</div>
+                </div>
+                <div class="category-entry">
+                    <img src="assets/images/cat-food.png" alt="Restos">
+                    <div class="category-label">Gastronomie</div>
+                </div>
+                <!-- Reuse hero for leisure/market generic if needed, or specific -->
+                <div class="category-entry">
+                    <img src="assets/images/experience-market.png" alt="Loisirs">
+                    <div class="category-label">Marchés & Loisirs</div>
+                </div>
+            </div>
+
+            <!-- 4. SECTION A: VISITER (Sites & Loisirs) -->
+            <div id="visiter" style="margin-bottom: 6rem;">
+                <div class="section-header"
+                    style="margin-bottom:2rem; border-bottom:1px solid #eee; padding-bottom:1rem;">
+                    <h2 style="color:var(--color-primary); font-size:2rem;">Découvrir & S'évader</h2>
+                    <p style="color:#666;">Les sites historiques, les marchés et les lieux de loisirs.</p>
+                </div>
+                <div class="cards-grid dynamic-grid" id="visiter-grid"
+                    style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap:2rem;">
+                    <p>Chargement...</p>
+                </div>
+            </div>
+
+            <!-- 5. SECTION B: SEJOURNER (Hôtels & Restos) -->
+            <div id="sejourner" style="margin-bottom: 4rem;">
+                <div class="section-header"
+                    style="margin-bottom:2rem; border-bottom:1px solid #eee; padding-bottom:1rem;">
+                    <h2 style="color:var(--color-primary); font-size:2rem;">Séjourner & Déguster</h2>
+                    <p style="color:#666;">Les meilleures adresses pour dormir et manger à Parakou.</p>
+                </div>
+                <div class="cards-grid dynamic-grid" id="sejourner-grid"
+                    style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap:2rem;">
+                    <p>Chargement...</p>
+                </div>
+            </div>
+
+            <!-- 5. Expériences Locales -->
+            <section style="margin-top: 4rem;">
+                <h2 style="margin-bottom: 2rem;">Expériences Uniques</h2>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; align-items:center;">
+                    <img src="assets/images/experience-market.png" alt="Marché Arzeke"
+                        style="border-radius:var(--radius-md); width:100%;">
+                    <div>
+                        <h3 style="font-size:2rem; margin-bottom:1rem; color:var(--color-primary);">Immersion au Marché
+                            Arzeke</h3>
+                        <p style="margin-bottom:1.5rem; opacity:0.8;">Perdez-vous dans les allées colorées du grand
+                            marché. Tissus, épices, artisanat... c'est le poumon économique et social de la ville. Une
+                            expérience sensorielle inoubliable.</p>
+                        <a href="#" class="btn btn-outline"
+                            style="color:var(--color-primary); border-color:var(--color-primary);">Lire le guide</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. App CTA -->
+            <div class="app-cta" style="margin-top: 5rem;">
+                <h2 style="margin-bottom: 1rem;">Emportez Parakou avec vous</h2>
+                <p style="max-width:600px; margin:0 auto var(--spacing-md); opacity:0.9;">Téléchargez l'application
+                    Explore Parakou pour naviguer hors ligne, accéder aux audioguides et découvrir la ville facilement.
+                </p>
+                <div style="display:flex; justify-content:center; gap:1rem;">
+                    <button class="btn" style="background:white; color:black;"><i class="ph ph-apple-logo"></i> App
+                        Store</button>
+                    <button class="btn" style="background:transparent; border:1px solid white;"><i
+                            class="ph ph-google-play-logo"></i> Google Play</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 Explore Parakou. <a href="admin.html" style="color:var(--color-primary); text-decoration:none; margin-left:1rem; font-weight:bold;"><i class="ph ph-lock-key"></i> Accès Admin</a></div>
+        </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Simple sticky header interaction
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const visiterGrid = document.getElementById('visiter-grid');
+            const sejournerGrid = document.getElementById('sejourner-grid');
+
+            if (!visiterGrid || !sejournerGrid) return;
+
+            try {
+                const { data, error } = await supabase
+                    .from('tourisme')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                if (data && data.length > 0) {
+                    let visiterHtml = '';
+                    let sejournerHtml = '';
+
+                    data.forEach(item => {
+                        const isSejourner = item.category.toLowerCase().includes('hôtel') || item.category.toLowerCase().includes('hotel') || item.category.toLowerCase().includes('resto') || item.category.toLowerCase().includes('restaurant');
+
+                        const cardHtml = `
+                            <div class="listing-card">
+                                <img src="${item.image_url}" alt="${item.title}" class="listing-img" onerror="this.src='assets/images/tourisme-hero.png'">
+                                <div class="listing-content">
+                                    <div class="listing-category">${item.category}</div>
+                                    <h3 class="card-title" style="font-size:1.25rem; margin-bottom:0.5rem;">${item.title}</h3>
+                                    <p style="color:#666; font-size:0.95rem;">${item.description}</p>
+                                    <div class="listing-actions">
+                                        ${item.link_details ? `<a href="${item.link_details}" class="btn btn-primary" style="padding:8px 20px; font-size:0.9rem;">Voir détails</a>` : ''}
+                                        ${item.link_map ? `<a href="${item.link_map}" target="_blank" class="action-icon" title="Itinéraire"><i class="ph ph-map-pin"></i></a>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+
+                        if (isSejourner) {
+                            sejournerHtml += cardHtml;
+                        } else {
+                            visiterHtml += cardHtml;
+                        }
+                    });
+
+                    visiterGrid.innerHTML = visiterHtml || '<p>Aucun lieu touristique trouvé.</p>';
+                    sejournerGrid.innerHTML = sejournerHtml || '<p>Aucun hébergement ou restaurant trouvé.</p>';
+                } else {
+                    visiterGrid.innerHTML = '<p>Aucun lieu touristique trouvé.</p>';
+                    sejournerGrid.innerHTML = '<p>Aucun hébergement ou restaurant trouvé.</p>';
+                }
+            } catch (err) {
+                console.error('Erreur de chargement du Tourisme:', err);
+                visiterGrid.innerHTML = '<p>Erreur lors du chargement des données.</p>';
+                sejournerGrid.innerHTML = '<p>Erreur lors du chargement des données.</p>';
+            }
+        });
+    </script>
+</body>
+
+</html>

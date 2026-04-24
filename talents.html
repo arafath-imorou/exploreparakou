@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annuaire des Talents | Explore Parakou</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .header {
+            background: rgba(0, 0, 0, 0.9) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .logo,
+        .header .nav-list a,
+        .header .mobile-menu-toggle {
+            color: white !important;
+        }
+
+        .talents-hero {
+            background: linear-gradient(135deg, #0A192F 0%, #112240 100%);
+            padding: 160px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .filters-container {
+            margin: -30px auto 40px;
+            max-width: 1200px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .filters-bar {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-primary) #f0f0f0;
+        }
+
+        .filters-bar::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .filters-bar::-webkit-scrollbar-thumb {
+            background: var(--color-primary, #E85D04);
+            border-radius: 10px;
+        }
+
+        .filter-btn {
+            background: #f4f6f8;
+            border: 1px solid #e1e4e8;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--color-primary, #E85D04);
+            color: white;
+            border-color: var(--color-primary, #E85D04);
+        }
+
+        .talents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 0 80px;
+        }
+
+        .talent-card-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .talent-card-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .tc-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .tc-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .tc-cat {
+            color: var(--color-primary, #E85D04);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .tc-title {
+            font-size: 1.4rem;
+            color: #111;
+            margin-bottom: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .tc-desc {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html">Tourisme</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="talents.html" class="active">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="carte.html" class="btn btn-outline" style="border-color:white; color:white;">Carte</a>
+                <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="talents-hero">
+            <div class="container">
+                <h1 style="font-size: 3.5rem; margin-bottom: 15px; font-family: 'Poppins', sans-serif;">Annuaire des
+                    Talents</h1>
+                <p style="font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">Découvrez les esprits
+                    brillants, les créateurs innovants et les acteurs du changement qui font rayonner la cité des
+                    Kobourou.</p>
+            </div>
+        </section>
+
+        <section class="talents-directory" style="background: #f8f9fa;">
+            <div class="container">
+                <div class="filters-container">
+                    <div class="filters-bar" id="filters">
+                        <button class="filter-btn active" data-filter="all">Tous les talents</button>
+                        <button class="filter-btn" data-filter="1">🏛️ 1. Gouvernance</button>
+                        <button class="filter-btn" data-filter="2">💼 2. Économie</button>
+                        <button class="filter-btn" data-filter="3">🛠️ 3. Industrie</button>
+                        <button class="filter-btn" data-filter="4">🌾 4. Agriculture</button>
+                        <button class="filter-btn" data-filter="5">🎓 5. Éducation</button>
+                        <button class="filter-btn" data-filter="6">🏥 6. Santé</button>
+                        <button class="filter-btn" data-filter="7">💻 7. Numérique</button>
+                        <button class="filter-btn" data-filter="8">🎨 8. Arts & Culture</button>
+                        <button class="filter-btn" data-filter="9">⚽ 9. Sports</button>
+                        <button class="filter-btn" data-filter="10">🏨 10. Tourisme</button>
+                        <button class="filter-btn" data-filter="11">⚖️ 11. Droit</button>
+                        <button class="filter-btn" data-filter="12">🤝 12. Société civile</button>
+                        <button class="filter-btn" data-filter="13">🌍 13. Médias</button>
+                        <button class="filter-btn" data-filter="14">🏗️ 14. Urbanisme</button>
+                    </div>
+                </div>
+
+                
+                <div class="talents-grid" id="talents-grid">
+                    <div id="loading" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        Chargement des talents...
+                    </div>
+                    <div id="no-results" style="display:none; grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                        <i class="ph ph-magnifying-glass" style="font-size: 4rem; color: #ccc; margin-bottom: 20px;"></i>
+                        <h3 style="font-size: 1.5rem; color: #555;">Aucun talent trouvé.</h3>
+                        <p style="color: #777;">De nouveaux profils seront ajoutés très bientôt !</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Explore Parakou</h3>
+                    <p>La vitrine numérique de la cité des Kobourou.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2026 Explore Parakou. <a href="admin.html" style="color:var(--color-primary); text-decoration:none; margin-left:1rem; font-weight:bold;"><i class="ph ph-lock-key"></i> Accès Admin</a> Fait avec passion.</div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const items = document.querySelectorAll('.talent-card-item');
+            const noResults = document.getElementById('no-results');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filterValue = button.getAttribute('data-filter');
+                    let visibleCount = 0;
+
+                    items.forEach(item => {
+                        if (filterValue === 'all') {
+                            item.style.display = 'flex';
+                            visibleCount++;
+                        } else {
+                            const categories = item.getAttribute('data-category').split(' ');
+                            if (categories.includes(filterValue)) {
+                                item.style.display = 'flex';
+                                visibleCount++;
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+
+                    if (visibleCount === 0) {
+                        noResults.style.display = 'block';
+                    } else {
+                        noResults.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const grid = document.getElementById('talents-grid');
+            const noResults = document.getElementById('no-results');
+            const loading = document.getElementById('loading');
+            
+            // Wait for supabaseClient to be ready
+            setTimeout(async () => {
+                const { data: talents, error } = await supabase
+                    .from('talents')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                    
+                loading.style.display = 'none';
+
+                if (error) {
+                    console.error('Error fetching talents:', error);
+                    return;
+                }
+
+                if (talents.length > 0) {
+                    talents.forEach(t => {
+                        const div = document.createElement('div');
+                        div.className = 'talent-card-item';
+                        div.setAttribute('data-category', 'all'); // For now, all talents are visible on all filters or we can add DB field later
+                        div.innerHTML = `
+                            <a href="${t.page_link || '#'}" style="text-decoration:none; display:flex; flex-direction:column; height:100%;">
+                                <img src="${t.image_url}" alt="${t.name}" class="tc-img">
+                                <div class="tc-content">
+                                    <span class="tc-cat">${t.role}</span>
+                                    <h3 class="tc-title">${t.name}</h3>
+                                    <p class="tc-desc">${t.description}</p>
+                                    <span class="link-arrow" style="color:var(--color-primary, #E85D04); font-weight:600; margin-top:auto;">Découvrir le profil <i class="ph ph-arrow-right"></i></span>
+                                </div>
+                            </a>
+                        `;
+                        grid.insertBefore(div, noResults);
+                    });
+                } else {
+                    noResults.style.display = 'block';
+                }
+            }, 300); // 300ms to ensure window.supabase is attached
+        });
+    </script>
+
+</body>
+
+</html>

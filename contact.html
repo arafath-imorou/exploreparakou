@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contactez l'équipe Explore Parakou, soumettez un événement, ou devenez partenaire officiel de la ville.">
+    <title>Contact & Participation | Explore Parakou</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* Internal Page Overrides */
+        .hero-contact {
+            height: 50vh;
+            min-height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html">Tourisme</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="carte.html" class="btn btn-primary"><i class="ph ph-map-trifold"></i> Carte</a>
+                <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Dynamic -->
+        <section class="hero hero-contact">
+            <!-- Ensure Image is relevant to 'Connection/People' -->
+            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=2669&auto=format&fit=crop"
+                alt="Communauté Parakou" class="hero-bg">
+            <div class="hero-overlay"></div>
+            <div class="hero-content text-center">
+                <h1 class="hero-title">Contact & Participation</h1>
+                <p class="hero-subtitle">Une question, une idée, un projet ? Construisons ensemble l'avenir de Parakou.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#routing" class="btn btn-primary">Nous contacter</a>
+                    <a href="#partner-form" class="btn btn-outline">Devenir Partenaire</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Routing Block 'How can we help' -->
+        <section id="routing" class="section">
+            <div class="container">
+                <div class="section-header centre">
+                    <h2>Comment pouvons-nous vous aider ?</h2>
+                    <p>Choisissez le canal adapté pour une réponse rapide.</p>
+                </div>
+
+                <div class="grid-3">
+                    <!-- Card 1: General -->
+                    <a href="#general-form" class="help-card">
+                        <div class="icon-circle"><i class="ph ph-envelope-simple"></i></div>
+                        <h3>Contact Général</h3>
+                        <p>Questions diverses sur la ville ou la plateforme.</p>
+                        <span class="fake-link">Écrire un message</span>
+                    </a>
+
+                    <!-- Card 2: Event -->
+                    <a href="#event-form" class="help-card">
+                        <div class="icon-circle"><i class="ph ph-calendar-plus"></i></div>
+                        <h3>Soumettre un événement</h3>
+                        <p>Annoncez votre événement culturel ou pro.</p>
+                        <span class="fake-link">Remplir le formulaire</span>
+                    </a>
+
+                    <!-- Card 3: Partner -->
+                    <a href="#partner-form" class="help-card">
+                        <div class="icon-circle"><i class="ph ph-handshake"></i></div>
+                        <h3>Investir & Partenariats</h3>
+                        <p>Projets économiques et collaborations.</p>
+                        <span class="fake-link">Démarrer un projet</span>
+                    </a>
+                </div>
+
+                <div class="grid-3" style="margin-top:20px;">
+                    <!-- Card 4: Media -->
+                    <a href="medias.html" class="help-card">
+                        <div class="icon-circle"><i class="ph ph-camera"></i></div>
+                        <h3>Presse & Médias</h3>
+                        <p>Accréditations et ressources visuelles.</p>
+                        <span class="fake-link">Accéder à l'espace presse</span>
+                    </a>
+
+                    <!-- Card 5: Ambassador -->
+                    <a href="#ambassador" class="help-card">
+                        <div class="icon-circle"><i class="ph ph-heart"></i></div>
+                        <h3>Devenir Ambassadeur</h3>
+                        <p>Rejoignez la communauté active.</p>
+                        <span class="fake-link">Rejoindre</span>
+                    </a>
+
+                    <!-- Card 6: Office -->
+                    <a href="#location" class="help-card">
+                        <div class="icon-circle"><i class="ph ph-map-pin"></i></div>
+                        <h3>Nos Bureaux</h3>
+                        <p>Venir nous rencontrer sur place.</p>
+                        <span class="fake-link">Voir la carte</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Form: General -->
+        <section id="general-form" class="section bg-light">
+            <div class="container">
+                <div class="form-wrapper">
+                    <div class="section-header centre">
+                        <span style="color:var(--color-primary); font-weight:700; text-transform:uppercase;">Contact
+                            Général</span>
+                        <h2>Envoyez-nous un message</h2>
+                    </div>
+                    <form id="form-general">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label>Nom complet</label>
+                                <input type="text" class="form-input" id="gen-nom" placeholder="Votre nom" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-input" id="gen-email" placeholder="email@exemple.com"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Sujet</label>
+                            <select class="form-input" id="gen-sujet">
+                                <option>Information touristique</option>
+                                <option>Signalement technique</option>
+                                <option>Autre demande</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea class="form-textarea" id="gen-msg" placeholder="Votre message..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Form: Submit Event -->
+        <section id="event-form" class="section">
+            <div class="container">
+                <div class="row-between" style="align-items:center;">
+                    <div class="section-header" style="text-align:left; margin:0;">
+                        <span
+                            style="color:var(--color-accent); font-weight:700; text-transform:uppercase;">Agenda</span>
+                        <h2>Soumettre un événement</h2>
+                        <p>Faites connaître votre activité à toute la ville.</p>
+                    </div>
+                    <i class="ph ph-calendar-plus" style="font-size:4rem; color:#eee;"></i>
+                </div>
+
+                <div class="form-wrapper" style="margin-top:40px; border-top: 4px solid var(--color-accent);">
+                    <form id="form-event">
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label>Nom de l'événement</label>
+                                <input type="text" class="form-input" id="ev-nom" placeholder="Ex: Concert..." required>
+                            </div>
+                            <div class="form-group">
+                                <label>Catégorie</label>
+                                <select class="form-input" id="ev-cat">
+                                    <option>Culture & Arts</option>
+                                    <option>Business & Éco</option>
+                                    <option>Sport</option>
+                                    <option>Loisirs</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" class="form-input" id="ev-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Lieu</label>
+                                <input type="text" class="form-input" id="ev-lieu" placeholder="Ex: Place Bio Guerra"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Affiche / Image de l'événement (Optionnel)</label>
+                            <input type="file" id="ev-img-upload" class="form-input" accept="image/*"
+                                style="padding:10px; background:#f9f9f9;">
+                            <div id="ev-img-preview" style="margin-top: 10px; max-width: 150px; display: none;"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description courte</label>
+                            <textarea class="form-textarea" id="ev-desc" style="height:100px;"
+                                placeholder="De quoi s'agit-il ?" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Contact Organisateur (Email/Tel)</label>
+                            <input type="text" class="form-input" id="ev-contact" placeholder="Pour validation"
+                                required>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">Soumettre l'événement</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Form: Partners -->
+        <section id="partner-form" class="section bg-dark text-light">
+            <div class="container">
+                <div class="split-layout reverse-mobile">
+                    <div>
+                        <span
+                            style="color:var(--color-accent); font-weight:700; text-transform:uppercase;">Business</span>
+                        <h2 style="color:white; margin-bottom:20px;">Partenariats & Investissement</h2>
+                        <p style="opacity:0.8; margin-bottom:30px;">Vous représentez une entreprise, une ONG ou un
+                            investisseur ?<br>Contactez directement notre pôle développement économique.</p>
+
+                        <form id="form-partner">
+                            <div class="form-group">
+                                <label style="color:white;">Nom de l'organisation</label>
+                                <input type="text" class="form-input"
+                                    style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:white;"
+                                    placeholder="Entreprise LTD" required>
+                            </div>
+                            <div class="grid-2">
+                                <div class="form-group">
+                                    <label style="color:white;">Personne de contact</label>
+                                    <input type="text" class="form-input"
+                                        style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:white;"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label style="color:white;">Type de projet</label>
+                                    <select class="form-input"
+                                        style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:white;">
+                                        <option style="color:black;">Implantation / Investissement</option>
+                                        <option style="color:black;">Sponsoring événement</option>
+                                        <option style="color:black;">Partenariat institutionnel</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label style="color:white;">Message</label>
+                                <textarea class="form-textarea"
+                                    style="height:100px; background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:white;"
+                                    placeholder="Décrivez votre projet..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary"
+                                style="background:var(--color-accent); color:var(--color-primary);">Demander un
+                                rendez-vous</button>
+                        </form>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:center;">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2632&auto=format&fit=crop"
+                            alt="Meeting" style="border-radius:12px; opacity:0.8;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Ambassadors & Community -->
+        <section id="ambassador" class="section">
+            <div class="container text-center">
+                <h2>Rejoignez la communauté</h2>
+                <p style="max-width:600px; margin:0 auto 40px auto; color:#666;">Explore Parakou est porté par ses
+                    habitants. Rejoignez notre réseau d'ambassadeurs pour faire rayonner la ville.</p>
+
+                <div class="ambassador-grid">
+                    <div class="ambassador-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ambassadeur">
+                        <h4>Aïcha T.</h4>
+                        <p>"J'organise des visites guidées du marché Arzeke."</p>
+                    </div>
+                    <div class="ambassador-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ambassadeur">
+                        <h4>Jean-Marc</h4>
+                        <p>"Je photographie les événements sportifs locaux."</p>
+                    </div>
+                    <div class="ambassador-card">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ambassadeur">
+                        <h4>Fatou B.</h4>
+                        <p>"Je connecte les artisans avec les acheteurs."</p>
+                    </div>
+                </div>
+
+                <div class="form-wrapper"
+                    style="margin-top:40px; border-top: 4px solid var(--color-accent); text-align: left; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <h3 style="margin-bottom: 20px;">Formulaire de Candidature</h3>
+                    <form id="form-ambassador">
+                        <div class="form-group">
+                            <label>Nom Complet</label>
+                            <input type="text" class="form-input" id="amb-nom" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email de contact</label>
+                            <input type="email" class="form-input" id="amb-email" placeholder="votre@email.com"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Vos motivations</label>
+                            <textarea class="form-textarea" id="amb-desc" style="height: 100px;"
+                                placeholder="Pourquoi voulez-vous devenir ambassadeur ? Que pouvez-vous apporter ?"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary full-width">Envoyer ma candidature</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Official Info & Map -->
+        <section id="location" class="section bg-light" style="padding-bottom:0;">
+            <div class="container">
+                <div class="grid-2" style="align-items:center;">
+                    <div class="contact-details" style="padding:40px;">
+                        <h2 style="margin-bottom:30px;">Nos Coordonnées</h2>
+                        <ul class="info-list">
+                            <li>
+                                <div class="icon"><i class="ph ph-map-pin"></i></div>
+                                <div>
+                                    <strong>Adresse</strong>
+                                    <p>Hôtel de Ville, Quartier Titirou, Parakou</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon"><i class="ph ph-phone"></i></div>
+                                <div>
+                                    <strong>Téléphone</strong>
+                                    <p>+229 23 61 00 00</p>
+                                    <p style="font-size:0.85rem; color:#666;">Du Lundi au Vendredi, 8h-18h</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="icon"><i class="ph ph-envelope"></i></div>
+                                <div>
+                                    <strong>Email</strong>
+                                    <p>contact@exploreparakou.bj</p>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="socials" style="margin-top:30px;">
+                            <a href="https://web.facebook.com/profile.php?id=100080326988614" target="_blank"
+                                class="social-icon"><i class="ph ph-facebook-logo"></i></a>
+                            <a href="#" class="social-icon"><i class="ph ph-twitter-logo"></i></a>
+                            <a href="#" class="social-icon"><i class="ph ph-instagram-logo"></i></a>
+                            <a href="#" class="social-icon"><i class="ph ph-linkedin-logo"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Embedded Map -->
+                    <div class="map-wrapper" style="height:400px; width:100%;">
+                        <iframe
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=2.597622871398926%2C9.336495662708304%2C2.6465463638305664%2C9.3668878898956&amp;layer=mapnik&amp;marker=9.351691776301952%2C2.622084617614746"
+                            width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2026 Explore Parakou. <a href="admin.html"
+                    style="color:var(--color-primary); text-decoration:none; margin-left:1rem; font-weight:bold;"><i
+                        class="ph ph-lock-key"></i> Accès Admin</a> Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+
+
+
+
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+    <script>
+        async function sendMessage(type, email, payload, formId, btn) {
+            const originalText = btn.textContent;
+            btn.textContent = "Envoi en cours...";
+            btn.disabled = true;
+
+            const { data, error } = await window.supabase.from('messages').insert([{
+                type: type,
+                contact_email: email,
+                payload: payload
+            }]);
+
+            if (error) {
+                alert("Erreur lors de l'envoi : " + error.message);
+            } else {
+                alert("Votre message a bien été envoyé ! Nous vous contacterons sous peu.");
+                document.getElementById(formId).reset();
+            }
+
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup preview for event image
+            const evImgUpload = document.getElementById('ev-img-upload');
+            const evImgPreview = document.getElementById('ev-img-preview');
+            if (evImgUpload) {
+                evImgUpload.addEventListener('change', function (e) {
+                    if (this.files && this.files[0]) {
+                        const reader = new FileReader();
+                        reader.onload = function (evt) {
+                            evImgPreview.style.display = 'block';
+                            evImgPreview.innerHTML = `<img src="${evt.target.result}" style="width:100%; border-radius:8px; border:1px solid #ddd;">`;
+                        }
+                        reader.readAsDataURL(this.files[0]);
+                    } else {
+                        evImgPreview.style.display = 'none';
+                    }
+                });
+            }
+
+            const formGen = document.getElementById('form-general');
+            if (formGen) {
+                formGen.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('gen-email').value;
+                    const payload = {
+                        "Nom Complet": document.getElementById('gen-nom').value,
+                        "Sujet": document.getElementById('gen-sujet').value,
+                        "Message": document.getElementById('gen-msg').value
+                    };
+                    sendMessage("Contact", email, payload, 'form-general', e.target.querySelector('button[type="submit"]'));
+                });
+            }
+
+            const formEvt = document.getElementById('form-event');
+            if (formEvt) {
+                formEvt.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const btn = e.target.querySelector('button[type="submit"]');
+                    const originalText = btn.textContent;
+                    btn.textContent = "Téléchargement de l'image...";
+                    btn.disabled = true;
+
+                    let imageUrl = "";
+                    if (evImgUpload && evImgUpload.files.length > 0) {
+                        const file = evImgUpload.files[0];
+                        const fileExt = file.name.split('.').pop();
+                        const fileName = `${Math.random()}.${fileExt}`;
+                        const filePath = `photos/${fileName}`;
+
+                        const { error: uploadError } = await window.supabase.storage.from('talents').upload(filePath, file);
+                        if (uploadError) {
+                            alert("Erreur lors de l'upload de l'image : " + uploadError.message);
+                            btn.textContent = originalText;
+                            btn.disabled = false;
+                            return;
+                        }
+                        const { data } = window.supabase.storage.from('talents').getPublicUrl(filePath);
+                        imageUrl = data.publicUrl;
+                    }
+
+                    const contact = document.getElementById('ev-contact').value;
+                    const payload = {
+                        "Nom Evénement": document.getElementById('ev-nom').value,
+                        "Catégorie": document.getElementById('ev-cat').value,
+                        "Date": document.getElementById('ev-date').value,
+                        "Lieu": document.getElementById('ev-lieu').value,
+                        "Description": document.getElementById('ev-desc').value,
+                        "Image URL": imageUrl || "Aucune image"
+                    };
+
+                    btn.textContent = "Envoi du message...";
+                    await sendMessage("Agenda", contact, payload, 'form-event', btn);
+                    if (evImgPreview) evImgPreview.style.display = 'none';
+                });
+            }
+
+            const formPt = document.getElementById('form-partner');
+            if (formPt) {
+                formPt.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const contact = document.getElementById('pt-contact').value;
+                    const payload = {
+                        "Organisation": document.getElementById('pt-org').value,
+                        "Type Projet": document.getElementById('pt-type').value,
+                        "Description": document.getElementById('pt-desc').value
+                    };
+                    sendMessage("Partenariat", contact, payload, 'form-partner', e.target.querySelector('button[type="submit"]'));
+                });
+            }
+
+            const formAmb = document.getElementById('form-ambassador');
+            if (formAmb) {
+                formAmb.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const contact = document.getElementById('amb-email').value;
+                    const payload = {
+                        "Nom": document.getElementById('amb-nom').value,
+                        "Motivations": document.getElementById('amb-desc').value
+                    };
+                    sendMessage("Ambassadeur", contact, payload, 'form-ambassador', e.target.querySelector('button[type="submit"]'));
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

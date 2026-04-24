@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration | Explore Parakou</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+            background: #f4f7f6;
+        }
+
+        .admin-sidebar {
+            width: 280px;
+            background: #fff;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-sidebar h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .admin-menu {
+            list-style: none;
+            flex: 1;
+        }
+
+        .admin-menu li {
+            margin-bottom: 10px;
+        }
+
+        .admin-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            color: #555;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .admin-menu a:hover,
+        .admin-menu a.active {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .admin-content {
+            flex: 1;
+            padding: 3rem;
+            overflow-y: auto;
+        }
+
+        .admin-panel {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .admin-panel.active-panel {
+            display: block;
+        }
+
+        .admin-title {
+            margin-bottom: 1.5rem;
+            color: #333;
+            border-bottom: 2px solid var(--color-accent);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        /* Login Screen */
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: var(--color-primary);
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-bottom: 2rem;
+        }
+
+        .login-box input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #login-error {
+            color: red;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        /* Table */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th,
+        .data-table td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table th {
+            background: #fdfdfd;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+
+        .action-btn.edit {
+            color: var(--color-primary);
+        }
+
+        .action-btn.del {
+            color: #e74c3c;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        #dashboard-ui {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-screen" id="login-ui">
+        <div class="login-box">
+            <a href="index.html"><img src="assets/images/logo.png" alt="Explore Parakou"
+                    style="height:50px; margin-bottom: 1rem;"></a>
+            <h2>Espace Administrateur</h2>
+            <div id="login-error">Échec de la connexion. Vérifiez vos identifiants.</div>
+            <form id="login-form">
+                <input type="email" id="admin-email" placeholder="Adresse Email" required>
+                <input type="password" id="admin-password" placeholder="Mot de passe" required>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" id="btn-login">Se Connecter <i
+                        class="ph ph-sign-in"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="admin-layout" id="dashboard-ui">
+        <aside class="admin-sidebar">
+            <h2>Explore Panneau</h2>
+            <ul class="admin-menu">
+                <li><a href="#" class="nav-link active" data-target="panel-talents"><i class="ph ph-users-three"></i>
+                        Talents</a></li>
+                <li><a href="#" class="nav-link" data-target="panel-tourisme"><i class="ph ph-map-pin"></i> Tourisme</a>
+                </li>
+                <li><a href="#" class="nav-link" data-target="panel-culture"><i class="ph ph-mask-happy"></i>
+                        Culture</a></li>
+                <li><a href="#" class="nav-link" data-target="panel-agenda"><i class="ph ph-calendar"></i> Agenda</a>
+                </li>
+                <li><a href="#" class="nav-link" data-target="panel-histoire"><i
+                            class="ph ph-clock-counter-clockwise"></i> Histoire</a></li>
+                <li><a href="#" class="nav-link" data-target="panel-messages"><i class="ph ph-envelope"></i> Boîte de
+                        Réception</a></li>
+                <li><a href="index.html" style="margin-top:20px; border: 1px solid #ddd;"><i
+                            class="ph ph-arrow-left"></i> Retour au site</a></li>
+            </ul>
+            <button class="btn btn-outline" id="btn-logout" style="width: 100%; text-align: center;"><i
+                    class="ph ph-sign-out"></i> Déconnexion</button>
+        </aside>
+
+        <main class="admin-content">
+            <header
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; background: #fff; padding: 1rem 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                <h2 style="margin:0; font-size:1.5rem; color:var(--color-primary);"><i class="ph ph-shield-check"></i>
+                    Espace Sécurisé</h2>
+                <button class="btn btn-outline" onclick="supabase.auth.signOut()"
+                    style="border-color:#e53935; color:#e53935; display:flex; align-items:center; gap:0.5rem;"><i
+                        class="ph ph-sign-out"></i> Se Déconnecter</button>
+            </header>
+
+
+            <!-- PANEL TALENTS -->
+            <div class="admin-panel active-panel" id="panel-talents">
+                <h3 class="admin-title">Gestion des Talents</h3>
+                <p>Ajoutez, modifiez ou supprimez les talents mis en avant.</p>
+
+                <div style="background:#f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 2rem;">
+                    <h4>Ajouter un nouveau talent</h4>
+                    <form id="talent-form" style="margin-top: 15px;">
+                        <input type="hidden" id="talent-id">
+                        <div class="form-group"><label>Nom complet</label><input type="text" id="t-name" required></div>
+                        <div class="form-group"><label>Rôle / Titre</label><input type="text" id="t-role" required>
+                        </div>
+                        <div class="form-group"><label>Courte Description</label><textarea id="t-desc" rows="3"
+                                required></textarea></div>
+                        <div class="form-group"><label>Lien détaillé (Optionnel)</label><input type="text" id="t-link">
+                        </div>
+                        <div class="form-group">
+                            <label>Photo du talent</label>
+                            <input type="hidden" id="t-img-old">
+                            <input type="file" id="t-img-upload" accept="image/*">
+                            <div id="t-img-preview" style="margin-top: 10px; max-width: 100px; display: none;"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btn-save-talent">Enregistrer</button>
+                        <button type="button" class="btn btn-outline" id="btn-cancel-edit-talent" style="display:none;"
+                            onclick="cancelEditing('talent')">Annuler</button>
+                    </form>
+                </div>
+                <h4>Talents Existants</h4>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Nom</th>
+                                <th>Rôle</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="talents-tbody">
+                            <tr>
+                                <td colspan="4" style="text-align:center;">Chargement...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PANEL TOURISME -->
+            <div class="admin-panel" id="panel-tourisme">
+                <h3 class="admin-title">Gestion du Tourisme</h3>
+                <p>Gérez les sites touristiques et historiques de la ville.</p>
+                <div style="background:#f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 2rem;">
+                    <h4>Ajouter un Visuel Tourisme</h4>
+                    <form id="tourisme-form" style="margin-top: 15px;">
+                        <input type="hidden" id="tour-id">
+                        <div class="form-group"><label>Titre (Ex: Musée Ethnographique)</label><input type="text"
+                                id="tour-title" required></div>
+                        <div class="form-group"><label>Catégorie (Ex: Musée • Culture)</label><input type="text"
+                                id="tour-cat" required></div>
+                        <div class="form-group"><label>Description courte</label><textarea id="tour-desc" rows="3"
+                                required></textarea></div>
+                        <div class="form-group"><label>Lien de page de détail (Ex: tourisme-musee.html)</label><input
+                                type="text" id="tour-link"></div>
+                        <div class="form-group"><label>Lien Carte Google (url itinéraire)</label><input type="text"
+                                id="tour-map"></div>
+                        <div class="form-group">
+                            <label>Photo Découverte</label>
+                            <input type="hidden" id="tour-img-old">
+                            <input type="file" id="tour-img-upload" accept="image/*">
+                            <div id="tour-img-preview" style="margin-top: 10px; max-width: 100px; display: none;"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btn-save-tour">Enregistrer</button>
+                        <button type="button" class="btn btn-outline" id="btn-cancel-edit-tour" style="display:none;"
+                            onclick="cancelEditing('tourisme')">Annuler</button>
+                    </form>
+                </div>
+                <h4>Sites Existants</h4>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Titre</th>
+                                <th>Catégorie</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tourisme-tbody">
+                            <tr>
+                                <td colspan="4" style="text-align:center;">Chargement...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+
+            <!-- PANEL MESSAGES -->
+            <div class="admin-panel" id="panel-messages">
+                <h3 class="admin-title">Boîte de Réception</h3>
+                <p>Consultez les demandes de contact, d'événements et de partenariats.</p>
+                <div style="background:#f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 2rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
+                        <h4>Messages Récents</h4>
+                        <button class="btn btn-outline" onclick="loadMessages()"><i class="ph ph-arrows-clockwise"></i>
+                            Rafraîchir</button>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Statut</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Contact</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="messages-tbody">
+                                <tr>
+                                    <td colspan="5" style="text-align:center;">Chargement...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL MESSAGE -->
+            <div id="msgModal"
+                style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+                <div
+                    style="background:white; padding:30px; border-radius:12px; max-width:600px; width:90%; position:relative;">
+                    <button onclick="closeMsgModal()"
+                        style="position:absolute; top:15px; right:15px; background:none; border:none; font-size:1.5rem; cursor:pointer;"><i
+                            class="ph ph-x"></i></button>
+                    <h3 id="msg-modal-title" style="margin-bottom:10px; color:var(--color-primary);">Message</h3>
+                    <p id="msg-modal-contact" style="color:#666; font-size:0.9rem; margin-bottom:20px;"></p>
+                    <div id="msg-modal-content"
+                        style="background:#f4f6f8; padding:20px; border-radius:8px; font-size:0.95rem; line-height:1.6; white-space:pre-wrap;">
+                    </div>
+                    <div style="margin-top:20px; text-align:right;">
+                        <button onclick="closeMsgModal()" class="btn btn-primary">Fermer</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL HISTOIRE -->
+            <div class="admin-panel" id="panel-histoire">
+                <h3 class="admin-title">Ligne du Temps - Histoire</h3>
+                <p>Ajoutez des dates clés à la frise chronologique de la ville.</p>
+                <div style="background:#f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 2rem;">
+                    <h4>Ajouter une Époque</h4>
+                    <form id="histoire-form" style="margin-top: 15px;">
+                        <input type="hidden" id="hs-id">
+                        <div class="form-group"><label>Période / Année (Ex: XVIe Siècle)</label><input type="text"
+                                id="hs-period" required></div>
+                        <div class="form-group"><label>Titre de l'événement (Ex: Fondation du royaume)</label><input
+                                type="text" id="hs-title" required></div>
+                        <div class="form-group"><label>Description exhaustive</label><textarea id="hs-desc" rows="4"
+                                required></textarea></div>
+                        <button type="submit" class="btn btn-primary" id="btn-save-hs">Enregistrer</button>
+                        <button type="button" class="btn btn-outline" id="btn-cancel-edit-hs" style="display:none;"
+                            onclick="cancelEditing('histoire')">Annuler</button>
+                    </form>
+                </div>
+                <h4>Chronologie Existant</h4>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Période</th>
+                                <th>Titre</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="histoire-tbody">
+                            <tr>
+                                <td colspan="3" style="text-align:center;">Chargement...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PANEL AGENDA -->
+            <div class="admin-panel" id="panel-agenda">
+                <h3 class="admin-title">Gestion de l'Agenda</h3>
+                <p>Éditez les événements, festivals et concerts.</p>
+                <div style="background:#f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 2rem;">
+                    <h4>Ajouter un Événement</h4>
+                    <form id="agenda-form" style="margin-top: 15px;">
+                        <input type="hidden" id="ag-id">
+                        <div class="form-group"><label>Titre (Ex: Festival Kobourou)</label><input type="text"
+                                id="ag-title" required></div>
+                        <div class="form-group"><label>Catégorie (Ex: Festival International)</label><input type="text"
+                                id="ag-cat" required></div>
+                        <div class="form-group"><label>Jour (Ex: 15)</label><input type="text" id="ag-dnum" required>
+                        </div>
+                        <div class="form-group"><label>Mois (Ex: Fév)</label><input type="text" id="ag-dmonth" required>
+                        </div>
+                        <div class="form-group"><label>Heure (Ex: 16:00 - 02:00)</label><input type="text" id="ag-time"
+                                required></div>
+                        <div class="form-group"><label>Lieu (Ex: Place Tabéra)</label><input type="text" id="ag-loc"
+                                required></div>
+                        <div class="form-group"><label>Description Courte</label><textarea id="ag-desc" rows="3"
+                                required></textarea></div>
+                        <div class="form-group">
+                            <label>Affiche (Photo)</label>
+                            <input type="hidden" id="ag-img-old">
+                            <input type="file" id="ag-img-upload" accept="image/*">
+                            <div id="ag-img-preview" style="margin-top: 10px; max-width: 100px; display: none;"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btn-save-ag">Enregistrer</button>
+                        <button type="button" class="btn btn-outline" id="btn-cancel-edit-ag" style="display:none;"
+                            onclick="cancelEditing('agenda')">Annuler</button>
+                    </form>
+                </div>
+                <h4>Événements Existants</h4>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Affiche</th>
+                                <th>Date</th>
+                                <th>Titre</th>
+                                <th>Lieu</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="agenda-tbody">
+                            <tr>
+                                <td colspan="5" style="text-align:center;">Chargement...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PANEL CULTURE -->
+            <div class="admin-panel" id="panel-culture">
+                <h3 class="admin-title">Gestion de la Grille Culturelle</h3>
+                <p>Éditez les catégories qui s'affichent en milieu de page Culture.</p>
+                <div style="background:#f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 2rem;">
+                    <h4>Ajouter une Grille Culturelle</h4>
+                    <form id="culture-form" style="margin-top: 15px;">
+                        <input type="hidden" id="cult-id">
+                        <div class="form-group"><label>Titre (Ex: Festivals & Traditions)</label><input type="text"
+                                id="cult-title" required></div>
+                        <div class="form-group"><label>Mots Cles (Ex: La Gaani, Eclosions...)</label><textarea
+                                id="cult-desc" rows="2" required></textarea></div>
+                        <div class="form-group">
+                            <label>Image d'arrière plan</label>
+                            <input type="hidden" id="cult-img-old">
+                            <input type="file" id="cult-img-upload" accept="image/*">
+                            <div id="cult-img-preview" style="margin-top: 10px; max-width: 100px; display: none;"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btn-save-cult">Enregistrer</button>
+                        <button type="button" class="btn btn-outline" id="btn-cancel-edit-cult" style="display:none;"
+                            onclick="cancelEditing('culture')">Annuler</button>
+                    </form>
+                </div>
+                <h4>Blocs Culturels Existants</h4>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Aperçu</th>
+                                <th>Titre</th>
+                                <th>Mots Cles</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="culture-tbody">
+                            <tr>
+                                <td colspan="4" style="text-align:center;">Chargement...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PANEL HISTOIRE -->
+            <div class="admin-panel" id="panel-histoire">
+                <h3 class="admin-title">Ligne du Temps - Histoire</h3>
+                <p>Ajoutez des dates clés à la frise chronologique de la ville.</p>
+                <div style="background:#f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 2rem;">
+                    <h4>Ajouter une Époque</h4>
+                    <form id="histoire-form" style="margin-top: 15px;">
+                        <input type="hidden" id="hs-id">
+                        <div class="form-group"><label>Période / Année (Ex: XVIe Siècle)</label><input type="text"
+                                id="hs-period" required></div>
+                        <div class="form-group"><label>Titre de l'événement (Ex: Fondation du royaume)</label><input
+                                type="text" id="hs-title" required></div>
+                        <div class="form-group"><label>Description exhaustive</label><textarea id="hs-desc" rows="4"
+                                required></textarea></div>
+                        <button type="submit" class="btn btn-primary" id="btn-save-hs">Enregistrer</button>
+                        <button type="button" class="btn btn-outline" id="btn-cancel-edit-hs" style="display:none;"
+                            onclick="cancelEditing('histoire')">Annuler</button>
+                    </form>
+                </div>
+                <h4>Chronologie Existant</h4>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Période</th>
+                                <th>Titre</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="histoire-tbody">
+                            <tr>
+                                <td colspan="3" style="text-align:center;">Chargement...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PANEL MESSAGES -->
+            <div class="admin-panel" id="panel-messages">
+                <h3 class="admin-title">Boîte de Réception</h3>
+                <p>Consultez les demandes de contact, d'événements et de partenariats.</p>
+                <div style="background:#f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 2rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
+                        <h4>Messages Récents</h4>
+                        <button class="btn btn-outline" onclick="loadMessages()"><i class="ph ph-arrows-clockwise"></i>
+                            Rafraîchir</button>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Statut</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Contact</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="messages-tbody">
+                                <tr>
+                                    <td colspan="5" style="text-align:center;">Chargement...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MODAL MESSAGE -->
+            <div id="msgModal"
+                style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+                <div
+                    style="background:white; padding:30px; border-radius:12px; max-width:600px; width:90%; position:relative;">
+                    <button onclick="closeMsgModal()"
+                        style="position:absolute; top:15px; right:15px; background:none; border:none; font-size:1.5rem; cursor:pointer;"><i
+                            class="ph ph-x"></i></button>
+                    <h3 id="msg-modal-title" style="margin-bottom:10px; color:var(--color-primary);">Message</h3>
+                    <p id="msg-modal-contact" style="color:#666; font-size:0.9rem; margin-bottom:20px;"></p>
+                    <div id="msg-modal-content"
+                        style="background:#f4f6f8; padding:20px; border-radius:8px; font-size:0.95rem; line-height:1.6; white-space:pre-wrap;">
+                    </div>
+                    <div style="margin-top:20px; text-align:right;">
+                        <button onclick="closeMsgModal()" class="btn btn-primary">Fermer</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Scripts Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+    <script src="assets/js/admin.js"></script>
+
+</body>
+
+</html>

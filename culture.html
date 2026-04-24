@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture & Créativité | Explore Parakou</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        /* Specific overrides for Culture Page before move to CSS */
+        .header {
+            background: transparent !important;
+            box-shadow: none !important;
+        }
+
+        .header.scrolled {
+            background: rgba(0, 0, 0, 0.9) !important;
+        }
+
+        .header .logo,
+        .header .nav-list a,
+        .header .mobile-menu-toggle {
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html">Tourisme</a></li>
+                    <li><a href="culture.html" class="active">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="carte.html" class="btn btn-outline" style="border-color:white; color:white;">Carte</a>
+                <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Immersive Hero -->
+        <section class="culture-hero" style="position:relative; height: 85vh; overflow:hidden;">
+            <div class="hero-bg-container" style="position:absolute; top:0; left:0; width:100%; height:100%;">
+                <!-- Local High Res Image -->
+                <img src="assets/images/culture-hero-final.png" style="width:100%; height:100%; object-fit:cover;"
+                    alt="Danse Traditionnelle Bénin" class="hero-bg-img">
+                <div class="hero-gradient"
+                    style="position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, #0A192F 10%, transparent 80%);">
+                </div>
+            </div>
+            <div class="container hero-culture-content">
+                <span class="hero-tag">Âme & Traditions</span>
+                <h1 class="hero-title-culture">L'Énergie Créative<br>de Parakou</h1>
+                <p class="hero-subtitle">Plongez au cœur d'une ville qui vibre au rythme de ses artistes, de ses
+                    artisans et de ses histoires millénaires.</p>
+                <div class="hero-buttons">
+                    <a href="#talents" class="btn btn-primary">Découvrir les talents</a>
+                    <a href="#agenda" class="btn btn-outline"
+                        style="border-color:rgba(255,255,255,0.5); color:white;">Agenda Culturel</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Narrative Section -->
+        <section class="section-narrative">
+            <div class="container">
+                <div class="narrative-grid">
+                    <div class="narrative-text">
+                        <i class="ph ph-quotes pulse-icon"></i>
+                        <h2>Une culture vivante, <br>pas un musée.</h2>
+                        <p class="lead-text">Parakou n'est pas seulement une gardienne du passé. C'est un laboratoire à
+                            ciel ouvert où la tradition Bariba rencontre la modernité urbaine.</p>
+                        <p>Des tisserands de la route de Djougou aux rappeurs de Zongo, chaque rue raconte une histoire
+                            de résilience et de beauté.</p>
+                    </div>
+                    <div class="narrative-img">
+                        <img src="https://images.unsplash.com/photo-1533552093282-3ccaf7da9570?q=80&w=2669&auto=format&fit=crop"
+                            alt="Artisan Parakou">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Categories Visual Grid -->
+        <section class="section-categories">
+            <div class="container">
+                <div class="categories-scroll-container" id="culture-grid" style="display:flex; gap:1.5rem; overflow-x:auto;"><p>Chargement...</p></div></div></section>
+
+        <!-- 4. Talents (Horizontal Slider) -->
+        <section id="talents" class="section-talents">
+            <div class="container">
+                <div class="section-header-left">
+                    <h2>Talents de Parakou</h2>
+                    <p>Rencontrez ceux qui font bouger les lignes.</p>
+                    <div class="slider-nav-btns">
+                        <button class="nav-btn prev"><i class="ph ph-arrow-left"></i></button>
+                        <button class="nav-btn next"><i class="ph ph-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="talents-slider" id="talents-slider"><p>Chargement...</p></div></div></section>
+
+        <!-- 5. Masonry Gallery "Instants Volés" -->
+        <section class="section-gallery">
+            <div class="container">
+                <div class="section-header center">
+                    <h2>Instants Volés</h2>
+                    <p>Immersion visuelle dans le quotidien.</p>
+                </div>
+                <div class="masonry-grid">
+                    <div class="masonry-item item-1">
+                        <img src="https://images.unsplash.com/photo-1563840742582-7301c27cb462?q=80&w=2670&auto=format&fit=crop"
+                            alt="Gallery 1">
+                    </div>
+                    <div class="masonry-item item-2">
+                        <img src="https://images.unsplash.com/photo-1496551572277-7e6118ba8d52?q=80&w=2656&auto=format&fit=crop"
+                            alt="Gallery 2">
+                    </div>
+                    <div class="masonry-item item-3">
+                        <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=2670&auto=format&fit=crop"
+                            alt="Gallery 3">
+                    </div>
+                    <div class="masonry-item item-4">
+                        <img src="https://images.unsplash.com/photo-1533130061792-64d3448a8b4e?q=80&w=2670&auto=format&fit=crop"
+                            alt="Gallery 4">
+                    </div>
+                    <div class="masonry-item item-5">
+                        <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=2572&auto=format&fit=crop"
+                            alt="Gallery 5">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Agenda Cultural -->
+        <section id="agenda" class="section-agenda">
+            <div class="container">
+                <div class="agenda-wrapper">
+                    <div class="agenda-header">
+                        <h2>Agenda Culturel</h2>
+                        <a href="agenda.html" class="btn-text">Tout voir <i class="ph ph-arrow-right"></i></a>
+                    </div>
+
+                    <div class="event-list">
+                        <div class="event-row">
+                            <div class="event-date">
+                                <span class="day">12</span>
+                                <span class="month">MARS</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Festival des Arts de la rue</h3>
+                                <div class="event-meta">
+                                    <span><i class="ph ph-map-pin"></i> Place Bio Guerra</span>
+                                    <span><i class="ph ph-clock"></i> 14:00</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-dark">Participer</a>
+                        </div>
+
+                        <div class="event-row">
+                            <div class="event-date">
+                                <span class="day">18</span>
+                                <span class="month">MARS</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Concert Live: Orchestre Poly-Rythmo</h3>
+                                <div class="event-meta">
+                                    <span><i class="ph ph-map-pin"></i> Centre Culturel Français</span>
+                                    <span><i class="ph ph-clock"></i> 20:00</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-dark">Billetterie</a>
+                        </div>
+
+                        <div class="event-row">
+                            <div class="event-date">
+                                <span class="day">25</span>
+                                <span class="month">MARS</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Exposition "Terres Rouges"</h3>
+                                <div class="event-meta">
+                                    <span><i class="ph ph-map-pin"></i> Musée Plein Air</span>
+                                    <span><i class="ph ph-clock"></i> 09:00</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-outline-dark">Infos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CTA Community -->
+        <section class="culture-cta">
+            <div class="container text-center">
+                <h2>Faites vivre la culture</h2>
+                <p>Vous êtes artiste, organisateur ou simple passionné ? Rejoignez le mouvement.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Soumettre un événement</a>
+                    <a href="contact.html" class="btn btn-outline" style="border-color:white; color:white;">Devenir
+                        partenaire</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Explore Parakou</h3>
+                    <p>La vitrine numérique de la cité des Kobourou.</p>
+                </div>
+                <!-- Simple Footer for Prototype -->
+            </div>
+            <div class="footer-bottom">&copy; 2026 Explore Parakou. <a href="admin.html" style="color:var(--color-primary); text-decoration:none; margin-left:1rem; font-weight:bold;"><i class="ph ph-lock-key"></i> Accès Admin</a> Fait avec passion.</div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Simple Slider Logic for Prototype
+        document.querySelector('.next').addEventListener('click', () => {
+            const container = document.querySelector('.talents-slider');
+            container.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        document.querySelector('.prev').addEventListener('click', () => {
+            const container = document.querySelector('.talents-slider');
+            container.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+    </script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+</body>
+
+</html>

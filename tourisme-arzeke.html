@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marché Arzeke | Explore Parakou</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .market-content-img {
+            float: left;
+            margin: 0 30px 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+
+        @media (max-width: 768px) {
+            .market-content-img {
+                float: none;
+                margin: 0 auto 20px auto;
+                display: block;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #fafbfc;">
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html" class="active">Tourisme</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="carte.html" class="btn btn-outline" style="border-width:1px;">Carte <i
+                        class="ph ph-map-trifold"></i></a>
+                <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" style="height: 60vh;">
+            <img src="assets/images/market.png" alt="Marché Arzeke" class="hero-bg"
+                style="width:100%; height:100%; object-fit:cover;">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="breadcrumb" style="margin-bottom:20px; font-size: 0.9rem; opacity: 0.9;">
+                    <a href="index.html" style="color:white; text-decoration:none;">Accueil</a> <span
+                        style="color:var(--color-accent);"> > </span>
+                    <a href="tourisme.html" style="color:white; text-decoration:none;">Tourisme</a> <span
+                        style="color:var(--color-accent);"> > </span>
+                    <span style="color:white;">Marché Arzeke</span>
+                </div>
+                <h1 class="hero-title" style="font-size:3.5rem;">Marché International Arzeke</h1>
+                <p class="hero-subtitle">Le 2e plus grand marché à ciel ouvert du Bénin.</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="section" style="padding: 80px 0;">
+            <div class="container">
+                <a href="javascript:history.back()" style="display:inline-flex; align-items:center; gap:8px; color:#666; text-decoration:none; margin-bottom:20px; font-weight:600; font-size:1.05rem; transition:color 0.3s;" onmouseover="this.style.color='var(--color-primary)'" onmouseout="this.style.color='#666'"><i class="ph ph-arrow-left"></i> Retour</a>
+                <div
+                    style="max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+
+                    <div
+                        style="display:flex; align-items:center; gap:10px; margin-bottom: 2rem; padding: 15px; background: #fdfbf7; border-left: 4px solid var(--color-accent); border-radius: 4px;">
+                        <i class="ph ph-map-pin" style="font-size: 1.5rem; color: var(--color-accent);"></i>
+                        <div>
+                            <strong style="display:block; color:var(--color-primary); margin-bottom:5px;">Localisation &
+                                Envergure</strong>
+                            <p style="margin:0; color:#555;">Superficie de 10 530 m² située dans le quartier Baparapé à
+                                Parakou.</p>
+                        </div>
+                    </div>
+
+                    <h2
+                        style="color:var(--color-primary); margin-bottom: 1.5rem; margin-top: 3rem; font-size: 1.8rem; border-bottom: 2px solid var(--color-accent); padding-bottom: 10px; display: inline-block;">
+                        Présentation Générale</h2>
+                    <p style="line-height: 1.8; color: #444; margin-bottom: 1.5rem;">
+                        Le <strong>Marché Arzeke de Parakou</strong>, ou marché central de Parakou, est un gigantesque
+                        marché international à ciel ouvert. Se positionnant comme le deuxième plus grand marché du Bénin
+                        (juste après Dantokpa), ce pôle économique incontournable compte <strong>plus de 1 700 places
+                            vendeurs</strong>.
+                    </p>
+
+                    <div
+                        style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 2rem 0;">
+                        <div
+                            style="background: rgba(var(--color-primary-rgb), 0.05); padding: 15px; border-radius: 8px; text-align: center;">
+                            <i class="ph ph-storefront"
+                                style="font-size: 2rem; color: var(--color-primary); margin-bottom: 10px;"></i>
+                            <h4 style="margin-bottom: 5px;">Quincaillerie & Équipements</h4>
+                        </div>
+                        <div
+                            style="background: rgba(var(--color-primary-rgb), 0.05); padding: 15px; border-radius: 8px; text-align: center;">
+                            <i class="ph ph-shopping-cart"
+                                style="font-size: 2rem; color: var(--color-primary); margin-bottom: 10px;"></i>
+                            <h4 style="margin-bottom: 5px;">Alimentaire & Boucherie</h4>
+                        </div>
+                        <div
+                            style="background: rgba(var(--color-primary-rgb), 0.05); padding: 15px; border-radius: 8px; text-align: center;">
+                            <i class="ph ph-sparkle"
+                                style="font-size: 2rem; color: var(--color-primary); margin-bottom: 10px;"></i>
+                            <h4 style="margin-bottom: 5px;">Hygiène & Beauté</h4>
+                        </div>
+                    </div>
+
+                    <h2
+                        style="color:var(--color-primary); margin-bottom: 1.5rem; margin-top: 3rem; font-size: 1.8rem; border-bottom: 2px solid var(--color-accent); padding-bottom: 10px; display: inline-block;">
+                        Historique & Évolution</h2>
+
+                    <div>
+                        <img src="assets/images/experience-market.png" alt="Ambiance du Marché"
+                            class="market-content-img">
+                        <p style="line-height: 1.8; color: #444; margin-bottom: 1.5rem;">
+                            L'histoire du marché Arzeke s'inscrit profondément dans les racines marchandes de Parakou.
+                            Initialement, le site actuel était une <strong>vaste cour d'escale des caravaniers</strong>.
+                            Cette cour faisait stratégiquement face à la concession du Baparapé de Parakou, personnalité
+                            chargée de représenter les multiples communautés étrangères auprès des autochtones.
+                        </p>
+
+                        <p style="line-height: 1.8; color: #444; margin-bottom: 1.5rem;">
+                            À l'époque, ce vaste espace grouillant de vie était un <strong>lieu de troc
+                                ancestral</strong> entre les commerçants venus de loin et les habitants de la région.
+                            L'endroit était placé sous l'autorité d'un chef traditionnel qui veillait rigoureusement aux
+                            cérémonies nécessaires pour garantir la paix et la sécurité de tous les usagers.
+                        </p>
+
+                        <div style="clear:both;"></div>
+                    </div>
+
+                    <h3 style="color:var(--color-primary); margin-bottom: 1rem; margin-top: 2rem; font-size: 1.4rem;">
+                        Rénovation et Rayonnement International</h3>
+                    <div
+                        style="background: rgba(var(--color-accent-rgb), 0.1); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--color-accent);">
+                        <p style="line-height: 1.8; color: #444; margin-bottom: 1.5rem;">
+                            Longtemps désigné sous l'appellation de « <strong>Marché en commun</strong> », l'Arzeke a
+                            toujours attiré des vendeurs provenant des pays limitrophes du Bénin : tisserands du Burkina
+                            Faso, négociants du Niger ou marchands du Nigeria s'y côtoient et y vendent leurs riches
+                            marchandises.
+                        </p>
+                        <p style="line-height: 1.8; color: #444; margin-bottom: 0;">
+                            Afin d'adapter cette infrastructure historique aux besoins de l'époque moderne, des travaux
+                            de <strong>rénovation</strong> de grande ampleur débutent en 1996 sur financement de
+                            l'Agence Française de Développement. L'immense marché central de Parakou, dans son
+                            architecture actuelle, est officiellement inauguré en <strong>juillet 1997</strong>.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">&copy; 2026 Explore Parakou. <a href="admin.html" style="color:var(--color-primary); text-decoration:none; margin-left:1rem; font-weight:bold;"><i class="ph ph-lock-key"></i> Accès Admin</a></div>
+        </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
+    <script>
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+    </script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+</body>
+
+</html>

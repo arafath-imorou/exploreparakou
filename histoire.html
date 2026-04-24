@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Plongez dans l'histoire de Parakou, ses origines, ses quartiers emblématiques et son patrimoine.">
+    <title>Histoire & Patrimoine | Explore Parakou</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Main Style -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* Shared Internal Styles */
+        .hero-internal {
+            height: 60vh;
+            min-height: 400px;
+        }
+
+        .breadcrumb {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.8;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        .history-section {
+            background-color: #fdfbf7;
+        }
+
+        .quartier-card {
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--color-accent);
+            transition: var(--transition-normal);
+        }
+
+        .quartier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Timeline CSS */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--color-accent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--color-primary);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--color-primary);
+        }
+
+        .timeline-period {
+            color: var(--color-accent);
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .timeline-title {
+            color: var(--color-primary);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .timeline-desc {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item.left::after,
+            .timeline-item.right::after {
+                left: 21px;
+            }
+
+            .timeline-item.right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html" class="active">Histoire</a></li>
+                    <li><a href="tourisme.html">Tourisme</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="index.html" class="btn btn-primary">Explorer</a>
+                <button class="mobile-menu-toggle" aria-label="Menu">
+                    <i class="ph ph-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero hero-internal" style="height: 85vh; position: relative;">
+            <img src="assets/images/history-hero.png" alt="Objets culturels Parakou" class="hero-bg"
+                style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
+            <div class="hero-overlay" style="background: linear-gradient(to top, #0A192F 10%, transparent 80%);"></div>
+
+            <div class="hero-content" style="position:relative; z-index:2; padding-top:20vh;">
+                <div class="breadcrumb" style="margin-bottom:20px;">
+                    <a href="index.html" style="color:white; opacity:0.8;">Accueil</a> <span
+                        style="color:var(--color-accent);"> > </span> <span style="color:white;">Histoire</span>
+                </div>
+                <h1 class="hero-title" style="font-size:4rem; margin-bottom:1rem;">Histoire & Identité</h1>
+                <p class="hero-subtitle" style="font-size:1.5rem; max-width:700px;">Plongez dans les racines de la Cité
+                    des Kobourou.</p>
+            </div>
+        </section>
+
+        <!-- History Content -->
+        <section class="history-section" style="padding: 100px 0;">
+            <div class="container">
+                <div class="split-layout"
+                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: flex-start; margin-bottom: 80px;">
+                    <div class="history-content">
+                        <span
+                            style="color:var(--color-accent); font-weight:600; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:10px;">Fondations</span>
+                        <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--color-primary);">Aux origines de
+                            Parakou</h2>
+                        <p class="history-text"
+                            style="font-size:1.15rem; line-height:1.8; margin-bottom:2rem; opacity:0.9; color: #4a4a4a;">
+                            La fondation de la ville remonte au XVIe siècle par des commerçants de
+                            <strong>Wassangari</strong>. Même si le trône de Sinaguruu n'est pas reconnu comme un trône
+                            Wassangari de par le lien de sang, le royaume de Parakou (<strong>KƆRƆKU TEM</strong>) a
+                            presque la même structure que tous les autres royaumes Wassangari du Baruwuu tels que Kwande
+                            ou Kandi.
+                        </p>
+                        <p class="history-text"
+                            style="font-size:1.15rem; line-height:1.8; margin-bottom:2rem; opacity:0.9; color: #4a4a4a;">
+                            L'organisation royale repose sur une dualité équilibrée : le trône du <strong>chef politique
+                                et administratif</strong> (les Akpaki dont le palais se trouve au quartier Sinaguruu) et
+                            le trône de <strong>chef de terre</strong> (les Gbeeguruu Sunɔ ou Sina Wobagi dont le palais
+                            est situé à Gbeeguruu).
+                        </p>
+                    </div>
+                    <div class="history-image">
+                        <img src="assets/images/PLACE BIO GUERRA.jpg" alt="Statue Bio Guerra"
+                            style="border-radius:var(--radius-md); box-shadow: 0 20px 40px rgba(0,0,0,0.1); width:100%;">
+                    </div>
+                </div>
+
+                <!-- Royal Structure Cards -->
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 80px;">
+                    <div
+                        style="padding:2.5rem; background:white; border-top:4px solid var(--color-accent); box-shadow:var(--shadow-md); border-radius:8px;">
+                        <div
+                            style="width:50px; height:50px; background:rgba(var(--color-accent-rgb), 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem;">
+                            <i class="ph ph-crown" style="color:var(--color-accent); font-size:1.5rem;"></i>
+                        </div>
+                        <h3 style="color:var(--color-primary); margin-bottom:1rem; font-size:1.3rem;">Trône des Akpaki
+                        </h3>
+                        <p style="font-size:1rem; color:#555; line-height:1.6;">Chef politique et administratif. Le
+                            palais royal est niché au cœur du quartier <strong>Sinaguruu</strong>, symbole du pouvoir
+                            exécutif du royaume.</p>
+                    </div>
+
+                    <div
+                        style="padding:2.5rem; background:white; border-top:4px solid var(--color-primary); box-shadow:var(--shadow-md); border-radius:8px;">
+                        <div
+                            style="width:50px; height:50px; background:rgba(var(--color-primary-rgb), 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem;">
+                            <i class="ph ph-mountains" style="color:var(--color-primary); font-size:1.5rem;"></i>
+                        </div>
+                        <h3 style="color:var(--color-primary); margin-bottom:1rem; font-size:1.3rem;">Gbeeguruu Sunɔ
+                        </h3>
+                        <p style="font-size:1rem; color:#555; line-height:1.6;">Chefs de terre (Sina Wobagi). Leur site
+                            initial se trouvait à <strong>Kɔmi-Gea</strong> avant d'être établi à Gbeeguruu dans la
+                            commune de N'Dali.</p>
+                    </div>
+
+                    <div
+                        style="padding:2.5rem; background:white; border-top:4px solid #8B4513; box-shadow:var(--shadow-md); border-radius:8px;">
+                        <div
+                            style="width:50px; height:50px; background:rgba(139, 69, 19, 0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem;">
+                            <i class="ph ph-users-three" style="color:#8B4513; font-size:1.5rem;"></i>
+                        </div>
+                        <h3 style="color:var(--color-primary); margin-bottom:1rem; font-size:1.3rem;">Kpebie Sunɔ</h3>
+                        <p style="font-size:1rem; color:#555; line-height:1.6;">Une particularité unique à Parakou : un
+                            chef de terre délégué ou exécutif dont le palais se situe au quartier
+                            <strong>Kpébié</strong>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- La Légende de Kpaasɔɔ -->
+                <div
+                    style="background: var(--color-primary); color: white; padding: 4rem; border-radius: var(--radius-lg); overflow: hidden; position: relative;">
+                    <div style="position: relative; z-index: 2;">
+                        <span
+                            style="color:var(--color-accent); font-weight:600; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:1rem;">Héritage
+                            Princier</span>
+                        <h2 style="color: white; font-size: 2.2rem; margin-bottom: 2rem;">Le premier Roi et le titre de
+                            Kpaasɔɔ</h2>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+                            <div>
+                                <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.9; margin-bottom: 1.5rem;">
+                                    Le premier roi de Parakou, fils adoptif du Sinaboko de Nikki, reçut une éducation
+                                    Wassangari pure. Avant d’accéder au trône, il porta le prestigieux titre de
+                                    <strong>« Kpaasɔɔ »</strong> (Passo), titre auquel aspire tout prince prétendant au
+                                    trône impérial de Nikki.
+                                </p>
+                                <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.9;">
+                                    Investi plus tard du titre d'<strong>Akpari Koburu</strong>, il fut maintenu dans le
+                                    giron de Nikki au sein de la branche dynastique Makararu.
+                                </p>
+                            </div>
+                            <div
+                                style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--color-accent);">
+                                <h4
+                                    style="color: var(--color-accent); margin-bottom: 1.5rem; font-size: 1.1rem; text-transform: uppercase;">
+                                    Attributs Royaux</h4>
+                                <ul style="list-style: none; padding: 0;">
+                                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 10px;">
+                                        <i class="ph ph-check-circle"
+                                            style="color: var(--color-accent); margin-top: 4px;"></i>
+                                        <span><strong>Étriers blancs en cuivre :</strong> Symbole de haute hiérarchie,
+                                            remplaçant les étriers noirs.</span>
+                                    </li>
+                                    <li style="margin-bottom: 1rem; display: flex; align-items: flex-start; gap: 10px;">
+                                        <i class="ph ph-check-circle"
+                                            style="color: var(--color-accent); margin-top: 4px;"></i>
+                                        <span><strong>Le Bente :</strong> Bande de tissu épais recouvrant le
+                                            cheval.</span>
+                                    </li>
+                                    <li style="display: flex; align-items: flex-start; gap: 10px;">
+                                        <i class="ph ph-check-circle"
+                                            style="color: var(--color-accent); margin-top: 4px;"></i>
+                                        <span><strong>Le Yankokoru :</strong> Le gon traditionnel.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Un Creuset Culturel -->
+        <section class="diversity" style="padding: 100px 0; background-color: #fff;">
+            <div class="container">
+                <div style="max-width: 800px; margin: 0 auto; margin-bottom: 60px; text-align: center;">
+                    <h2 style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 1.5rem;">Un Creuset de
+                        Peuples</h2>
+                    <p style="font-size: 1.2rem; color: #666; line-height: 1.8;">
+                        Si les <strong>Baatɔmbu</strong> (Bariba) constituent la majorité, Parakou s'est forgée par
+                        l'apport de commerçants Hausa, Zarma, Dendi, Yoruba, Gurmache et Mandingue.
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                    <div style="order: 2;">
+                        <p style="font-size:1.1rem; line-height:1.8; color:#444; margin-bottom:1.5rem;">
+                            Le noyau urbain s'est formé autour de <strong>Sinaguruu, Kpebie, Komi-Gea (Tiinre)</strong>
+                            et le quartier général des commerçants au <strong>Marché Arusɛkɛ</strong>.
+                        </p>
+                        <p style="font-size:1.1rem; line-height:1.8; color:#444;">
+                            Aujourd'hui, la cité accueille des peuples de toutes les contrées du Bénin (Adja, Fon,
+                            Lokpa, Otammari) et des nationalités du monde entier, faisant d'elle une métropole carrefour
+                            rayonnant sur les communes de Tchaourou, N’Dali et Bassila.
+                        </p>
+                    </div>
+                    <div style="order: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div style="background: #fdfbf7; padding: 2rem; border-radius: 12px; text-align: center;">
+                            <span style="display: block; font-size: 2rem; margin-bottom: 0.5rem;">🤝</span>
+                            <span style="font-weight: 600; color: var(--color-primary);">Mixité</span>
+                        </div>
+                        <div style="background: #fdfbf7; padding: 2rem; border-radius: 12px; text-align: center;">
+                            <span style="display: block; font-size: 2rem; margin-bottom: 0.5rem;">🌍</span>
+                            <span style="font-weight: 600; color: var(--color-primary);">Modernité</span>
+                        </div>
+                        <div style="background: #fdfbf7; padding: 2rem; border-radius: 12px; text-align: center;">
+                            <span style="display: block; font-size: 2rem; margin-bottom: 0.5rem;">📈</span>
+                            <span style="font-weight: 600; color: var(--color-primary);">Croissance</span>
+                        </div>
+                        <div style="background: #fdfbf7; padding: 2rem; border-radius: 12px; text-align: center;">
+                            <span style="display: block; font-size: 2rem; margin-bottom: 0.5rem;">🏛️</span>
+                            <span style="font-weight: 600; color: var(--color-primary);">Tradition</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Timeline Section -->
+        <section class="timeline-section" style="padding: 100px 0; background-color: #f4f6f8;">
+            <div class="container">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                    <span
+                        style="color:var(--color-accent); font-weight:600; text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:10px;">Chronologie</span>
+                    <h2 style="font-size: 2.5rem; color: var(--color-primary);">Les dates clés de la Cité</h2>
+                    <p style="color:#666;">Revivez les moments forts qui ont façonné Parakou.</p>
+                </div>
+                <div class="timeline" id="dynamic-timeline">
+                    <!-- Loaded dynamically -->
+                    <p style="text-align:center;">Chargement de la chronologie...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quartiers Emblématiques -->
+        <section class="quartiers" style="background-color:#fdfbf7; padding: 100px 0;">
+            <div class="container">
+                <div class="section-header" style="text-align:center; margin-bottom:3rem;">
+                    <h2 style="font-size: 2.5rem; color: var(--color-primary);">Quartiers Emblématiques de la Ville</h2>
+                    <p style="color:#666;">Le cœur vibrant de la cité, lieu par lieu.</p>
+                </div>
+
+                <div class="cards-grid"
+                    style="display:grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap:2rem;">
+                    <!-- Quartier 1 -->
+                    <div class="card hover-lift"
+                        style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
+                        <img src="assets/images/quartier_depot.png" alt="Quartier Dépôt" class="card-img"
+                            style="width:100%; height:200px; object-fit:cover;">
+                        <div style="padding:20px;">
+                            <h3 class="card-title"
+                                style="margin-top:0; margin-bottom:10px; font-size:1.3rem; color:var(--color-primary);">
+                                Quartier Dépôt</h3>
+                            <p style="color:#666; font-size:0.95rem; line-height:1.6;">Quartier historique, né autour de
+                                la gare ferroviaire, symbole du développement commercial de la ville.</p>
+                        </div>
+                    </div>
+                    <!-- Quartier 2 -->
+                    <div class="card hover-lift"
+                        style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
+                        <img src="assets/images/quartier_kpebie.png" alt="Kpébié" class="card-img"
+                            style="width:100%; height:200px; object-fit:cover;">
+                        <div style="padding:20px;">
+                            <h3 class="card-title"
+                                style="margin-top:0; margin-bottom:10px; font-size:1.3rem; color:var(--color-primary);">
+                                Kpébié</h3>
+                            <p style="color:#666; font-size:0.95rem; line-height:1.6;">Le centre spirituel et
+                                traditionnel abritant le palais du puissant Kpébié Sunɔ.</p>
+                        </div>
+                    </div>
+                    <!-- Quartier 3 -->
+                    <div class="card hover-lift"
+                        style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
+                        <img src="assets/images/quartier_zongo.png" alt="Zongo" class="card-img"
+                            style="width:100%; height:200px; object-fit:cover;">
+                        <div style="padding:20px;">
+                            <h3 class="card-title"
+                                style="margin-top:0; margin-bottom:10px; font-size:1.3rem; color:var(--color-primary);">
+                                Zongo</h3>
+                            <p style="color:#666; font-size:0.95rem; line-height:1.6;">Cœur commerçant et carrefour
+                                culturel animé, reflétant la diversité sociologique de Parakou.</p>
+                        </div>
+                    </div>
+                    <!-- Quartier 4 -->
+                    <div class="card hover-lift"
+                        style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
+                        <img src="assets/images/quartier_titirou.png" alt="Titirou" class="card-img"
+                            style="width:100%; height:200px; object-fit:cover;">
+                        <div style="padding:20px;">
+                            <h3 class="card-title"
+                                style="margin-top:0; margin-bottom:10px; font-size:1.3rem; color:var(--color-primary);">
+                                Titirou</h3>
+                            <p style="color:#666; font-size:0.95rem; line-height:1.6;">Quartier administratif et
+                                résidentiel abritant l'imposante mairie de la Cité des Kobourou.</p>
+                        </div>
+                    </div>
+                    <!-- Quartier 5 -->
+                    <div class="card hover-lift"
+                        style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
+                        <img src="assets/images/quartier_albarika.png" alt="Albarika" class="card-img"
+                            style="width:100%; height:200px; object-fit:cover;">
+                        <div style="padding:20px;">
+                            <h3 class="card-title"
+                                style="margin-top:0; margin-bottom:10px; font-size:1.3rem; color:var(--color-primary);">
+                                Albarika</h3>
+                            <p style="color:#666; font-size:0.95rem; line-height:1.6;">Quartier historique connu pour
+                                son grand marché à bétail, véritable carrefour économique de la région.</p>
+                        </div>
+                    </div>
+                    <!-- Quartier 6 -->
+                    <div class="card hover-lift"
+                        style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
+                        <img src="assets/images/quartier_banikanni.png" alt="Banikanni" class="card-img"
+                            style="width:100%; height:200px; object-fit:cover;">
+                        <div style="padding:20px;">
+                            <h3 class="card-title"
+                                style="margin-top:0; margin-bottom:10px; font-size:1.3rem; color:var(--color-primary);">
+                                Banikanni</h3>
+                            <p style="color:#666; font-size:0.95rem; line-height:1.6;">Pôle intellectuel et estudiantin
+                                de Parakou, abritant le campus nord de l'Université de Parakou.</p>
+                        </div>
+                    </div>
+                    <!-- Quartier 7 -->
+                    <div class="card hover-lift"
+                        style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
+                        <img src="assets/images/quartier_tourou.png" alt="Tourou" class="card-img"
+                            style="width:100%; height:200px; object-fit:cover;">
+                        <div style="padding:20px;">
+                            <h3 class="card-title"
+                                style="margin-top:0; margin-bottom:10px; font-size:1.3rem; color:var(--color-primary);">
+                                Tourou</h3>
+                            <p style="color:#666; font-size:0.95rem; line-height:1.6;">Quartier périphérique en pleine
+                                expansion, abritant l'aéroport de Parakou et symbolisant l'avenir de la ville.</p>
+                        </div>
+                    </div>
+                    <!-- Quartier 8 -->
+                    <div class="card hover-lift"
+                        style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
+                        <img src="assets/images/quartier_guema.png" alt="Guema" class="card-img"
+                            style="width:100%; height:200px; object-fit:cover;">
+                        <div style="padding:20px;">
+                            <h3 class="card-title"
+                                style="margin-top:0; margin-bottom:10px; font-size:1.3rem; color:var(--color-primary);">
+                                Guema</h3>
+                            <p style="color:#666; font-size:0.95rem; line-height:1.6;">Carrefour routier essentiel et
+                                quartier dynamique, très animé grâce à son marché permanent et sa population
+                                hétéroclite.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                &copy; 2026 Explore Parakou. <a href="admin.html"
+                    style="color:var(--color-primary); text-decoration:none; margin-left:1rem; font-weight:bold;"><i
+                        class="ph ph-lock-key"></i> Accès Admin</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const timelineContainer = document.getElementById('dynamic-timeline');
+            if (!timelineContainer) return;
+
+            const { data, error } = await window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true });
+            if (error || !data || data.length === 0) {
+                timelineContainer.innerHTML = '<p style="text-align:center;">Aucune date disponible pour le moment.</p>';
+                return;
+            }
+
+            timelineContainer.innerHTML = '';
+            data.forEach((item, index) => {
+                const sideClass = (index % 2 === 0) ? 'left' : 'right';
+                timelineContainer.innerHTML += `
+                <div class="timeline-item ${sideClass}">
+                    <div class="timeline-content">
+                        <span class="timeline-period">${item.period}</span>
+                        <h3 class="timeline-title">${item.title}</h3>
+                        <p class="timeline-desc">${item.description}</p>
+                    </div>
+                </div>
+            `;
+            });
+        });
+    </script>
+</body>
+
+</html>

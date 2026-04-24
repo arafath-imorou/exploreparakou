@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurer Tourisme</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
+</head>
+
+<body style="font-family: sans-serif; padding: 2rem;">
+    <h2>Restauration des lieux touristiques par défaut</h2>
+    <p>Cette page va réinsérer les lieux d'origine de la maquette (Place Bio Guerra, Marché Arzeke, etc.) dans votre
+        base de données Supabase, car en rendant la page Tourisme dynamique, ils ont été remplacés.</p>
+    <button id="restoreBtn"
+        style="padding: 1rem 2rem; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; font-weight: bold;">Restauration
+        des Données</button>
+    <div id="status" style="margin-top: 2rem; color: #333; font-weight: bold; font-size:1.1rem;"></div>
+
+    <script>
+        document.getElementById('restoreBtn').addEventListener('click', async () => {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = "Restauration en cours... Veuillez patienter.";
+
+            // Check auth
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                statusDiv.innerHTML = "❌ ERREUR : Vous devez d'abord vous connecter sur la page <b>admin.html</b> dans le même navigateur pour valider vos droits !<br><br><small>Ouvrez admin.html, connectez-vous, puis revenez ici appuyer sur le bouton.</small>";
+                statusDiv.style.color = "red";
+                return;
+            }
+
+            const dataToInsert = [
+                {
+                    title: "Musée Ethnographique et de Plein Air",
+                    category: "Musée • Culture",
+                    description: "Une riche collection de l'histoire et de l'architecture traditionnelle du Borgou avec ses fameux tatas.",
+                    image_url: "assets/images/tourisme-hero.png",
+                    link_details: "tourisme-musee.html",
+                    link_map: ""
+                },
+                {
+                    title: "Marché International Arzeke",
+                    category: "Commerce • Découverte",
+                    description: "Le deuxième plus grand marché à ciel ouvert du Bénin, point de rencontre économique incontournable.",
+                    image_url: "assets/images/market.png",
+                    link_details: "tourisme-arzeke.html",
+                    link_map: "https://maps.google.com/?q=9.338333,2.628889"
+                },
+                {
+                    title: "Place Hubert Maga",
+                    category: "Site Historique",
+                    description: "Monument érigé à la gloire du premier président du Bénin indépendant.",
+                    image_url: "assets/images/STATUT HUBERT MAGA.jpg",
+                    link_details: "tourisme-maga.html",
+                    link_map: ""
+                },
+                {
+                    title: "Place Bio Guerra",
+                    category: "Site Historique",
+                    description: "Le symbole de la résistance. Un monument incontournable situé dans le quartier Ladji Farani.",
+                    image_url: "assets/images/PLACE BIO GUERRA.jpg",
+                    link_details: "tourisme-bioguerra.html",
+                    link_map: ""
+                },
+                {
+                    title: "Hôtel Kobourou City",
+                    category: "Hôtel",
+                    description: "Le confort moderne au cœur de Parakou. Piscine, restaurant gastronomique.",
+                    image_url: "assets/images/tourisme-hero.png",
+                    link_details: "",
+                    link_map: ""
+                },
+                {
+                    title: "Saveurs du Borgou",
+                    category: "Restaurant • Local",
+                    description: "Découvrez la vraie igname pilée et le fromage peuhl dans un cadre authentique.",
+                    image_url: "assets/images/cat-food.png",
+                    link_details: "",
+                    link_map: ""
+                }
+            ];
+
+            let successCount = 0;
+            for (const item of dataToInsert) {
+                const { data: existing } = await supabase.from('tourisme').select('*').eq('title', item.title);
+                if (existing && existing.length > 0) continue;
+
+                const { error } = await supabase.from('tourisme').insert([item]);
+                if (!error) successCount++;
+            }
+
+            statusDiv.innerHTML = "✅ Restauration terminée ! " + successCount + " lieux originaux ajoutés.<br>Vous pouvez maintenant ouvrir <b>tourisme.html</b> ou vérifier votre panel Admin !";
+            statusDiv.style.color = "green";
+        });
+    </script>
+</body>
+
+</html>
