@@ -1,14 +1,12 @@
 /**
- * Explore Parakou - Ultra-Fast & Reactive Engine
+ * Explore Parakou - Ultra-Fast, Reactive & Mobile-Engine
  */
 
 // 1. Initialisation Service Worker pour le cache instantané
 if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js')
-            .then((reg) => {
-                // Service worker actif
-            })
+            .then(() => {})
             .catch(() => {});
     });
 }
@@ -19,7 +17,6 @@ if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || win
 
     function prefetchUrl(url) {
         if (!url || prefetchedUrls.has(url)) return;
-        // Ignorer ancres, protocoles externes ou non-html
         if (url.startsWith('#') || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('javascript:')) return;
         if (url.includes('://') && !url.startsWith(window.location.origin)) return;
 
@@ -84,22 +81,68 @@ if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || win
     });
 })();
 
-// 4. DOM Ready Interactions & Smooth Scroll Throttling
+// 4. Mobile Menu & Navigation Responsiveness
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-toggle');
     const nav = document.querySelector('.nav');
 
+    // Create backdrop overlay if it doesn't exist
+    let navBackdrop = document.querySelector('.nav-backdrop');
+    if (!navBackdrop) {
+        navBackdrop = document.createElement('div');
+        navBackdrop.className = 'nav-backdrop';
+        document.body.appendChild(navBackdrop);
+    }
+
+    function closeMobileMenu() {
+        if (nav && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            if (mobileMenuBtn) {
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) icon.classList.replace('ph-x', 'ph-list');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
+    }
+
+    function openMobileMenu() {
+        if (nav) {
+            nav.classList.add('active');
+            document.body.classList.add('menu-open');
+            if (mobileMenuBtn) {
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) icon.classList.replace('ph-list', 'ph-x');
+                mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            }
+        }
+    }
+
     if (mobileMenuBtn && nav) {
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (icon) {
-                if (nav.classList.contains('active')) {
-                    icon.classList.replace('ph-list', 'ph-x');
-                } else {
-                    icon.classList.replace('ph-x', 'ph-list');
-                }
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (nav.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        // Close on backdrop click
+        navBackdrop.addEventListener('click', closeMobileMenu);
+
+        // Close on any menu link click
+        nav.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('active')) {
+                closeMobileMenu();
             }
         });
     }
@@ -111,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', () => {
             if (!isTicking) {
                 window.requestAnimationFrame(() => {
-                    if (window.scrollY > 40) {
+                    if (window.scrollY > 30) {
                         header.classList.add('scrolled');
                     } else {
                         header.classList.remove('scrolled');
@@ -131,11 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
-                if (nav && nav.classList.contains('active')) {
-                    nav.classList.remove('active');
-                    const icon = mobileMenuBtn ? mobileMenuBtn.querySelector('i') : null;
-                    if (icon) icon.classList.replace('ph-x', 'ph-list');
-                }
+                closeMobileMenu();
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -146,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Image WebP fallback silencieux
     document.querySelectorAll('img[src$=".webp"]').forEach((img) => {
         img.addEventListener('error', function () {
-            // Si le webp échoue (ex: navigateur archaïque sans support webp), fallback sur png/jpg
             const src = this.getAttribute('src');
             if (src && src.endsWith('.webp')) {
                 this.src = src.replace('.webp', '.png');

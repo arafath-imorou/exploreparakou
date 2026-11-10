@@ -6,6 +6,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     const errorBox = document.getElementById('login-error');
     const logoutBtn = document.getElementById('btn-logout');
 
+    // Mobile Sidebar Toggle
+    const adminToggle = document.getElementById('admin-sidebar-toggle');
+    const adminSidebar = document.querySelector('.admin-sidebar');
+    const adminBackdrop = document.getElementById('admin-backdrop');
+
+    if (adminToggle && adminSidebar) {
+        adminToggle.addEventListener('click', () => {
+            adminSidebar.classList.toggle('open');
+            if (adminBackdrop) adminBackdrop.classList.toggle('active');
+        });
+    }
+
+    if (adminBackdrop) {
+        adminBackdrop.addEventListener('click', () => {
+            if (adminSidebar) adminSidebar.classList.remove('open');
+            adminBackdrop.classList.remove('active');
+        });
+    }
+
     const { data: { session } } = await supabase.auth.getSession();
 
     if (session) { showDashboard(); } else { showLogin(); }
@@ -53,6 +72,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active-panel'));
 
             this.classList.add('active');
+            if (adminSidebar) adminSidebar.classList.remove('open');
+            if (adminBackdrop) adminBackdrop.classList.remove('active');
             const target = this.getAttribute('data-target');
             document.getElementById(target).classList.add('active-panel');
         });
