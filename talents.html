@@ -9,7 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         .header {
             background: rgba(0, 0, 0, 0.9) !important;
@@ -145,12 +145,27 @@
             flex-grow: 1;
         }
     </style>
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
     <header class="header">
         <div class="container header-container">
-            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Accueil</a></li>
@@ -275,34 +290,29 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabaseClient.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('talents-grid');
             const noResults = document.getElementById('no-results');
             const loading = document.getElementById('loading');
-            
-            // Wait for supabaseClient to be ready
-            setTimeout(async () => {
-                const { data: talents, error } = await supabase
-                    .from('talents')
-                    .select('*')
-                    .order('created_at', { ascending: false });
-                    
-                loading.style.display = 'none';
 
-                if (error) {
-                    console.error('Error fetching talents:', error);
-                    return;
-                }
+            function renderTalents(talents) {
+                if (loading) loading.style.display = 'none';
+                if (!grid) return;
 
-                if (talents.length > 0) {
+                // Remove existing talent cards
+                const existingCards = grid.querySelectorAll('.talent-card-item');
+                existingCards.forEach(card => card.remove());
+
+                if (talents && talents.length > 0) {
+                    if (noResults) noResults.style.display = 'none';
                     talents.forEach(t => {
                         const div = document.createElement('div');
                         div.className = 'talent-card-item';
-                        div.setAttribute('data-category', 'all'); // For now, all talents are visible on all filters or we can add DB field later
+                        div.setAttribute('data-category', 'all');
                         div.innerHTML = `
                             <a href="${t.page_link || '#'}" style="text-decoration:none; display:flex; flex-direction:column; height:100%;">
-                                <img src="${t.image_url}" alt="${t.name}" class="tc-img">
+                                <img loading="lazy" decoding="async" src="${t.image_url}" alt="${t.name}" class="tc-img">
                                 <div class="tc-content">
                                     <span class="tc-cat">${t.role}</span>
                                     <h3 class="tc-title">${t.name}</h3>
@@ -311,12 +321,26 @@
                                 </div>
                             </a>
                         `;
-                        grid.insertBefore(div, noResults);
+                        if (noResults) {
+                            grid.insertBefore(div, noResults);
+                        } else {
+                            grid.appendChild(div);
+                        }
                     });
                 } else {
-                    noResults.style.display = 'block';
+                    if (noResults) noResults.style.display = 'block';
                 }
-            }, 300); // 300ms to ensure window.supabase is attached
+            }
+
+            if (window.fastSupabaseFetch) {
+                window.fastSupabaseFetch('talents', () => {
+                    return supabase.from('talents').select('*').order('created_at', { ascending: false });
+                }, renderTalents);
+            } else {
+                supabase.from('talents').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
+                    if (!error && data) renderTalents(data);
+                });
+            }
         });
     </script>
 

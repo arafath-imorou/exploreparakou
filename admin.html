@@ -9,7 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         .admin-layout {
             display: flex;
@@ -192,13 +192,28 @@
             display: none;
         }
     </style>
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
 
     <div class="login-screen" id="login-ui">
         <div class="login-box">
-            <a href="index.html"><img src="assets/images/logo.png" alt="Explore Parakou"
+            <a href="index.html"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"
                     style="height:50px; margin-bottom: 1rem;"></a>
             <h2>Espace Administrateur</h2>
             <div id="login-error">Échec de la connexion. Vérifiez vos identifiants.</div>

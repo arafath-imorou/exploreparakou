@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         /* Internal Page Overrides */
         .hero-contact {
@@ -19,13 +19,28 @@
             min-height: 400px;
         }
     </style>
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container header-container">
-            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Accueil</a></li>
@@ -50,7 +65,7 @@
         <!-- 1. Hero Dynamic -->
         <section class="hero hero-contact">
             <!-- Ensure Image is relevant to 'Connection/People' -->
-            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=2669&auto=format&fit=crop"
+            <img fetchpriority="high" decoding="async" src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?q=80&w=2669&auto=format&fit=crop"
                 alt="Communauté Parakou" class="hero-bg">
             <div class="hero-overlay"></div>
             <div class="hero-content text-center">
@@ -276,7 +291,7 @@
                         </form>
                     </div>
                     <div style="display:flex; align-items:center; justify-content:center;">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2632&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2632&auto=format&fit=crop"
                             alt="Meeting" style="border-radius:12px; opacity:0.8;">
                     </div>
                 </div>
@@ -292,17 +307,17 @@
 
                 <div class="ambassador-grid">
                     <div class="ambassador-card">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ambassadeur">
+                        <img loading="lazy" decoding="async" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ambassadeur">
                         <h4>Aïcha T.</h4>
                         <p>"J'organise des visites guidées du marché Arzeke."</p>
                     </div>
                     <div class="ambassador-card">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ambassadeur">
+                        <img loading="lazy" decoding="async" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ambassadeur">
                         <h4>Jean-Marc</h4>
                         <p>"Je photographie les événements sportifs locaux."</p>
                     </div>
                     <div class="ambassador-card">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ambassadeur">
+                        <img loading="lazy" decoding="async" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ambassadeur">
                         <h4>Fatou B.</h4>
                         <p>"Je connecte les artisans avec les acheteurs."</p>
                     </div>

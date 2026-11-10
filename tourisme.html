@@ -9,19 +9,34 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         /* Specific overrides for this page */
         body {
             background-color: #fafbfc;
         }
     </style>
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
     <header class="header">
         <div class="container header-container">
-            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Accueil</a></li>
@@ -46,7 +61,7 @@
     <main>
         <!-- 1. Immersive Hero -->
         <section class="hero" style="height: 60vh;">
-            <img src="assets/images/tourisme-hero.png" alt="Vue aérienne Parakou" class="hero-bg">
+            <img fetchpriority="high" decoding="async" src="assets/images/tourisme-hero.webp" alt="Vue aérienne Parakou" class="hero-bg">
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <h1 class="hero-title">Découvrir Parakou</h1>
@@ -82,20 +97,20 @@
             <div class="cards-grid"
                 style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem;">
                 <div class="category-entry">
-                    <img src="assets/images/cat-sites.png" alt="Sites">
+                    <img loading="lazy" decoding="async" src="assets/images/cat-sites.webp" alt="Sites">
                     <div class="category-label">Sites Touristiques</div>
                 </div>
                 <div class="category-entry">
-                    <img src="assets/images/cat-hotels.png" alt="Hotels">
+                    <img loading="lazy" decoding="async" src="assets/images/cat-hotels.webp" alt="Hotels">
                     <div class="category-label">Hébergements</div>
                 </div>
                 <div class="category-entry">
-                    <img src="assets/images/cat-food.png" alt="Restos">
+                    <img loading="lazy" decoding="async" src="assets/images/cat-food.webp" alt="Restos">
                     <div class="category-label">Gastronomie</div>
                 </div>
                 <!-- Reuse hero for leisure/market generic if needed, or specific -->
                 <div class="category-entry">
-                    <img src="assets/images/experience-market.png" alt="Loisirs">
+                    <img loading="lazy" decoding="async" src="assets/images/experience-market.webp" alt="Loisirs">
                     <div class="category-label">Marchés & Loisirs</div>
                 </div>
             </div>
@@ -130,7 +145,7 @@
             <section style="margin-top: 4rem;">
                 <h2 style="margin-bottom: 2rem;">Expériences Uniques</h2>
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; align-items:center;">
-                    <img src="assets/images/experience-market.png" alt="Marché Arzeke"
+                    <img loading="lazy" decoding="async" src="assets/images/experience-market.webp" alt="Marché Arzeke"
                         style="border-radius:var(--radius-md); width:100%;">
                     <div>
                         <h3 style="font-size:2rem; margin-bottom:1rem; color:var(--color-primary);">Immersion au Marché
@@ -182,60 +197,61 @@
     <!-- Supabase Configuration -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabaseClient.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
             const visiterGrid = document.getElementById('visiter-grid');
             const sejournerGrid = document.getElementById('sejourner-grid');
 
             if (!visiterGrid || !sejournerGrid) return;
 
-            try {
-                const { data, error } = await supabase
-                    .from('tourisme')
-                    .select('*')
-                    .order('created_at', { ascending: false });
-
-                if (error) throw error;
-
-                if (data && data.length > 0) {
-                    let visiterHtml = '';
-                    let sejournerHtml = '';
-
-                    data.forEach(item => {
-                        const isSejourner = item.category.toLowerCase().includes('hôtel') || item.category.toLowerCase().includes('hotel') || item.category.toLowerCase().includes('resto') || item.category.toLowerCase().includes('restaurant');
-
-                        const cardHtml = `
-                            <div class="listing-card">
-                                <img src="${item.image_url}" alt="${item.title}" class="listing-img" onerror="this.src='assets/images/tourisme-hero.png'">
-                                <div class="listing-content">
-                                    <div class="listing-category">${item.category}</div>
-                                    <h3 class="card-title" style="font-size:1.25rem; margin-bottom:0.5rem;">${item.title}</h3>
-                                    <p style="color:#666; font-size:0.95rem;">${item.description}</p>
-                                    <div class="listing-actions">
-                                        ${item.link_details ? `<a href="${item.link_details}" class="btn btn-primary" style="padding:8px 20px; font-size:0.9rem;">Voir détails</a>` : ''}
-                                        ${item.link_map ? `<a href="${item.link_map}" target="_blank" class="action-icon" title="Itinéraire"><i class="ph ph-map-pin"></i></a>` : ''}
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-
-                        if (isSejourner) {
-                            sejournerHtml += cardHtml;
-                        } else {
-                            visiterHtml += cardHtml;
-                        }
-                    });
-
-                    visiterGrid.innerHTML = visiterHtml || '<p>Aucun lieu touristique trouvé.</p>';
-                    sejournerGrid.innerHTML = sejournerHtml || '<p>Aucun hébergement ou restaurant trouvé.</p>';
-                } else {
+            function renderTourisme(data) {
+                if (!data || data.length === 0) {
                     visiterGrid.innerHTML = '<p>Aucun lieu touristique trouvé.</p>';
                     sejournerGrid.innerHTML = '<p>Aucun hébergement ou restaurant trouvé.</p>';
+                    return;
                 }
-            } catch (err) {
-                console.error('Erreur de chargement du Tourisme:', err);
-                visiterGrid.innerHTML = '<p>Erreur lors du chargement des données.</p>';
-                sejournerGrid.innerHTML = '<p>Erreur lors du chargement des données.</p>';
+
+                let visiterHtml = '';
+                let sejournerHtml = '';
+
+                data.forEach(item => {
+                    const catLower = (item.category || '').toLowerCase();
+                    const isSejourner = catLower.includes('hôtel') || catLower.includes('hotel') || catLower.includes('resto') || catLower.includes('restaurant');
+
+                    const cardHtml = `
+                        <div class="listing-card">
+                            <img loading="lazy" decoding="async" src="${item.image_url}" alt="${item.title}" class="listing-img" onerror="this.src='assets/images/tourisme-hero.webp'">
+                            <div class="listing-content">
+                                <div class="listing-category">${item.category}</div>
+                                <h3 class="card-title" style="font-size:1.25rem; margin-bottom:0.5rem;">${item.title}</h3>
+                                <p style="color:#666; font-size:0.95rem;">${item.description}</p>
+                                <div class="listing-actions">
+                                    ${item.link_details ? `<a href="${item.link_details}" class="btn btn-primary" style="padding:8px 20px; font-size:0.9rem;">Voir détails</a>` : ''}
+                                    ${item.link_map ? `<a href="${item.link_map}" target="_blank" class="action-icon" title="Itinéraire"><i class="ph ph-map-pin"></i></a>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    if (isSejourner) {
+                        sejournerHtml += cardHtml;
+                    } else {
+                        visiterHtml += cardHtml;
+                    }
+                });
+
+                visiterGrid.innerHTML = visiterHtml || '<p>Aucun lieu touristique trouvé.</p>';
+                sejournerGrid.innerHTML = sejournerHtml || '<p>Aucun hébergement ou restaurant trouvé.</p>';
+            }
+
+            if (window.fastSupabaseFetch) {
+                window.fastSupabaseFetch('tourisme', () => {
+                    return supabase.from('tourisme').select('*').order('created_at', { ascending: false });
+                }, renderTourisme);
+            } else {
+                supabase.from('tourisme').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
+                    if (!error && data) renderTourisme(data);
+                });
             }
         });
     </script>

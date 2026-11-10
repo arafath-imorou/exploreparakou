@@ -9,7 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         /* Invest page overrides */
         .header {
@@ -18,7 +18,7 @@
 
         .hero-invest {
             height: 70vh;
-            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.8)), url('assets/images/investir-hero.png');
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.8)), url('assets/images/investir-hero.webp');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -27,12 +27,27 @@
             padding-top: 80px;
         }
     </style>
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
     <header class="header">
         <div class="container header-container">
-            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Accueil</a></li>
@@ -150,7 +165,7 @@
                 <div class="opp-grid">
                     <!-- Card 1 -->
                     <div class="opp-card">
-                        <img src="https://images.unsplash.com/photo-1595839050963-ff3913076110?q=80&w=2670&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1595839050963-ff3913076110?q=80&w=2670&auto=format&fit=crop"
                             alt="Agro-industrie">
                         <div class="opp-content">
                             <h3>Agro-industrie</h3>
@@ -161,7 +176,7 @@
 
                     <!-- Card 2 -->
                     <div class="opp-card">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2670&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2670&auto=format&fit=crop"
                             alt="Logistique">
                         <div class="opp-content">
                             <h3>Transport & Logistique</h3>
@@ -172,7 +187,7 @@
 
                     <!-- Card 3 -->
                     <div class="opp-card">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2670&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=2670&auto=format&fit=crop"
                             alt="Numérique">
                         <div class="opp-content">
                             <h3>Numérique & Innovation</h3>
@@ -183,7 +198,7 @@
 
                     <!-- Card 4 -->
                     <div class="opp-card">
-                        <img src="https://images.unsplash.com/photo-1565514020176-8b2849dc2d1d?q=80&w=2670&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1565514020176-8b2849dc2d1d?q=80&w=2670&auto=format&fit=crop"
                             alt="Tourisme">
                         <div class="opp-content">
                             <h3>Tourisme & Services</h3>

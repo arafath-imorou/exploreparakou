@@ -9,7 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         .header {
             background: rgba(0, 0, 0, 0.9) !important;
@@ -36,7 +36,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('assets/images/PRESIDENT DJANGOUN.png') center top/cover;
+            background: url('assets/images/PRESIDENT DJANGOUN.webp') center top/cover;
             opacity: 0.1;
             filter: blur(15px);
         }
@@ -137,12 +137,27 @@
             color: #444;
         }
     </style>
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
     <header class="header">
         <div class="container header-container">
-            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Accueil</a></li>
@@ -176,7 +191,7 @@
                         conventionnels.</p>
                 </div>
                 <div class="hero-portrait">
-                    <img src="assets/images/PRESIDENT DJANGOUN.png" alt="Visage de Président Djangoun">
+                    <img loading="lazy" decoding="async" src="assets/images/PRESIDENT DJANGOUN.webp" alt="Visage de Président Djangoun">
                 </div>
             </div>
         </section>
@@ -211,7 +226,7 @@
                         </div>
                     </div>
                     <div class="talent-img-box">
-                        <img src="assets/images/PRESIDENT DJANGOUN.png" alt="Créations de Président Djangoun">
+                        <img loading="lazy" decoding="async" src="assets/images/PRESIDENT DJANGOUN.webp" alt="Créations de Président Djangoun">
                     </div>
                 </div>
 

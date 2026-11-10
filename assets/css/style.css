@@ -2651,3 +2651,44 @@ section {
         flex-direction: column;
     }
 }
+
+/* ========================================================
+   PERFORMANCE & REACTIVITY OPTIMIZATIONS
+   ======================================================== */
+
+html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Touch responsiveness (Elimine le delai de 300ms sur mobile) */
+a, button, .btn, .hub-card, .listing-card, .event-card-premium, .mobile-menu-toggle {
+    touch-action: manipulation;
+}
+
+/* Retours tactiles instantanes et micro-interactions snappies */
+.btn, button, .hub-card, .listing-card, .talent-card-item {
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:active, button:active {
+    transform: scale(0.97) !important;
+}
+
+.hub-card:active, .listing-card:active {
+    transform: scale(0.99) !important;
+}
+
+/* Acceleration materielle GPU pour le header et les elements dynamiques */
+.header {
+    transform: translateZ(0);
+    will-change: background-color, box-shadow;
+    backface-visibility: hidden;
+}
+
+/* Content visibility auto pour differer le calcul de rendu des sections sous la ligne de flottaison */
+main > section:not(:first-of-type) {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 500px;
+}

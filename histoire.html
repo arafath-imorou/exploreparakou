@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
 
     <style>
         /* Shared Internal Styles */
@@ -185,6 +185,21 @@
             }
         }
     </style>
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -192,7 +207,7 @@
     <!-- Header -->
     <header class="header">
         <div class="container header-container">
-            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
 
             <nav class="nav">
                 <ul class="nav-list">
@@ -220,7 +235,7 @@
     <main>
         <!-- Hero Section -->
         <section class="hero hero-internal" style="height: 85vh; position: relative;">
-            <img src="assets/images/history-hero.png" alt="Objets culturels Parakou" class="hero-bg"
+            <img fetchpriority="high" decoding="async" src="assets/images/history-hero.webp" alt="Objets culturels Parakou" class="hero-bg"
                 style="width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0;">
             <div class="hero-overlay" style="background: linear-gradient(to top, #0A192F 10%, transparent 80%);"></div>
 
@@ -262,7 +277,7 @@
                         </p>
                     </div>
                     <div class="history-image">
-                        <img src="assets/images/PLACE BIO GUERRA.jpg" alt="Statue Bio Guerra"
+                        <img loading="lazy" decoding="async" src="assets/images/PLACE BIO GUERRA.webp" alt="Statue Bio Guerra"
                             style="border-radius:var(--radius-md); box-shadow: 0 20px 40px rgba(0,0,0,0.1); width:100%;">
                     </div>
                 </div>
@@ -439,7 +454,7 @@
                     <!-- Quartier 1 -->
                     <div class="card hover-lift"
                         style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
-                        <img src="assets/images/quartier_depot.png" alt="Quartier Dépôt" class="card-img"
+                        <img loading="lazy" decoding="async" src="assets/images/quartier_depot.webp" alt="Quartier Dépôt" class="card-img"
                             style="width:100%; height:200px; object-fit:cover;">
                         <div style="padding:20px;">
                             <h3 class="card-title"
@@ -452,7 +467,7 @@
                     <!-- Quartier 2 -->
                     <div class="card hover-lift"
                         style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
-                        <img src="assets/images/quartier_kpebie.png" alt="Kpébié" class="card-img"
+                        <img loading="lazy" decoding="async" src="assets/images/quartier_kpebie.webp" alt="Kpébié" class="card-img"
                             style="width:100%; height:200px; object-fit:cover;">
                         <div style="padding:20px;">
                             <h3 class="card-title"
@@ -465,7 +480,7 @@
                     <!-- Quartier 3 -->
                     <div class="card hover-lift"
                         style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
-                        <img src="assets/images/quartier_zongo.png" alt="Zongo" class="card-img"
+                        <img loading="lazy" decoding="async" src="assets/images/quartier_zongo.webp" alt="Zongo" class="card-img"
                             style="width:100%; height:200px; object-fit:cover;">
                         <div style="padding:20px;">
                             <h3 class="card-title"
@@ -478,7 +493,7 @@
                     <!-- Quartier 4 -->
                     <div class="card hover-lift"
                         style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
-                        <img src="assets/images/quartier_titirou.png" alt="Titirou" class="card-img"
+                        <img loading="lazy" decoding="async" src="assets/images/quartier_titirou.webp" alt="Titirou" class="card-img"
                             style="width:100%; height:200px; object-fit:cover;">
                         <div style="padding:20px;">
                             <h3 class="card-title"
@@ -491,7 +506,7 @@
                     <!-- Quartier 5 -->
                     <div class="card hover-lift"
                         style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
-                        <img src="assets/images/quartier_albarika.png" alt="Albarika" class="card-img"
+                        <img loading="lazy" decoding="async" src="assets/images/quartier_albarika.webp" alt="Albarika" class="card-img"
                             style="width:100%; height:200px; object-fit:cover;">
                         <div style="padding:20px;">
                             <h3 class="card-title"
@@ -504,7 +519,7 @@
                     <!-- Quartier 6 -->
                     <div class="card hover-lift"
                         style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
-                        <img src="assets/images/quartier_banikanni.png" alt="Banikanni" class="card-img"
+                        <img loading="lazy" decoding="async" src="assets/images/quartier_banikanni.webp" alt="Banikanni" class="card-img"
                             style="width:100%; height:200px; object-fit:cover;">
                         <div style="padding:20px;">
                             <h3 class="card-title"
@@ -517,7 +532,7 @@
                     <!-- Quartier 7 -->
                     <div class="card hover-lift"
                         style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
-                        <img src="assets/images/quartier_tourou.png" alt="Tourou" class="card-img"
+                        <img loading="lazy" decoding="async" src="assets/images/quartier_tourou.webp" alt="Tourou" class="card-img"
                             style="width:100%; height:200px; object-fit:cover;">
                         <div style="padding:20px;">
                             <h3 class="card-title"
@@ -530,7 +545,7 @@
                     <!-- Quartier 8 -->
                     <div class="card hover-lift"
                         style="background:white; border-radius:var(--radius-md); overflow:hidden; box-shadow:var(--shadow-md); transition:transform 0.3s ease;">
-                        <img src="assets/images/quartier_guema.png" alt="Guema" class="card-img"
+                        <img loading="lazy" decoding="async" src="assets/images/quartier_guema.webp" alt="Guema" class="card-img"
                             style="width:100%; height:200px; object-fit:cover;">
                         <div style="padding:20px;">
                             <h3 class="card-title"
@@ -563,46 +578,55 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabaseClient.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
             const timelineContainer = document.getElementById('dynamic-timeline');
             if (!timelineContainer) return;
 
-            // Utilisation d'un ordonnancement par created_at pour respecter l'ordre chronologique défini en base
-            const { data, error } = await window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true });
-            
-            if (error || !data || data.length === 0) {
-                timelineContainer.innerHTML = '<p style="text-align:center;">Aucune date disponible pour le moment.</p>';
-                return;
+            function renderTimeline(data) {
+                if (!data || data.length === 0) {
+                    timelineContainer.innerHTML = '<p style="text-align:center;">Aucune date disponible pour le moment.</p>';
+                    return;
+                }
+
+                timelineContainer.innerHTML = '';
+                data.forEach((item, index) => {
+                    const sideClass = (index % 2 === 0) ? 'left' : 'right';
+                    const div = document.createElement('div');
+                    div.className = `timeline-item ${sideClass}`;
+                    div.innerHTML = `
+                        <div class="timeline-content">
+                            <span class="timeline-period">${item.period}</span>
+                            <h3 class="timeline-title">${item.title}</h3>
+                            <p class="timeline-desc">${item.description}</p>
+                        </div>
+                    `;
+                    timelineContainer.appendChild(div);
+                });
+
+                // Intersection Observer pour l'animation au scroll fluide
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.timeline-item').forEach(item => {
+                    observer.observe(item);
+                });
             }
 
-            timelineContainer.innerHTML = '';
-            data.forEach((item, index) => {
-                const sideClass = (index % 2 === 0) ? 'left' : 'right';
-                const div = document.createElement('div');
-                div.className = `timeline-item ${sideClass}`;
-                div.innerHTML = `
-                    <div class="timeline-content">
-                        <span class="timeline-period">${item.period}</span>
-                        <h3 class="timeline-title">${item.title}</h3>
-                        <p class="timeline-desc">${item.description}</p>
-                    </div>
-                `;
-                timelineContainer.appendChild(div);
-            });
-
-            // Intersection Observer pour l'animation au scroll
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+            if (window.fastSupabaseFetch) {
+                window.fastSupabaseFetch('histoire_timeline', () => {
+                    return window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true });
+                }, renderTimeline);
+            } else {
+                window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true }).then(({ data, error }) => {
+                    if (!error && data) renderTimeline(data);
                 });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.timeline-item').forEach(item => {
-                observer.observe(item);
-            });
+            }
         });
     </script>
 </body>

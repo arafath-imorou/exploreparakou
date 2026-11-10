@@ -9,7 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
         /* Immersive specific overrides */
         .header {
@@ -19,7 +19,7 @@
 
         .hero-media {
             height: 70vh;
-            background: url('assets/images/tourisme-hero.png') no-repeat center center/cover;
+            background: url('assets/images/tourisme-hero.webp') no-repeat center center/cover;
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -29,12 +29,27 @@
             padding-bottom: 80px;
         }
     </style>
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
     <header class="header">
         <div class="container header-container">
-            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="Explore Parakou"></a>
+            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="index.html">Accueil</a></li>
@@ -79,7 +94,7 @@
                 <div class="gallery-grid-masonry">
                     <!-- Item 1 -->
                     <div class="gallery-item" data-category="people">
-                        <img src="https://images.unsplash.com/photo-1517506972230-01c6014b2d38?q=80&w=2670&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1517506972230-01c6014b2d38?q=80&w=2670&auto=format&fit=crop"
                             alt="Portrait">
                         <div class="item-overlay">
                             <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
@@ -87,7 +102,7 @@
                     </div>
                     <!-- Item 2 -->
                     <div class="gallery-item" data-category="city">
-                        <img src="https://images.unsplash.com/photo-1577189874947-f0802c2e08cc?q=80&w=2574&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1577189874947-f0802c2e08cc?q=80&w=2574&auto=format&fit=crop"
                             alt="City">
                         <div class="item-overlay">
                             <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
@@ -95,7 +110,7 @@
                     </div>
                     <!-- Item 3 -->
                     <div class="gallery-item" data-category="culture">
-                        <img src="https://images.unsplash.com/photo-1550955295-a83ad366f059?q=80&w=2574&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1550955295-a83ad366f059?q=80&w=2574&auto=format&fit=crop"
                             alt="Culture">
                         <div class="item-overlay">
                             <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
@@ -103,7 +118,7 @@
                     </div>
                     <!-- Item 4 -->
                     <div class="gallery-item" data-category="city">
-                        <img src="https://images.unsplash.com/photo-1574704381395-5ae8938166c8?q=80&w=2574&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1574704381395-5ae8938166c8?q=80&w=2574&auto=format&fit=crop"
                             alt="Market">
                         <div class="item-overlay">
                             <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
@@ -111,7 +126,7 @@
                     </div>
                     <!-- Item 5 -->
                     <div class="gallery-item" data-category="people">
-                        <img src="https://images.unsplash.com/photo-1510006240217-17eb48991f8c?q=80&w=2670&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1510006240217-17eb48991f8c?q=80&w=2670&auto=format&fit=crop"
                             alt="People">
                         <div class="item-overlay">
                             <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
@@ -119,7 +134,7 @@
                     </div>
                     <!-- Item 6 -->
                     <div class="gallery-item" data-category="culture">
-                        <img src="https://images.unsplash.com/photo-1506596324888-5c4a5c531475?q=80&w=2670&auto=format&fit=crop"
+                        <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1506596324888-5c4a5c531475?q=80&w=2670&auto=format&fit=crop"
                             alt="Tradition">
                         <div class="item-overlay">
                             <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
@@ -144,7 +159,7 @@
                 <div class="video-grid">
                     <div class="video-card">
                         <div class="video-thumb">
-                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2670&auto=format&fit=crop"
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2670&auto=format&fit=crop"
                                 alt="Video Thumb">
                             <div class="play-btn"><i class="ph ph-play-fill"></i></div>
                             <span class="video-duration">02:45</span>
@@ -156,7 +171,7 @@
                     </div>
                     <div class="video-card">
                         <div class="video-thumb">
-                            <img src="https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=2670&auto=format&fit=crop"
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1572949645841-094f3a9c4c94?q=80&w=2670&auto=format&fit=crop"
                                 alt="Video Thumb">
                             <div class="play-btn"><i class="ph ph-play-fill"></i></div>
                             <span class="video-duration">04:12</span>
@@ -168,7 +183,7 @@
                     </div>
                     <div class="video-card">
                         <div class="video-thumb">
-                            <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2670&auto=format&fit=crop"
+                            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2670&auto=format&fit=crop"
                                 alt="Video Thumb">
                             <div class="play-btn"><i class="ph ph-play-fill"></i></div>
                             <span class="video-duration">01:30</span>

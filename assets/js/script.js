@@ -1,52 +1,156 @@
+/**
+ * Explore Parakou - Ultra-Fast & Reactive Engine
+ */
+
+// 1. Initialisation Service Worker pour le cache instantané
+if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then((reg) => {
+                // Service worker actif
+            })
+            .catch(() => {});
+    });
+}
+
+// 2. Moteur de navigation instantanée (Hover/Touch Prefetching)
+(function initInstantPrefetch() {
+    const prefetchedUrls = new Set();
+
+    function prefetchUrl(url) {
+        if (!url || prefetchedUrls.has(url)) return;
+        // Ignorer ancres, protocoles externes ou non-html
+        if (url.startsWith('#') || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('javascript:')) return;
+        if (url.includes('://') && !url.startsWith(window.location.origin)) return;
+
+        prefetchedUrls.add(url);
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        link.as = 'document';
+        document.head.appendChild(link);
+    }
+
+    document.addEventListener('mouseover', (e) => {
+        const anchor = e.target.closest('a');
+        if (anchor && anchor.href && anchor.origin === window.location.origin) {
+            prefetchUrl(anchor.href);
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchstart', (e) => {
+        const anchor = e.target.closest('a');
+        if (anchor && anchor.href && anchor.origin === window.location.origin) {
+            prefetchUrl(anchor.href);
+        }
+    }, { passive: true });
+})();
+
+// 3. Barre de progression visuelle instantanée au clic
+(function initProgressFeedback() {
+    let progressBar = null;
+
+    function getProgressBar() {
+        if (!progressBar) {
+            progressBar = document.createElement('div');
+            progressBar.id = 'page-progress-bar';
+            progressBar.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 3px;
+                width: 0%;
+                background: linear-gradient(90deg, #D4A017, #004d40);
+                z-index: 99999;
+                transition: width 0.25s ease-out, opacity 0.25s ease;
+                pointer-events: none;
+                opacity: 0;
+            `;
+            document.body.appendChild(progressBar);
+        }
+        return progressBar;
+    }
+
+    document.addEventListener('click', (e) => {
+        const anchor = e.target.closest('a');
+        if (anchor && anchor.href && anchor.origin === window.location.origin && !anchor.target && !anchor.getAttribute('download')) {
+            const path = anchor.pathname;
+            if (path !== window.location.pathname) {
+                const bar = getProgressBar();
+                bar.style.opacity = '1';
+                bar.style.width = '70%';
+            }
+        }
+    });
+})();
+
+// 4. DOM Ready Interactions & Smooth Scroll Throttling
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-toggle');
     const nav = document.querySelector('.nav');
-    
-    if (mobileMenuBtn) {
+
+    if (mobileMenuBtn && nav) {
         mobileMenuBtn.addEventListener('click', () => {
             nav.classList.toggle('active');
-            
-            // Icon toggle logic (optional, if using different icons for open/close)
             const icon = mobileMenuBtn.querySelector('i');
-            if (nav.classList.contains('active')) {
-                icon.classList.replace('ph-list', 'ph-x');
-            } else {
-                icon.classList.replace('ph-x', 'ph-list');
+            if (icon) {
+                if (nav.classList.contains('active')) {
+                    icon.classList.replace('ph-list', 'ph-x');
+                } else {
+                    icon.classList.replace('ph-x', 'ph-list');
+                }
             }
         });
     }
 
-    // Header Scroll Effect
+    // Header Scroll Effect optimisé (requestAnimationFrame + passive)
     const header = document.querySelector('.header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if (header) {
+        let isTicking = false;
+        window.addEventListener('scroll', () => {
+            if (!isTicking) {
+                window.requestAnimationFrame(() => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                    isTicking = false;
+                });
+                isTicking = true;
+            }
+        }, { passive: true });
+    }
 
     // Smooth Scroll for Anchors
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                // Close mobile menu if open
-                if (nav.classList.contains('active')) {
+                e.preventDefault();
+                if (nav && nav.classList.contains('active')) {
                     nav.classList.remove('active');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    icon.classList.replace('ph-x', 'ph-list');
+                    const icon = mobileMenuBtn ? mobileMenuBtn.querySelector('i') : null;
+                    if (icon) icon.classList.replace('ph-x', 'ph-list');
                 }
-
                 targetElement.scrollIntoView({
                     behavior: 'smooth'
                 });
             }
         });
+    });
+
+    // Image WebP fallback silencieux
+    document.querySelectorAll('img[src$=".webp"]').forEach((img) => {
+        img.addEventListener('error', function () {
+            // Si le webp échoue (ex: navigateur archaïque sans support webp), fallback sur png/jpg
+            const src = this.getAttribute('src');
+            if (src && src.endsWith('.webp')) {
+                this.src = src.replace('.webp', '.png');
+            }
+        }, { once: true });
     });
 });
