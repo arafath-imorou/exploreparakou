@@ -3111,3 +3111,630 @@ body.menu-open {
         font-size: 0.95rem !important;
     }
 }
+
+
+/* ========================================================
+   CULTURE & CRÉATIVITÉ - STYLES SPÉCIFIQUES
+   ======================================================== */
+
+.culture-hero {
+    position: relative;
+    min-height: 85svh;
+    height: auto;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    padding: 140px 0 80px;
+}
+
+.culture-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;
+}
+
+.hero-tag-culture {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-accent);
+    color: var(--color-primary);
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(212, 160, 23, 0.35);
+}
+
+.culture-hero-title {
+    font-size: clamp(2.4rem, 6.5vw, 4.4rem);
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #ffffff;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.culture-hero-subtitle {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.8;
+    max-width: 850px;
+    opacity: 0.95;
+    margin-bottom: 35px;
+    color: #F8F9FA;
+}
+
+/* Section Header Culture */
+.culture-header {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 50px auto;
+}
+
+.culture-header-tag {
+    display: inline-block;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.culture-header h2 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.culture-header p.lead {
+    font-size: 1.15rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* 1. Héritage Partagé */
+.section-heritage {
+    padding: 90px 0;
+    background: #FFFBF5;
+}
+
+.heritage-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.heritage-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 18px;
+}
+
+.heritage-highlight-box {
+    background: white;
+    border-left: 4px solid var(--color-accent);
+    padding: 22px 26px;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    margin: 25px 0;
+    font-style: italic;
+    font-size: 1.12rem;
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.community-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.community-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid rgba(212, 160, 23, 0.35);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.community-chip i {
+    color: var(--color-accent);
+}
+
+.heritage-image-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(10, 25, 47, 0.12);
+}
+
+.heritage-image-card img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.heritage-image-card:hover img {
+    transform: scale(1.03);
+}
+
+.heritage-image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 20px;
+    background: linear-gradient(to top, rgba(10, 25, 47, 0.95), transparent);
+    color: white;
+}
+
+.heritage-image-caption h4 {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+    color: white;
+}
+
+.heritage-image-caption span {
+    font-size: 0.88rem;
+    color: var(--color-accent);
+}
+
+/* 2. Expressions Culturelles */
+.section-expressions {
+    padding: 90px 0;
+    background: #ffffff;
+}
+
+.expressions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.expression-card {
+    background: #FDFDFD;
+    border: 1px solid #EDEDED;
+    border-radius: 16px;
+    padding: 35px 30px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.expression-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--color-accent);
+    opacity: 0.4;
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.expression-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    border-color: rgba(212, 160, 23, 0.3);
+}
+
+.expression-card:hover::before {
+    opacity: 1;
+    width: 7px;
+}
+
+.expression-icon-wrap {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+    background: rgba(212, 160, 23, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #D4A017;
+    margin-bottom: 20px;
+}
+
+.expression-badge {
+    display: inline-block;
+    color: var(--color-accent);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.expression-card h3 {
+    font-size: 1.45rem;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.expression-card p {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: #555;
+}
+
+/* 3. Saveurs & Savoir-faire */
+.section-saveurs {
+    padding: 90px 0;
+    background: #FFFDF9;
+}
+
+.saveurs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.saveur-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid #F0ECE4;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.saveur-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.saveur-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.saveur-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #FFF3DC;
+    color: #C07D00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.saveur-title-box h3 {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+    margin-bottom: 2px;
+    font-weight: 700;
+}
+
+.saveur-title-box span {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 500;
+}
+
+.saveur-card p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.saveur-tag {
+    align-self: flex-start;
+    background: #F7F5F0;
+    color: var(--color-primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.saveurs-outro-banner {
+    background: linear-gradient(135deg, #0A192F 0%, #172A45 100%);
+    border-radius: 18px;
+    padding: 40px;
+    color: white;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.saveurs-outro-text h4 {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.saveurs-outro-text p {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* 4. Lieux qui font vivre la culture */
+.section-lieux {
+    padding: 90px 0;
+    background: #F5F7FA;
+}
+
+.lieux-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+}
+
+.lieu-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.lieu-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+}
+
+.lieu-card-img-wrap {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background: #0A192F;
+}
+
+.lieu-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.lieu-card:hover .lieu-card-img-wrap img {
+    transform: scale(1.05);
+}
+
+.lieu-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(10, 25, 47, 0.85);
+    color: #ffffff;
+    backdrop-filter: blur(5px);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.lieu-badge i {
+    color: var(--color-accent);
+}
+
+.lieu-card-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.lieu-card-body h3 {
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.lieu-subtitle-tag {
+    color: var(--color-accent);
+    font-size: 0.92rem;
+    font-style: italic;
+    font-weight: 500;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.lieu-card-body p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.lieu-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease, gap 0.2s ease;
+    margin-top: auto;
+}
+
+.lieu-link:hover {
+    color: var(--color-accent);
+    gap: 12px;
+}
+
+/* 5. Une culture qui continue de s'écrire */
+.section-creation {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0A192F 0%, #0d223f 100%);
+    color: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.creation-box {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.creation-tag {
+    display: inline-block;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.creation-box h2 {
+    font-size: clamp(2.1rem, 5vw, 3rem);
+    color: white;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.creation-box .creation-lead {
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.creation-box p {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #E2E8F0;
+    margin-bottom: 20px;
+}
+
+.creation-box .creation-quote {
+    font-size: 1.28rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 35px 0 40px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 160, 23, 0.3);
+}
+
+/* 6. Faire vivre la culture ensemble (CTA) */
+.section-culture-cta {
+    padding: 85px 0;
+    background: #FAF6F0;
+    border-top: 1px solid #ECE6DB;
+}
+
+.culture-cta-card {
+    background: white;
+    border-radius: 24px;
+    padding: 60px 50px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid rgba(212, 160, 23, 0.25);
+}
+
+.culture-cta-card h2 {
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.culture-cta-card .cta-sub {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.culture-cta-card p {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.culture-cta-card .cta-prompt {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 1.12rem;
+    margin: 25px 0 35px;
+}
+
+.culture-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+/* Responsive Overrides pour Culture */
+@media (max-width: 900px) {
+    .heritage-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .heritage-image-card img {
+        height: 320px;
+    }
+
+    .expressions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .saveurs-outro-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .culture-cta-card {
+        padding: 40px 20px;
+    }
+}
