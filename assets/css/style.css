@@ -3738,3 +3738,579 @@ body.menu-open {
         padding: 40px 20px;
     }
 }
+
+
+/* ========================================================
+   TALENTS & SAVOIR-FAIRE - STYLES SPÉCIFIQUES
+   ======================================================== */
+
+.talents-hero-page {
+    position: relative;
+    min-height: 85svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    padding: 140px 0 80px;
+}
+
+.talents-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 950px;
+}
+
+.hero-tag-talents {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #E85D04;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(232, 93, 4, 0.4);
+}
+
+.talents-hero-title {
+    font-size: clamp(2.3rem, 6.5vw, 4.2rem);
+    line-height: 1.15;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #ffffff;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.talents-hero-subtitle {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.8;
+    max-width: 850px;
+    opacity: 0.95;
+    margin-bottom: 35px;
+    color: #F8F9FA;
+}
+
+/* Section Header Talents */
+.talents-section-header {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 50px auto;
+}
+
+.talents-header-tag {
+    display: inline-block;
+    color: #E85D04;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.talents-section-header h2 {
+    font-size: clamp(2rem, 5vw, 2.7rem);
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.talents-section-header p.lead {
+    font-size: 1.15rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* 1. Une Terre de Génies & Capsule Vidéo */
+.section-genies {
+    padding: 90px 0;
+    background: #FFFBF7;
+}
+
+.genies-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.genies-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 18px;
+}
+
+.genies-highlight {
+    background: white;
+    border-left: 4px solid #E85D04;
+    padding: 22px 26px;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+    margin: 25px 0;
+    font-style: italic;
+    font-size: 1.12rem;
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+/* Capsule Vidéo Card */
+.video-capsule-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(10, 25, 47, 0.15);
+    background: #0A192F;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.video-capsule-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.65;
+    transition: transform 0.6s ease;
+}
+
+.video-capsule-card:hover .video-capsule-bg {
+    transform: scale(1.05);
+}
+
+.video-capsule-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10, 25, 47, 0.95) 15%, rgba(10, 25, 47, 0.4) 60%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 1;
+}
+
+.video-capsule-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #E85D04;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 0 0 15px rgba(232, 93, 4, 0.25);
+    z-index: 2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.video-capsule-card:hover .video-capsule-play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 0 22px rgba(232, 93, 4, 0.35);
+}
+
+.video-capsule-info {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    color: white;
+}
+
+.video-badge-duration {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.video-capsule-info h4 {
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 6px;
+}
+
+.video-capsule-info p {
+    font-size: 0.95rem;
+    color: #CBD5E1;
+}
+
+/* 2. Pôles d'Excellence */
+.section-poles {
+    padding: 90px 0;
+    background: #ffffff;
+}
+
+.poles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+}
+
+.pole-card {
+    background: #FDFDFD;
+    border: 1px solid #EDEDED;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.pole-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09);
+    border-color: rgba(232, 93, 4, 0.3);
+}
+
+.pole-img-container {
+    height: 230px;
+    position: relative;
+    overflow: hidden;
+    background: #0A192F;
+}
+
+.pole-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.pole-card:hover .pole-img-container img {
+    transform: scale(1.05);
+}
+
+.pole-icon-pill {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(5px);
+    color: #E85D04;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.pole-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.pole-category-tag {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #E85D04;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
+}
+
+.pole-content h3 {
+    font-size: 1.45rem;
+    color: var(--color-primary);
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+.pole-content p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #555;
+    flex-grow: 1;
+}
+
+/* 3. Portraits & Chroniques de Terrain */
+.section-portraits {
+    padding: 90px 0;
+    background: #FFFDF9;
+}
+
+.portraits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.portrait-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #F0ECE4;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.portrait-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.1);
+}
+
+.portrait-img-box {
+    height: 300px;
+    position: relative;
+    background: #112240;
+    overflow: hidden;
+}
+
+.portrait-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+}
+
+.portrait-card:hover .portrait-img-box img {
+    transform: scale(1.05);
+}
+
+.portrait-badge-role {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(10, 25, 47, 0.9);
+    backdrop-filter: blur(5px);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.portrait-badge-role span {
+    color: #E85D04;
+    font-weight: 700;
+}
+
+.portrait-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.portrait-quarter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+.portrait-quarter i {
+    color: #E85D04;
+}
+
+.portrait-body h3 {
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.portrait-specialite {
+    font-size: 0.92rem;
+    color: #E85D04;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+
+.portrait-body p {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: #555;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.portrait-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: auto;
+}
+
+.portrait-contact-tag {
+    font-size: 0.85rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.portrait-action-link {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.portrait-action-link:hover {
+    color: #E85D04;
+    gap: 8px;
+}
+
+/* 4. Espaces d'Accompagnement */
+.section-espaces-talents {
+    padding: 90px 0;
+    background: #F3F5F8;
+}
+
+.espaces-talents-card {
+    background: linear-gradient(135deg, #0A192F 0%, #162C46 100%);
+    border-radius: 22px;
+    padding: 50px 45px;
+    color: white;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+    box-shadow: 0 15px 40px rgba(10, 25, 47, 0.15);
+}
+
+.espaces-talents-text h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: white;
+    margin-bottom: 16px;
+}
+
+.espaces-talents-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #CBD5E1;
+    margin-bottom: 25px;
+}
+
+.espaces-features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.espace-feat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.98rem;
+    color: #F8F9FA;
+}
+
+.espace-feat-item i {
+    color: #E85D04;
+    font-size: 1.2rem;
+}
+
+/* 5. Faire Rayonner Ensemble CTA */
+.section-talents-cta {
+    padding: 85px 0;
+    background: #FAF6F0;
+    border-top: 1px solid #ECE6DB;
+}
+
+.talents-cta-box {
+    background: white;
+    border-radius: 24px;
+    padding: 60px 45px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid rgba(232, 93, 4, 0.25);
+}
+
+.talents-cta-box h2 {
+    font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.talents-cta-box .cta-sub {
+    font-size: 1.2rem;
+    color: #E85D04;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.talents-cta-box p {
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.talents-cta-box .cta-prompt {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 1.12rem;
+    margin: 25px 0 35px;
+}
+
+.talents-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+/* Responsive Overrides pour Talents */
+@media (max-width: 900px) {
+    .genies-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .video-capsule-card {
+        height: 380px;
+    }
+
+    .poles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .espaces-talents-card {
+        grid-template-columns: 1fr;
+        padding: 35px 25px;
+        text-align: center;
+    }
+
+    .espace-feat-item {
+        justify-content: center;
+    }
+
+    .talents-cta-box {
+        padding: 40px 20px;
+    }
+}
