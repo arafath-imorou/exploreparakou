@@ -9,13 +9,9 @@
     <title>Talents & Savoir-Faire | Explore Parakou</title>
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
     <!-- Main Style -->
+        <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Icons -->
@@ -338,14 +334,14 @@
 
                 <!-- Grille dynamique connectée Supabase -->
                 <div class="talents-grid" id="talents-grid">
-                    <div id="loading" style="grid-column: 1 / -1; text-align: center; padding: 40px; color:#666;">
+                    <div id="loading" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #334155;">
                         <i class="ph ph-spinner-gap" style="font-size:2rem; animation: spin 1s infinite linear;"></i><br>
                         Chargement des talents...
                     </div>
                     <div id="no-results" style="display:none; grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
                         <i class="ph ph-magnifying-glass" style="font-size: clamp(2rem, 7.5vw, 3.5rem); color: #ccc; margin-bottom: 20px;"></i>
-                        <h3 style="font-size: 1.5rem; color: #555;">Aucun talent trouvé dans cette catégorie.</h3>
-                        <p style="color: #777;">De nouveaux profils seront ajoutés très bientôt depuis l'espace d'administration !</p>
+                        <h3 style="font-size: 1.5rem; color: #1E293B;">Aucun talent trouvé dans cette catégorie.</h3>
+                        <p style="color: #475569;">De nouveaux profils seront ajoutés très bientôt depuis l'espace d'administration !</p>
                     </div>
                 </div>
             </div>

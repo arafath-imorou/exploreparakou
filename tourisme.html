@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourisme & Évasion | Explore Parakou</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
     <link rel="stylesheet" href="assets/css/style.css">
     <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -18,8 +17,6 @@
     </style>
     <!-- Performance & Instant Navigation -->
     <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script type="speculationrules">
     {
         "prerender": [
@@ -120,7 +117,7 @@
                 <div class="section-header"
                     style="margin-bottom:2rem; border-bottom:1px solid #eee; padding-bottom:1rem;">
                     <h2 style="color:var(--color-primary); font-size:2rem;">Découvrir & S'évader</h2>
-                    <p style="color:#666;">Les sites historiques, les marchés et les lieux de loisirs.</p>
+                    <p style="color: #334155;">Les sites historiques, les marchés et les lieux de loisirs.</p>
                 </div>
                 <div class="cards-grid dynamic-grid" id="visiter-grid"
                     style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap:2rem;">
@@ -133,7 +130,7 @@
                 <div class="section-header"
                     style="margin-bottom:2rem; border-bottom:1px solid #eee; padding-bottom:1rem;">
                     <h2 style="color:var(--color-primary); font-size:2rem;">Séjourner & Déguster</h2>
-                    <p style="color:#666;">Les meilleures adresses pour dormir et manger à Parakou.</p>
+                    <p style="color: #334155;">Les meilleures adresses pour dormir et manger à Parakou.</p>
                 </div>
                 <div class="cards-grid dynamic-grid" id="sejourner-grid"
                     style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap:2rem;">
@@ -305,12 +302,12 @@
                         <div class="listing-card">
                             <img loading="lazy" decoding="async" src="${item.image_url}" alt="${item.title}" class="listing-img" onerror="this.src='assets/images/tourisme-hero.webp'">
                             <div class="listing-content">
-                                <div class="listing-category">${item.category}</div>
-                                <h3 class="card-title" style="font-size:1.25rem; margin-bottom:0.5rem;">${item.title}</h3>
-                                <p style="color:#666; font-size:0.95rem;">${item.description}</p>
-                                <div class="listing-actions">
-                                    ${item.link_details ? `<a href="${item.link_details}" class="btn btn-primary" style="padding:8px 20px; font-size:0.9rem;">Voir détails</a>` : ''}
-                                    ${item.link_map ? `<a href="${item.link_map}" target="_blank" class="action-icon" title="Itinéraire"><i class="ph ph-map-pin"></i></a>` : ''}
+                                <div class="listing-category" style="display:inline-flex; align-items:center; gap:5px; background:rgba(212,160,23,0.12); color:#925C00; padding:4px 10px; border-radius:6px; font-weight:700; font-size:0.8rem; margin-bottom:8px;"><i class="ph ph-tag"></i> ${item.category}</div>
+                                <h3 class="card-title" style="font-size:1.35rem; font-weight:700; color:var(--color-primary); margin-bottom:0.6rem; font-family:var(--font-heading);">${item.title}</h3>
+                                <p style="color: #334155; font-size:1rem; line-height:1.65; margin-bottom:14px;">${item.description}</p>
+                                <div class="listing-actions" style="display:flex; align-items:center; gap:12px;">
+                                    ${item.link_details ? `<a href="${item.link_details}" class="btn btn-primary" style="padding:9px 22px; font-size:0.92rem; font-weight:700; display:inline-flex; align-items:center; gap:6px;"><i class="ph ph-compass"></i> Découvrir le site</a>` : ''}
+                                    ${item.link_map ? `<a href="${item.link_map}" target="_blank" class="action-icon" title="Itinéraire Google Maps" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#F1F5F9; color:var(--color-primary); font-size:1.2rem; transition:all 0.2s;"><i class="ph ph-map-pin"></i></a>` : ''}
                                 </div>
                             </div>
                         </div>

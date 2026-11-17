@@ -1,4 +1,4 @@
-const CACHE_NAME = 'explore-parakou-v5-ultrafast';
+const CACHE_NAME = 'explore-parakou-v6-aptos';
 
 const PRECACHE_ASSETS = [
     './',
@@ -12,6 +12,10 @@ const PRECACHE_ASSETS = [
     'medias.html',
     'contact.html',
     'carte.html',
+    'assets/fonts/Aptos.woff',
+    'assets/fonts/Aptos-Bold.woff',
+    'assets/fonts/Aptos-Display.woff',
+    'assets/fonts/Aptos-Display-Bold.woff',
     'assets/css/style.css',
     'assets/js/script.js',
     'assets/js/supabaseClient.js',

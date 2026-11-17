@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda Officiel | Explore Parakou</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
     <link rel="stylesheet" href="assets/css/style.css">
     <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -46,7 +45,7 @@
             padding: 10px 24px;
             border-radius: 50px;
             background: #f0f2f5;
-            color: #555;
+            color: #1E293B;
             border: none;
             cursor: pointer;
             white-space: nowrap;
@@ -144,7 +143,7 @@
             font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #888;
+            color: #475569;
             margin-bottom: 10px;
             display: block;
         }
@@ -161,7 +160,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            color: #666;
+            color: #334155;
             font-size: 0.95rem;
             margin-bottom: 25px;
         }
@@ -236,8 +235,6 @@
     </style>
     <!-- Performance & Instant Navigation -->
     <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script type="speculationrules">
     {
         "prerender": [
@@ -326,7 +323,7 @@
                 <div class="row-between" style="margin-bottom:30px;">
                     <div>
                         <h2 style="font-size:2rem; margin-bottom:5px;">À ne pas manquer</h2>
-                        <p style="color:#666;">Les événements majeurs du moment.</p>
+                        <p style="color: #334155;">Les événements majeurs du moment.</p>
                     </div>
                 </div>
 
@@ -338,7 +335,7 @@
                 <div class="row-between" style="margin-bottom:30px;">
                     <div>
                         <h2 style="font-size:1.8rem;">Ce Week-end</h2>
-                        <p style="color:#666;">Sorties prévues samedi et dimanche.</p>
+                        <p style="color: #334155;">Sorties prévues samedi et dimanche.</p>
                     </div>
                     <a href="#" class="btn btn-outline">Tout voir</a>
                 </div>
@@ -351,7 +348,7 @@
                 <div class="split-layout">
                     <div>
                         <h2 style="margin-bottom:20px;">Vue Calendrier</h2>
-                        <p style="margin-bottom:30px; color:#666;">Sélectionnez une date pour voir les événements
+                        <p style="margin-bottom:30px; color: #334155;">Sélectionnez une date pour voir les événements
                             disponibles.</p>
 
                         <div class="calendar-modern"
@@ -553,7 +550,7 @@
                             <div class="card-content">
                                 <span class="event-category-sm">${firstEvent.category}</span>
                                 <h3 class="event-title" style="font-size:2rem;">${firstEvent.title}</h3>
-                                <p style="margin-bottom:20px; font-size:1.1rem; color:#555;">${firstEvent.description}</p>
+                                <p style="margin-bottom:20px; font-size:1.1rem; color: #1E293B;">${firstEvent.description}</p>
                                 <div class="event-meta" style="flex-direction:row; flex-wrap:wrap; gap:20px;">
                                     <span><i class="ph ph-map-pin"></i> ${firstEvent.location}</span>
                                     <span><i class="ph ph-clock"></i> ${firstEvent.time}</span>

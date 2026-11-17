@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administration | Explore Parakou</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
     <link rel="stylesheet" href="assets/css/style.css">
     <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
@@ -27,7 +26,7 @@
         }
 
         .admin-sidebar h2 {
-            font-family: 'Poppins', sans-serif;
+            font-family: var(--font-heading);
             color: var(--color-primary);
             font-size: 1.5rem;
             margin-bottom: 2rem;
@@ -48,7 +47,7 @@
             align-items: center;
             gap: 12px;
             padding: 12px 15px;
-            color: #555;
+            color: #1E293B;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 500;
@@ -118,7 +117,7 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             outline: none;
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-heading);
         }
 
         #login-error {
@@ -145,7 +144,7 @@
         .data-table th {
             background: #fdfdfd;
             font-weight: 600;
-            color: #555;
+            color: #1E293B;
         }
 
         .action-btn {
@@ -259,8 +258,6 @@
     </style>
     <!-- Performance & Instant Navigation -->
     <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script type="speculationrules">
     {
         "prerender": [
@@ -466,7 +463,7 @@
                         style="position:absolute; top:15px; right:15px; background:none; border:none; font-size:1.5rem; cursor:pointer;"><i
                             class="ph ph-x"></i></button>
                     <h3 id="msg-modal-title" style="margin-bottom:10px; color:var(--color-primary);">Message</h3>
-                    <p id="msg-modal-contact" style="color:#666; font-size:0.9rem; margin-bottom:20px;"></p>
+                    <p id="msg-modal-contact" style="color: #334155; font-size:0.9rem; margin-bottom:20px;"></p>
                     <div id="msg-modal-content"
                         style="background:#f4f6f8; padding:20px; border-radius:8px; font-size:0.95rem; line-height:1.6; white-space:pre-wrap;">
                     </div>
