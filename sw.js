@@ -1,4 +1,4 @@
-const CACHE_NAME = 'explore-parakou-v4-ultrafast';
+const CACHE_NAME = 'explore-parakou-v5-ultrafast';
 
 const PRECACHE_ASSETS = [
     './',
@@ -16,6 +16,7 @@ const PRECACHE_ASSETS = [
     'assets/js/script.js',
     'assets/js/supabaseClient.js',
     'assets/images/logo.webp',
+    'assets/images/footer-pattern.webp',
     'assets/images/hero-bg.webp',
     'assets/images/culture-hero-final.webp',
     'assets/images/portrait.webp',
