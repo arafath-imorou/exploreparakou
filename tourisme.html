@@ -204,7 +204,7 @@
 
             if (!visiterGrid || !sejournerGrid) return;
 
-            function renderTourisme(data) {
+            window.renderTourisme = function(data) {
                 if (!data || data.length === 0) {
                     visiterGrid.innerHTML = '<p>Aucun lieu touristique trouvé.</p>';
                     sejournerGrid.innerHTML = '<p>Aucun hébergement ou restaurant trouvé.</p>';
@@ -247,7 +247,7 @@
             if (window.fastSupabaseFetch) {
                 window.fastSupabaseFetch('tourisme', () => {
                     return supabase.from('tourisme').select('*').order('created_at', { ascending: false });
-                }, renderTourisme);
+                }, window.renderTourisme);
             } else {
                 supabase.from('tourisme').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
                     if (!error && data) renderTourisme(data);

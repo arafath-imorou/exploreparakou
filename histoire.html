@@ -583,7 +583,7 @@
             const timelineContainer = document.getElementById('dynamic-timeline');
             if (!timelineContainer) return;
 
-            function renderTimeline(data) {
+            window.renderTimeline = function(data) {
                 if (!data || data.length === 0) {
                     timelineContainer.innerHTML = '<p style="text-align:center;">Aucune date disponible pour le moment.</p>';
                     return;
@@ -621,7 +621,7 @@
             if (window.fastSupabaseFetch) {
                 window.fastSupabaseFetch('histoire_timeline', () => {
                     return window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true });
-                }, renderTimeline);
+                }, window.renderTimeline);
             } else {
                 window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true }).then(({ data, error }) => {
                     if (!error && data) renderTimeline(data);

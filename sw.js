@@ -1,4 +1,4 @@
-const CACHE_NAME = 'explore-parakou-v2';
+const CACHE_NAME = 'explore-parakou-v4-ultrafast';
 
 const PRECACHE_ASSETS = [
     './',
@@ -15,21 +15,27 @@ const PRECACHE_ASSETS = [
     'assets/css/style.css',
     'assets/js/script.js',
     'assets/js/supabaseClient.js',
-    'assets/images/logo.webp'
+    'assets/images/logo.webp',
+    'assets/images/hero-bg.webp',
+    'assets/images/culture-hero-final.webp',
+    'assets/images/portrait.webp',
+    'assets/images/PALAIS_ROYAL_DE_PARAKOU.webp',
+    'assets/images/Musee_plein_air.webp'
 ];
 
-// Install: Pre-cache core shell
+// Install: Pre-cache core shell immédiatement
 self.addEventListener('install', (event) => {
+    self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll(PRECACHE_ASSETS).catch((err) => {
-                console.warn('Pre-caching non-fatal warning:', err);
+                console.warn('[SW] Pre-caching warning:', err);
             });
-        }).then(() => self.skipWaiting())
+        })
     );
 });
 
-// Activate: Clean up old caches
+// Activate: Clean up old caches immédiatement
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((keys) => {
@@ -40,37 +46,40 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch: Smart Caching Strategy
+// Fetch: Smart Caching Strategy (Ultra-Fast Stale-While-Revalidate)
 self.addEventListener('fetch', (event) => {
     const request = event.request;
     const url = new URL(request.url);
 
-    // Ne pas intercepter les requêtes Supabase DB directes (gérées par le cache Stale-While-Revalidate dans supabaseClient.js)
-    if (url.hostname.includes('supabase.co')) {
+    // Ne pas intercepter l'authentification admin ou requêtes API Supabase
+    if (url.hostname.includes('supabase.co') || url.pathname.includes('admin.html')) {
         return;
     }
 
-    // HTML / Page navigation: Network-first avec cache fallback instantané
+    // HTML / Navigation : Cache-First + Stale-While-Revalidate (Retour en 1ms !)
     if (request.mode === 'navigate' || (request.headers.get('accept') && request.headers.get('accept').includes('text/html'))) {
         event.respondWith(
-            fetch(request)
-                .then((networkResponse) => {
+            caches.match(request).then((cachedResponse) => {
+                // Fetch de mise à jour en tâche de fond discrète
+                const networkFetch = fetch(request).then((networkResponse) => {
                     if (networkResponse && networkResponse.status === 200) {
                         const copy = networkResponse.clone();
                         caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
                     }
                     return networkResponse;
-                })
-                .catch(async () => {
-                    const cachedResponse = await caches.match(request);
-                    if (cachedResponse) return cachedResponse;
-                    return caches.match('index.html');
-                })
+                }).catch(() => {});
+
+                // Retour immédiat depuis le cache local (1ms)
+                if (cachedResponse) {
+                    return cachedResponse;
+                }
+                return networkFetch.then((res) => res || caches.match('index.html'));
+            })
         );
         return;
     }
 
-    // Static Assets (Images, CSS, JS, Fonts): Cache-first pour un chargement instantané (< 15ms)
+    // Assets statiques (CSS, JS, Fonts, Images) : Cache-First avec rafraîchissement silencieux
     if (
         request.destination === 'style' ||
         request.destination === 'script' ||
@@ -84,7 +93,7 @@ self.addEventListener('fetch', (event) => {
         event.respondWith(
             caches.match(request).then((cachedResponse) => {
                 if (cachedResponse) {
-                    // Si en cache, retour immédiat et refresh en tâche de fond (Stale-While-Revalidate)
+                    // Refresh discret en tâche de fond
                     fetch(request).then((networkResponse) => {
                         if (networkResponse && networkResponse.status === 200) {
                             caches.open(CACHE_NAME).then((cache) => cache.put(request, networkResponse));
@@ -104,7 +113,7 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Requêtes génériques par défaut
+    // Par défaut
     event.respondWith(
         caches.match(request).then((response) => response || fetch(request))
     );

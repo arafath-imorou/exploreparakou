@@ -443,7 +443,7 @@
         const featGrid = document.querySelector('.dynamic-featured');
         const weekendGrid = document.querySelector('.dynamic-weekend');
 
-        function renderAgenda(events) {
+        window.renderAgenda = function(events) {
             if (!events || events.length === 0) {
                 if (featGrid) featGrid.innerHTML = '<p>Aucun événement programmé pour le moment.</p>';
                 if (weekendGrid) weekendGrid.innerHTML = '';
@@ -551,7 +551,7 @@
         if (window.fastSupabaseFetch) {
             window.fastSupabaseFetch('agenda', () => {
                 return window.supabase.from('agenda').select('*').order('created_at', { ascending: false });
-            }, renderAgenda);
+            }, window.renderAgenda);
         } else {
             window.supabase.from('agenda').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
                 if (!error && data) renderAgenda(data);
