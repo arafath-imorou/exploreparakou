@@ -79,9 +79,9 @@
             position: relative;
             background-color: inherit;
             width: 50%;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .timeline-item.visible {
@@ -429,8 +429,82 @@
                     <p style="color: #334155;">Revivez les moments forts qui ont façonné Parakou.</p>
                 </div>
                 <div class="timeline" id="dynamic-timeline">
-                    <!-- Loaded dynamically -->
-                    <p style="text-align:center;">Chargement de la chronologie...</p>
+                    <!-- Étape 1 : XVIe Siècle -->
+                    <div class="timeline-item left visible">
+                        <div class="timeline-content">
+                            <span class="timeline-period">XVIe Siècle</span>
+                            <h3 class="timeline-title">Fondation du Royaume de Kɔrɔku Tem (Kobourou)</h3>
+                            <p class="timeline-desc">
+                                Des chasseurs et commerçants Wassangari établissent un carrefour sous l'autorité du premier roi Akpaki Dagbara. Naissance du royaume fondé sur l'équilibre entre pouvoir administratif à Sinaguruu et chefs de terre à Gbeeguruu.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Étape 2 : XVIIIe - XIXe Siècle -->
+                    <div class="timeline-item right visible">
+                        <div class="timeline-content">
+                            <span class="timeline-period">XVIIIe - XIXe Siècle</span>
+                            <h3 class="timeline-title">Grand Nœud Commercial & Caravannier</h3>
+                            <p class="timeline-desc">
+                                Au croisement des pistes caravanières reliant le Sahel, l'empire Ashanti, le pays Yoruba et les royaumes côtiers, Parakou (« La ville de tous ») devient un carrefour d'échanges florissant de sel, de noix de cola et de textiles.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Étape 3 : 1894 - 1897 -->
+                    <div class="timeline-item left visible">
+                        <div class="timeline-content">
+                            <span class="timeline-period">1894 - 1897</span>
+                            <h3 class="timeline-title">Période Coloniale & Traités du Borgou</h3>
+                            <p class="timeline-desc">
+                                Signature des traités de protectorat avec les souverains du Baruwuu. Parakou est désignée poste stratégique de commandement administratif et militaire du Haut-Dahomey.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Étape 4 : 1912 - 1934 -->
+                    <div class="timeline-item right visible">
+                        <div class="timeline-content">
+                            <span class="timeline-period">1912 - 1934</span>
+                            <h3 class="timeline-title">L'Épopée du Rail : Le Terminus de l'OCBN</h3>
+                            <p class="timeline-desc">
+                                Le prolongement du chemin de fer Cotonou-Parakou propulse la cité au rang de capitale économique du Nord. La gare et le quartier Dépôt deviennent la porte d'entrée logistique vers le Niger et les pays voisins.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Étape 5 : 1941 -->
+                    <div class="timeline-item left visible">
+                        <div class="timeline-content">
+                            <span class="timeline-period">1941</span>
+                            <h3 class="timeline-title">Création Officielle de la Commune</h3>
+                            <p class="timeline-desc">
+                                Parakou est formellement érigée en commune mixte par décret. Cette reconnaissance administrative structure l'urbanisme moderne, le développement des grands boulevards et la vitalité des quartiers historiques.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Étape 6 : 1970 - 1975 -->
+                    <div class="timeline-item right visible">
+                        <div class="timeline-content">
+                            <span class="timeline-period">1970 - 1975</span>
+                            <h3 class="timeline-title">Pôle Universitaire & Sanctuaire Culturel</h3>
+                            <p class="timeline-desc">
+                                Naissance de l'Université de Parakou et inauguration du Musée de Plein Air. La cité des Kobourou s'impose comme le haut lieu de la formation universitaire et de la conservation du patrimoine du Septentrion.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Étape 7 : Aujourd'hui (XXIe Siècle) -->
+                    <div class="timeline-item left visible">
+                        <div class="timeline-content">
+                            <span class="timeline-period">XXIe Siècle • Aujourd'hui</span>
+                            <h3 class="timeline-title">Métropole Rayonnante & Cité d'Innovation</h3>
+                            <p class="timeline-desc">
+                                3ème ville du Bénin avec plus de 300 000 habitants, Parakou marie avec fierté ses traditions équestres royales et son essor économique, portée par l'initiative citoyenne Explore Parakou et ITA INNOVATE.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -652,32 +726,33 @@
     <script src="assets/js/supabaseClient.js"></script>
 
         <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        window.initTimeline = function() {
             const timelineContainer = document.getElementById('dynamic-timeline');
             if (!timelineContainer) return;
 
+            // Fonction de mise à jour si Supabase fournit des données en ligne
             window.renderTimeline = function(data) {
-                if (!data || data.length === 0) {
-                    timelineContainer.innerHTML = '<p style="text-align:center;">Aucune date disponible pour le moment.</p>';
-                    return;
-                }
+                // Si aucune donnée ou erreur, on conserve les dates complètes déjà affichées en HTML !
+                if (!data || !Array.isArray(data) || data.length === 0) return;
 
                 timelineContainer.innerHTML = '';
                 data.forEach((item, index) => {
                     const sideClass = (index % 2 === 0) ? 'left' : 'right';
                     const div = document.createElement('div');
-                    div.className = `timeline-item ${sideClass}`;
+                    div.className = `timeline-item ${sideClass} visible`;
                     div.innerHTML = `
                         <div class="timeline-content">
-                            <span class="timeline-period">${item.period}</span>
-                            <h3 class="timeline-title">${item.title}</h3>
-                            <p class="timeline-desc">${item.description}</p>
+                            <span class="timeline-period">${item.period || ''}</span>
+                            <h3 class="timeline-title">${item.title || ''}</h3>
+                            <p class="timeline-desc">${item.description || ''}</p>
                         </div>
                     `;
                     timelineContainer.appendChild(div);
                 });
+            };
 
-                // Intersection Observer pour l'animation au scroll fluide
+            // Observer pour micro-animations au scroll
+            if ('IntersectionObserver' in window) {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -691,16 +766,19 @@
                 });
             }
 
-            if (window.fastSupabaseFetch) {
-                window.fastSupabaseFetch('histoire_timeline', () => {
-                    return window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true });
-                }, window.renderTimeline);
-            } else {
-                window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true }).then(({ data, error }) => {
-                    if (!error && data) renderTimeline(data);
-                });
+            // Rafraîchissement asynchrone non-bloquant depuis Supabase (si table disponible)
+            if (window.fastSupabaseFetch && window.supabase) {
+                try {
+                    window.fastSupabaseFetch('histoire_timeline', () => {
+                        return window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true });
+                    }, window.renderTimeline);
+                } catch(e) {
+                    console.log("[Timeline] Mode pré-rendu actif");
+                }
             }
-        });
+        };
+
+        document.addEventListener('DOMContentLoaded', window.initTimeline);
     </script>
 </body>
 

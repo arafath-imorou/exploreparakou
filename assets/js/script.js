@@ -224,14 +224,18 @@ function reinitializePageScripts(newDoc, pageName) {
 
     // 4. Histoire
     const timelineContainer = document.getElementById('dynamic-timeline');
-    if (timelineContainer && window.fastSupabaseFetch) {
-        window.fastSupabaseFetch('histoire_timeline', () => {
-            return window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true });
-        }, (data) => {
-            if (window.renderTimeline) {
-                window.renderTimeline(data);
-            }
-        });
+    if (timelineContainer) {
+        if (typeof window.initTimeline === 'function') {
+            window.initTimeline();
+        } else if (window.fastSupabaseFetch) {
+            window.fastSupabaseFetch('histoire_timeline', () => {
+                return window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true });
+            }, (data) => {
+                if (window.renderTimeline) {
+                    window.renderTimeline(data);
+                }
+            });
+        }
     }
 
     // 5. Exécuter les scripts inline de la nouvelle page si nécessaire

@@ -50,12 +50,18 @@ window.fastSupabaseFetch = async function (cacheKey, fetchPromiseFn, onDataReady
             // Rendu avec les données à jour
             onDataReady(result.data, false);
         } else if (result && result.error) {
-            console.error("[FastCache] Erreur Supabase:", result.error);
+            console.warn("[FastCache] Avertissement Supabase:", result.error);
+            if (!hasRenderedCached && typeof onDataReady === 'function') {
+                onDataReady(null, false, result.error);
+            }
         }
         return result;
     } catch (err) {
         if (!hasRenderedCached) {
-            console.error("[FastCache] Exception réseau:", err);
+            console.warn("[FastCache] Exception réseau:", err);
+            if (typeof onDataReady === 'function') {
+                onDataReady(null, false, err);
+            }
         }
     }
 };
