@@ -332,13 +332,56 @@
 
                 <!-- Grille dynamique connectée Supabase -->
                 <div class="talents-grid" id="talents-grid">
-                    <div id="loading" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #334155;">
-                        <i class="ph ph-spinner-gap" style="font-size:2rem; animation: spin 1s infinite linear;"></i><br>
-                        Chargement des talents...
+                    <div class="talent-card-item">
+                        <a href="talent-djangoun.html" style="text-decoration:none; display:flex; flex-direction:column; height:100%;">
+                            <img loading="lazy" decoding="async" src="assets/images/portrait.webp" alt="Maître Artisan" class="tc-img" onerror="this.src='assets/images/portrait.webp'">
+                            <div class="tc-content">
+                                <span class="tc-cat">Artisanat & Métiers d'art</span>
+                                <h3 class="tc-title">Maître Artisan Tissage & Poterie</h3>
+                                <p class="tc-desc">Détenteur d'un savoir-faire artisanal séculaire, façonnant des pièces d'art textile et de céramique aux motifs kobourou.</p>
+                                <span class="link-arrow" style="color:var(--color-primary); font-weight:700; margin-top:auto;">Découvrir le profil</span>
+                            </div>
+                        </a>
                     </div>
-                    <div id="no-results" style="display:none; grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
-                        <i class="ph ph-magnifying-glass" style="font-size: clamp(2rem, 7.5vw, 3.5rem); color: #ccc; margin-bottom: 20px;"></i>
-                        <h3 style="font-size: 1.5rem; color: #1E293B;">Aucun talent trouvé dans cette catégorie.</h3>
+                    <div class="talent-card-item">
+                        <a href="#proposer" style="text-decoration:none; display:flex; flex-direction:column; height:100%;">
+                            <img loading="lazy" decoding="async" src="assets/images/INVESTIR PARAKOU.webp" alt="Jeune Entrepreneure" class="tc-img" onerror="this.src='assets/images/portrait.webp'">
+                            <div class="tc-content">
+                                <span class="tc-cat">Entrepreneuriat & Tech</span>
+                                <h3 class="tc-title">Initiative Agro-Alimentaire Innovante</h3>
+                                <p class="tc-desc">Transformation et valorisation des récoltes du Borgou (soja, mangue séchée, karité bio) avec des procédés modernes.</p>
+                                <span class="link-arrow" style="color:var(--color-primary); font-weight:700; margin-top:auto;">Découvrir le profil</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="talent-card-item">
+                        <a href="#proposer" style="text-decoration:none; display:flex; flex-direction:column; height:100%;">
+                            <img loading="lazy" decoding="async" src="assets/images/DANSE TRADITIONNELLE DU GRAND NORD BENIN.webp" alt="Artiste Musicien" class="tc-img" onerror="this.src='assets/images/portrait.webp'">
+                            <div class="tc-content">
+                                <span class="tc-cat">Arts & Culture</span>
+                                <h3 class="tc-title">Créateur Rythmes & Slam du Septentrion</h3>
+                                <p class="tc-desc">Puisant dans les percussions et chants baatonu pour faire vibrer la scène culturelle contemporaine de Parakou.</p>
+                                <span class="link-arrow" style="color:var(--color-primary); font-weight:700; margin-top:auto;">Découvrir le profil</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="talent-card-item">
+                        <a href="#proposer" style="text-decoration:none; display:flex; flex-direction:column; height:100%;">
+                            <img loading="lazy" decoding="async" src="assets/images/PLACE_BIO_GUERA.webp" alt="Athlète & Encadreur" class="tc-img" onerror="this.src='assets/images/portrait.webp'">
+                            <div class="tc-content">
+                                <span class="tc-cat">Sports & Performance</span>
+                                <h3 class="tc-title">Athlétisme & Formation Sportive</h3>
+                                <p class="tc-desc">Défendant les couleurs de Parakou lors des compétitions nationales et formant la jeune relève athlétique de la cité.</p>
+                                <span class="link-arrow" style="color:var(--color-primary); font-weight:700; margin-top:auto;">Découvrir le profil</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div id="loading" style="display:none; grid-column: 1 / -1; text-align: center; padding: 20px; color: #334155;">
+                        Chargement des nouveaux profils...
+                    </div>
+                    <div id="no-results" style="display:none; grid-column: 1 / -1; text-align: center; padding: 40px 20px;">
+                        <h3 style="font-size: 1.4rem; color: #1E293B;">Aucun talent trouvé dans cette catégorie.</h3>
                         <p style="color: #475569;">De nouveaux profils seront ajoutés très bientôt depuis l'espace d'administration !</p>
                     </div>
                 </div>
@@ -568,12 +611,12 @@
                 }
             }
 
-            if (window.fastSupabaseFetch) {
+            if (window.fastSupabaseFetch && window.supabase) {
                 window.fastSupabaseFetch('talents', () => {
-                    return supabase.from('talents').select('*').order('created_at', { ascending: false });
+                    return window.supabase.from('talents').select('*').order('created_at', { ascending: false });
                 }, onTalentsLoaded);
             } else if (window.supabase) {
-                supabase.from('talents').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
+                window.supabase.from('talents').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
                     if (!error && data) onTalentsLoaded(data);
                 });
             }

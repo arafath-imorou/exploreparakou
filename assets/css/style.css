@@ -2911,16 +2911,49 @@ body.menu-open {
         color: #D4A017 !important;
     }
 
-    /* Grilles standard */
+    /* Grilles standard et modules Tourisme, Culture, Talents, Agenda */
     .split-layout,
     .featured-grid,
+    .agenda-featured-grid,
     .grid-3,
+    .grid-2,
     .heritage-grid,
     .genies-grid,
     .poles-grid,
-    .narrative-grid {
+    .narrative-grid,
+    .expressions-grid,
+    .saveurs-grid,
+    .lieux-grid,
+    .portraits-grid,
+    .talents-grid,
+    .dynamic-grid,
+    .cards-grid,
+    .espaces-talents-card,
+    #visiter-grid,
+    #sejourner-grid {
         grid-template-columns: 1fr !important;
-        gap: 25px !important;
+        gap: 20px !important;
+    }
+
+    .culture-cta-card {
+        padding: 30px 18px !important;
+        border-radius: 16px !important;
+    }
+
+    .calendar-modern {
+        padding: 18px 12px !important;
+        border-radius: 16px !important;
+    }
+
+    .filter-sticky {
+        top: 56px !important;
+        padding: 10px 0 !important;
+        margin-bottom: 25px !important;
+    }
+
+    .filter-pill {
+        padding: 8px 18px !important;
+        font-size: 0.86rem !important;
     }
 }
 
