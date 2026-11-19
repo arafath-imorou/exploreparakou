@@ -1,5 +1,5 @@
 /**
- * Explore Parakou - Ultra-Fast Tac-au-Tac SPA Engine
+ * Explore Parakou - Moteur de Navigation, Cache & Expérience Mobile
  */
 
 // 1. Initialisation Service Worker pour le cache instantané
@@ -11,22 +11,20 @@ if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || win
     });
 }
 
-// 2. Moteur de cache mémoire ultra-rapide (In-Memory Page Cache)
-const pageMemoryCache = new Map();
+// 2. Préchargement proactif en mémoire (In-Memory Page Cache)
+const pageMemoryCache = new Set();
 
-async function prefetchPage(url) {
+function prefetchPage(url) {
     if (!url || pageMemoryCache.has(url)) return;
     if (url.startsWith('#') || url.startsWith('mailto:') || url.startsWith('tel:') || url.startsWith('javascript:')) return;
     if (url.includes('admin.html') || url.includes('restaurer.html')) return;
     if (url.includes('://') && !url.startsWith(window.location.origin)) return;
 
-    try {
-        const res = await fetch(url, { priority: 'low' });
-        if (res.ok) {
-            const text = await res.text();
-            pageMemoryCache.set(url, text);
-        }
-    } catch (e) {}
+    pageMemoryCache.add(url);
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = url;
+    document.head.appendChild(link);
 }
 
 // Préchargement proactif dès le démarrage des pages principales
@@ -43,8 +41,10 @@ window.addEventListener('DOMContentLoaded', () => {
         'contact.html'
     ];
     corePages.forEach((p) => {
-        const fullUrl = new URL(p, window.location.href).href;
-        prefetchPage(fullUrl);
+        try {
+            const fullUrl = new URL(p, window.location.href).href;
+            prefetchPage(fullUrl);
+        } catch (e) {}
     });
 });
 
@@ -63,87 +63,7 @@ document.addEventListener('touchstart', (e) => {
     }
 }, { passive: true });
 
-// 3. Navigation Tac-au-Tac (Instant SPA Swapper sans rechargement)
-async function navigateTo(url, pushState = true) {
-    const targetUrl = new URL(url, window.location.href);
-
-    // Bypass pour admin ou cartes complexes avec Leaflet
-    if (targetUrl.pathname.includes('admin.html') || targetUrl.pathname.includes('carte.html')) {
-        window.location.href = url;
-        return;
-    }
-
-    let htmlText = pageMemoryCache.get(targetUrl.href);
-
-    if (!htmlText) {
-        try {
-            const res = await fetch(targetUrl.href);
-            if (!res.ok) throw new Error('Fetch failed');
-            htmlText = await res.text();
-            pageMemoryCache.set(targetUrl.href, htmlText);
-        } catch (e) {
-            window.location.href = url;
-            return;
-        }
-    }
-
-    // Parser le nouveau document
-    const parser = new DOMParser();
-    const newDoc = parser.parseFromString(htmlText, 'text/html');
-
-    // Mise à jour du Titre
-    if (newDoc.title) {
-        document.title = newDoc.title;
-    }
-
-    // Mise à jour du Main en 0ms (Aucun écran blanc !)
-    const currentMain = document.querySelector('main');
-    const newMain = newDoc.querySelector('main');
-
-    if (currentMain && newMain) {
-        currentMain.innerHTML = newMain.innerHTML;
-        currentMain.className = newMain.className;
-        if (newMain.getAttribute('style')) {
-            currentMain.setAttribute('style', newMain.getAttribute('style'));
-        }
-    }
-
-    // Mise à jour des liens actifs dans la navigation
-    const targetFileName = targetUrl.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-list a').forEach((link) => {
-        const href = link.getAttribute('href');
-        if (href === targetFileName || (targetFileName === '' && href === 'index.html')) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-
-    // Gestion de l'historique
-    if (pushState) {
-        window.history.pushState({ url: targetUrl.href }, '', targetUrl.href);
-    }
-
-    // Scroll immédiat
-    if (targetUrl.hash) {
-        const targetElement = document.querySelector(targetUrl.hash);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            window.scrollTo({ top: 0, behavior: 'instant' });
-        }
-    } else {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    }
-
-    // Fermer le menu mobile si ouvert
-    closeMobileMenu();
-
-    // Ré-exécuter les initialisations dynamiques
-    reinitializePageScripts(newDoc, targetFileName);
-}
-
-// Interception des clics sur les liens internes
+// 3. Gestion fluide des ancres internes (#)
 document.addEventListener('click', (e) => {
     const anchor = e.target.closest('a');
     if (!anchor) return;
@@ -151,125 +71,18 @@ document.addEventListener('click', (e) => {
     const href = anchor.getAttribute('href');
     if (!href) return;
 
-    // Ignorer les clics avec modificateurs (nouvel onglet)
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    if (anchor.target && anchor.target !== '_self') return;
-    if (anchor.getAttribute('download')) return;
-
-    // Hash sur la même page
+    // Gestion propre des ancres sur la même page
     if (href.startsWith('#')) {
-        e.preventDefault();
         const targetElement = document.querySelector(href);
         if (targetElement) {
+            e.preventDefault();
             closeMobileMenu();
             targetElement.scrollIntoView({ behavior: 'smooth' });
         }
-        return;
-    }
-
-    // Vérifier si c'est une URL interne
-    const targetUrl = new URL(anchor.href, window.location.href);
-    if (targetUrl.origin === window.location.origin && targetUrl.pathname.endsWith('.html')) {
-        // Ignorer admin.html et carte.html
-        if (!targetUrl.pathname.includes('admin.html') && !targetUrl.pathname.includes('carte.html')) {
-            e.preventDefault();
-            navigateTo(anchor.href);
-        }
     }
 });
 
-// Support retour / avant du navigateur
-window.addEventListener('popstate', () => {
-    navigateTo(window.location.href, false);
-});
-
-// 4. Initialisations dynamiques lors du changement instantané de page
-function reinitializePageScripts(newDoc, pageName) {
-    // 1. Tourisme
-    const visiterGrid = document.getElementById('visiter-grid');
-    const sejournerGrid = document.getElementById('sejourner-grid');
-    if (visiterGrid && sejournerGrid && window.fastSupabaseFetch) {
-        window.fastSupabaseFetch('tourisme', () => {
-            return supabase.from('tourisme').select('*').order('created_at', { ascending: false });
-        }, (data) => {
-            if (window.renderTourisme) {
-                window.renderTourisme(data);
-            }
-        });
-    }
-
-    // 2. Agenda
-    const featGrid = document.querySelector('.dynamic-featured');
-    if (featGrid && window.fastSupabaseFetch) {
-        window.fastSupabaseFetch('agenda', () => {
-            return window.supabase.from('agenda').select('*').order('created_at', { ascending: false });
-        }, (events) => {
-            if (window.renderAgenda) {
-                window.renderAgenda(events);
-            }
-        });
-    }
-
-    // 3. Talents
-    const talentsGrid = document.getElementById('talents-grid');
-    if (talentsGrid && window.fastSupabaseFetch) {
-        window.fastSupabaseFetch('talents', () => {
-            return supabase.from('talents').select('*').order('created_at', { ascending: false });
-        }, (talents) => {
-            if (window.onTalentsLoaded) {
-                window.onTalentsLoaded(talents);
-            }
-        });
-    }
-
-    // 4. Histoire
-    const timelineContainer = document.getElementById('dynamic-timeline');
-    if (timelineContainer) {
-        if (typeof window.initTimeline === 'function') {
-            window.initTimeline();
-        } else if (window.fastSupabaseFetch) {
-            window.fastSupabaseFetch('histoire_timeline', () => {
-                return window.supabase.from('histoire_timeline').select('*').order('created_at', { ascending: true });
-            }, (data) => {
-                if (window.renderTimeline) {
-                    window.renderTimeline(data);
-                }
-            });
-        }
-    }
-
-        // 5. Culture
-    const cultureGrid = document.getElementById('culture-lieux-grid');
-    if (cultureGrid && window.fastSupabaseFetch && window.renderCulture) {
-        window.fastSupabaseFetch('culture', () => {
-            return window.supabase.from('culture').select('*').order('created_at', { ascending: false });
-        }, window.renderCulture);
-    }
-
-    // 6. Médias
-    const mediasGrid = document.getElementById('medias-gallery-grid');
-    if (mediasGrid && window.fastSupabaseFetch && window.renderMedias) {
-        window.fastSupabaseFetch('medias', () => {
-            return window.supabase.from('medias').select('*').order('created_at', { ascending: false });
-        }, window.renderMedias);
-    }
-
-    // 7. Exécuter les scripts inline de la nouvelle page si nécessaire
-    if (newDoc) {
-        const scripts = newDoc.querySelectorAll('main script, body > script:not([src])');
-        scripts.forEach((oldScript) => {
-            const newScript = document.createElement('script');
-            if (oldScript.src) {
-                newScript.src = oldScript.src;
-            } else {
-                newScript.textContent = oldScript.textContent;
-            }
-            document.body.appendChild(newScript);
-        });
-    }
-}
-
-// 5. Mobile Menu & Navigation Helpers
+// 4. Mobile Menu & Navigation Helpers
 function closeMobileMenu() {
     const nav = document.querySelector('.nav');
     const mobileMenuBtn = document.querySelector('.mobile-menu-toggle');
@@ -325,14 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close drawer when clicking any nav link
-        nav.querySelectorAll('a').forEach(link => {
+        // Fermer le tiroir uniquement lors d'un clic sur une ancre interne à la page (#)
+        nav.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', () => {
                 closeMobileMenu();
             });
         });
 
-        // Close drawer if resized to desktop
+        // Fermer automatiquement le tiroir si la fenêtre est agrandie au-delà de 900px
         window.addEventListener('resize', () => {
             if (window.innerWidth > 900 && nav.classList.contains('active')) {
                 closeMobileMenu();
@@ -340,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Header Scroll Throttling
+    // Gestion de l'état "scrolled" du header au défilement
     const header = document.querySelector('.header');
     if (header) {
         let isTicking = false;

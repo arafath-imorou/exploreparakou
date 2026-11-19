@@ -2740,11 +2740,9 @@ a, button, .btn, .hub-card, .listing-card, .event-card-premium, .mobile-menu-tog
     transform: scale(0.99) !important;
 }
 
-/* Acceleration materielle GPU pour le header et les elements dynamiques */
+/* Optimisation GPU pour le header sans perturber la position fixed du tiroir mobile */
 .header {
-    transform: translateZ(0);
     will-change: background-color, box-shadow;
-    backface-visibility: hidden;
 }
 
 /* Content visibility auto pour differer le calcul de rendu des sections sous la ligne de flottaison */
@@ -2765,7 +2763,7 @@ main > section:not(:first-of-type) {
     background: rgba(10, 25, 47, 0.7);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
-    z-index: 998;
+    z-index: 1001;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -2804,6 +2802,8 @@ body.menu-open {
     /* En-tête Mobile */
     .header {
         padding: 10px 0 !important;
+        transform: none !important;
+        z-index: 1000 !important;
     }
 
     .header-container {
@@ -2867,7 +2867,8 @@ body.menu-open {
         padding: 75px 20px 30px !important;
         transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
         box-shadow: -10px 0 35px rgba(0, 0, 0, 0.2) !important;
-        z-index: 999 !important;
+        z-index: 1002 !important;
+        pointer-events: auto !important;
         display: flex !important;
         flex-direction: column !important;
         overflow-y: auto !important;
@@ -2897,6 +2898,11 @@ body.menu-open {
         transition: background-color 0.2s ease, color 0.2s ease !important;
         min-height: 46px !important;
         text-shadow: none !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        position: relative !important;
+        z-index: 1003 !important;
+        -webkit-tap-highlight-color: rgba(212, 160, 23, 0.2) !important;
     }
 
     .nav .nav-list a:hover,
