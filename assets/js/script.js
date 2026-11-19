@@ -324,6 +324,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeMobileMenu();
             }
         });
+
+        // Close drawer when clicking any nav link
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        });
+
+        // Close drawer if resized to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && nav.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
     }
 
     // Header Scroll Throttling

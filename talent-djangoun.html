@@ -2,268 +2,344 @@
 <html lang="fr">
 
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Président Djangoun | Explore Parakou</title>
- <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
- <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
- <link rel="stylesheet" href="assets/css/style.css">
- <style>
- .header {
- background: rgba(0, 0, 0, 0.9) !important;
- }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Président Djangoun | Explore Parakou</title>
+        <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .header {
+            background: rgba(0, 0, 0, 0.9) !important;
+        }
 
- .header .logo,
- .header .nav-list a,
- .header .mobile-menu-toggle {
- color: white !important;
- }
+        .header .logo,
+        .header .nav-list a,
+        .header .mobile-menu-toggle {
+            color: white !important;
+        }
 
- .talent-hero {
- position: relative;
- background: #0A192F;
- padding: 180px 0 100px;
- color: white;
- overflow: hidden;
- }
+        .talent-hero {
+            position: relative;
+            background: #0A192F;
+            padding: 180px 0 100px;
+            color: white;
+            overflow: hidden;
+        }
 
- .talent-hero::before {
- content: '';
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
- bottom: 0;
- background: url('assets/images/PRESIDENT DJANGOUN.webp') center top/cover;
- opacity: 0.1;
- filter: blur(15px);
- }
+        .talent-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/images/PRESIDENT DJANGOUN.webp') center top/cover;
+            opacity: 0.1;
+            filter: blur(15px);
+        }
 
- .talent-hero .container {
- position: relative;
- z-index: 2;
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 50px;
- align-items: center;
- }
+        .talent-hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
 
- .hero-portrait {
- text-align: center;
- }
+        .hero-portrait {
+            text-align: center;
+        }
 
- .hero-portrait img {
- width: 100%;
- max-width: 400px;
- border-radius: 20px;
- box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
- border: 4px solid rgba(255, 255, 255, 0.1);
- object-fit: cover;
- object-position: top center;
- aspect-ratio: 4/5;
- }
+        .hero-portrait img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            object-fit: cover;
+            object-position: top center;
+            aspect-ratio: 4/5;
+        }
 
- .hero-text {
- text-align: left;
- }
+        .hero-text {
+            text-align: left;
+        }
 
- .talent-profile-grid {
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 60px;
- align-items: flex-start;
- }
+        .talent-profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
 
- @media (max-width: 768px) {
- .talent-hero .container {
- grid-template-columns: 1fr;
- text-align: center;
- }
+        @media (max-width: 768px) {
+            .talent-hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
 
- .hero-text {
- text-align: center;
- }
+            .hero-text {
+                text-align: center;
+            }
 
- .talent-profile-grid {
- grid-template-columns: 1fr;
- }
- }
+            .talent-profile-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
- .talent-img-box img {
- width: 100%;
- border-radius: 15px;
- box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
- object-fit: cover;
- object-position: top center;
- }
+        .talent-img-box img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+            object-position: top center;
+        }
 
- .awards-grid {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
- gap: 30px;
- margin-top: 50px;
- }
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
 
- .award-card {
- background: white;
- padding: 40px 30px;
- border-radius: 12px;
- text-align: center;
- box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
- transition: transform 0.3s ease;
- }
+        .award-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
 
- .award-card:hover {
- transform: translateY(-10px);
- }
+        .award-card:hover {
+            transform: translateY(-10px);
+        }
 
- .award-card i {
- font-size: clamp(1.8rem, 6vw, 2.8rem);
- color: #E85D04;
- margin-bottom: 20px;
- }
+        .award-card i {
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            color: #E85D04;
+            margin-bottom: 20px;
+        }
 
- .content-section {
- padding: 80px 0;
- background: #f8f9fa;
- }
+        .content-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
 
- .bio-text p {
- margin-bottom: 20px;
- font-size: 1.1rem;
- line-height: 1.8;
- color: #444;
- }
- </style>
- <!-- Performance & Instant Navigation -->
- <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
- <script type="speculationrules">
- {
- "prerender": [
- {
- "source": "list",
- "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
- "eagerness": "moderate"
- }
- ]
- }
- </script>
+        .bio-text p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+    </style>
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
- <header class="header">
- <div class="container header-container">
- <a href="index.html" class="logo"><h3 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">2023</h3>
- <p style="color: #334155; font-size: 1.1rem;">Prix du meilleur créateur de mode en Afrique de
- l’Ouest.</p>
- </div>
- <div class="award-card">
- <h3 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">2024</h3>
- <p style="color: #334155; font-size: 1.1rem;">Prix de la Créativité Africaine.</p>
- </div>
- <div class="award-card">
- <h3 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">2025</h3>
- <p style="color: #334155; font-size: 1.1rem;">Mention d’honneur au Festival de mode de Lagos.
- </p>
- </div>
- </div>
- </div>
- </div>
- </section>
- </main>
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html">Tourisme</a></li>
+                    <li><a href="culture.html" class="active">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="carte.html" class="btn btn-outline" style="border-color:white; color:white;">Carte</a>
+                <button class="mobile-menu-toggle" aria-label="Menu">Menu</button>
+            </div>
+        </div>
+    </header>
 
- <!-- Premium Royal Green Footer -->
- <!-- Premium Royal Green Footer -->
- <footer class="footer-premium">
- <div class="footer-pattern-overlay"></div>
- <div class="container footer-container-inner">
- <div class="footer-main-grid">
- <!-- Col 1: Marque & Mission -->
- <div class="footer-brand-col">
- <a href="index.html" class="footer-logo-link">
- <img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou" class="footer-logo-img">
- </a>
- <div class="footer-brand-slogan">Parakou, <span>Cœur Battant du Borgou</span></div>
- <p class="footer-brand-desc">
- Plateforme officielle et citoyenne dédiée au rayonnement touristique, culturel, économique et humain de la Cité des Kobourou. Fièrement propulsée par <strong>ITA INNOVATE</strong>.
- </p>
- <div class="footer-social-links">
- <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn">Facebook</a>
- <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn">Instagram</a>
- <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn">YouTube</a>
- <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn">LinkedIn</a>
- <a href="https://wa.me/2290100000000" target="_blank" rel="noopener noreferrer" class="footer-social-btn">WhatsApp</a>
- </div>
- </div>
+    <main>
+        <section class="talent-hero">
+            <div class="container">
+                <div class="hero-text">
+                    <span class="talent-role"
+                        style="color: #E85D04; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">Mode &
+                        Entrepreneuriat</span>
+                    <h1 style="font-size: clamp(2rem, 7.5vw, 3.5rem); margin: 20px 0;">Président Djangoun</h1>
+                    <p class="lead-text" style="font-size: 1.25rem; opacity: 0.9;">Créateur de mode et entrepreneur
+                        béninois, célèbre pour ses créations vestimentaires à partir de matériaux recyclés et non
+                        conventionnels.</p>
+                </div>
+                <div class="hero-portrait">
+                    <img loading="lazy" decoding="async" src="assets/images/PRESIDENT DJANGOUN.webp" alt="Visage de Président Djangoun">
+                </div>
+            </div>
+        </section>
 
- <!-- Col 2: Patrimoine & Visite -->
- <div class="footer-col">
- <h3 class="footer-col-title">Patrimoine & Visite</h3>
- <ul class="footer-links-list">
- <li><a href="index.html">Accueil général</a></li>
- <li><a href="histoire.html">Histoire & Dynasties</a></li>
- <li><a href="tourisme.html">Sites & Écotourisme</a></li>
- <li><a href="culture.html">Culture & Traditions</a></li>
- <li><a href="carte.html">Carte interactive</a></li>
- </ul>
- </div>
+        <section class="content-section">
+            <div class="container">
+                <div class="talent-profile-grid">
+                    <div class="talent-bio">
+                        <div class="bio-text">
+                            <h2 style="margin-bottom: 30px; font-size: 2.5rem; color: #222;">Biographie & Parcours</h2>
+                            <p><strong>Djangoun Zinli Roberto</strong>, couramment appelé <strong>Président
+                                    Djangoun</strong>, est un créateur de mode et entrepreneur béninois. Originaire
+                                d’Abomey, il a fait des études de marketing et action commerciale avant de s’installer à
+                                Parakou.</p>
+                            <p>À Parakou, il fonde l’<strong>Institut Djangoun Décor</strong>, un centre de formation
+                                spécialisé dans les métiers de l’événementiel. L'établissement propose des formations
+                                variées en hôtellerie, cuisine, pâtisserie et décoration événementielle.</p>
+                            <p>Il commence à utiliser le pseudonyme <em>Président Djangoun</em> lorsqu’il développe des
+                                créations vestimentaires fondées sur l’assemblage de matériaux divers, souvent issus du
+                                recyclage.</p>
 
- <!-- Col 3: Acteurs & Rayonnement -->
- <div class="footer-col">
- <h3 class="footer-col-title">Acteurs & Rayonnement</h3>
- <ul class="footer-links-list">
- <li><a href="talents.html">Talents & Savoir-Faire</a></li>
- <li><a href="agenda.html">Agenda des Événements</a></li>
- <li><a href="investir.html">Investir à Parakou</a></li>
- <li><a href="medias.html">Galerie & Vidéothèque</a></li>
- <li><a href="contact.html">Contact & Partenariats</a></li>
- </ul>
- </div>
+                            <h3 style="margin-top: 40px; margin-bottom: 20px; font-size: 2rem; color: #222;">Le Style
+                                Djangoun</h3>
+                            <p>Le style Djangoun se caractérise par l’usage de matériaux hétérogènes tels que des
+                                canettes, tuyaux, fragments de tôle, billets de banque ou autres objets du quotidien.
+                                Ces éléments sont réassemblés pour former des tenues considérées comme expérimentales ou
+                                atypiques.</p>
+                            <p>Le créateur associe cette démarche à une volonté de promouvoir la réutilisation de
+                                matériaux et d’explorer des formes alternatives d’expression vestimentaire. Il diffuse
+                                ses réalisations principalement via les réseaux sociaux, où il publie régulièrement des
+                                photos et vidéos de ses créations.</p>
+                        </div>
+                    </div>
+                    <div class="talent-img-box">
+                        <img loading="lazy" decoding="async" src="assets/images/PRESIDENT DJANGOUN.webp" alt="Créations de Président Djangoun">
+                    </div>
+                </div>
 
- <!-- Col 4: Permanence & Contact -->
- <div class="footer-col">
- <h3 class="footer-col-title">Permanence & Échange</h3>
- <div class="footer-badge-kbr">
- Cité des Kobourou • Borgou
- </div>
- <div class="footer-contact-items">
- <div class="footer-contact-item">
- <span>Hôtel de Ville & Espaces culturels, Parakou, Bénin</span>
- </div>
- <div class="footer-contact-item">
- <span>contact@exploreparakou.bj</span>
- </div>
- <div class="footer-contact-item">
- <span>+229 01 00 00 00 00</span>
- </div>
- </div>
- <a href="contact.html?type=talent" class="footer-contact-cta">
- Proposer un talent ou un lieu
- </a>
- </div>
- </div>
+                <div style="margin-top: 80px;">
+                    <h2 style="text-align: center; font-size: 2.5rem; color: #222;">Prix et Reconnaissances</h2>
+                    <div class="awards-grid">
+                        <div class="award-card">
+                            <h3 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">2023</h3>
+                            <p style="color: #334155; font-size: 1.1rem;">Prix du meilleur créateur de mode en Afrique de
+                                l’Ouest.</p>
+                        </div>
+                        <div class="award-card">
+                            <h3 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">2024</h3>
+                            <p style="color: #334155; font-size: 1.1rem;">Prix de la Créativité Africaine.</p>
+                        </div>
+                        <div class="award-card">
+                            <h3 style="font-size: 1.8rem; margin-bottom: 10px; color: #333;">2025</h3>
+                            <p style="color: #334155; font-size: 1.1rem;">Mention d’honneur au Festival de mode de Lagos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
- <!-- Bottom Bar -->
- <div class="footer-bottom-bar">
- <div class="footer-bottom-left">
- <span>&copy; 2026 <strong>Explore Parakou</strong>. Tous droits réservés. Une initiative propulsée par <strong>ITA INNOVATE</strong>.</span>
- </div>
- <div class="footer-bottom-right">
- <a href="contact.html">Mentions légales</a>
- <a href="contact.html">Confidentialité</a>
- <a href="admin.html" class="footer-admin-link">
- Espace Admin
- </a>
- </div>
- </div>
- </div>
- </footer>
+        <!-- Premium Royal Green Footer -->
+    <footer class="footer-premium">
+        <div class="footer-pattern-overlay"></div>
+        <div class="container footer-container-inner">
+            <div class="footer-main-grid">
+                <!-- Col 1: Marque & Mission -->
+                <div class="footer-brand-col">
+                    <a href="index.html" class="footer-logo-link">
+                        <img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou" class="footer-logo-img">
+                    </a>
+                    <div class="footer-brand-slogan">Parakou, <span>Cœur Battant du Borgou</span> </div>
+                    <p class="footer-brand-desc">
+                        Plateforme officielle et citoyenne dédiée au rayonnement touristique, culturel, économique et humain de la Cité des Kobourou. Fièrement propulsée par <strong>ITA INNOVATE</strong>.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook"></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram"></a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="YouTube"></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn"></a>
+                        <a href="https://wa.me/2290100000000" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp"></a>
+                    </div>
+                </div>
 
- <script src="assets/js/script.js"></script>
+                <!-- Col 2: Patrimoine & Visite -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">Patrimoine & Visite</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="index.html">Accueil général</a></li>
+                        <li><a href="histoire.html">Histoire & Dynasties</a></li>
+                        <li><a href="tourisme.html">Sites & Écotourisme</a></li>
+                        <li><a href="culture.html">Culture & Traditions</a></li>
+                        <li><a href="carte.html">Carte interactive</a></li>
+                    </ul>
+                </div>
 
- <!-- Supabase Configuration -->
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
- <script src="assets/js/supabaseClient.js"></script>
+                <!-- Col 3: Acteurs & Rayonnement -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">Acteurs & Rayonnement</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="talents.html">Talents & Savoir-Faire</a></li>
+                        <li><a href="agenda.html">Agenda des Événements</a></li>
+                        <li><a href="investir.html">Investir à Parakou</a></li>
+                        <li><a href="medias.html">Galerie & Vidéothèque</a></li>
+                        <li><a href="contact.html">Contact & Partenariats</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Permanence & Contact -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">Permanence & Échange</h3>
+                    <div class="footer-badge-kbr">
+                        Cité des Kobourou • Borgou
+                    </div>
+                    <div class="footer-contact-items">
+                        <div class="footer-contact-item">
+                            <span>Hôtel de Ville & Espaces culturels, Parakou, Bénin</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span>contact@exploreparakou.bj</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span>+229 01 00 00 00 00</span>
+                        </div>
+                    </div>
+                    <a href="contact.html?type=talent" class="footer-contact-cta">
+                        Proposer un talent / lieu
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom-bar">
+                <div class="footer-bottom-left">
+                    <span>&copy; 2026 <strong>Explore Parakou</strong>. Tous droits réservés. Une initiative propulsée par <strong>ITA INNOVATE</strong>.</span>
+                </div>
+                <div class="footer-bottom-right">
+                    <a href="contact.html">Mentions légales</a>
+                    <a href="contact.html">Confidentialité</a>
+                    <a href="admin.html" class="footer-admin-link">
+                        Espace Admin
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
 </body>
 
 </html>

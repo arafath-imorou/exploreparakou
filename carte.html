@@ -2,86 +2,121 @@
 <html lang="fr">
 
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Carte Interactive | Explore Parakou</title>
- <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
- <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
- <link rel="stylesheet" href="assets/css/style.css">
- <!-- Leaflet CSS -->
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
- integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Interactive | Explore Parakou</title>
+        <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
- <!-- Leaflet MarkerCluster CSS -->
- <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
- <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
- <!-- Performance & Instant Navigation -->
- <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
- <script type="speculationrules">
- {
- "prerender": [
- {
- "source": "list",
- "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
- "eagerness": "moderate"
- }
- ]
- }
- </script>
+    <!-- Leaflet MarkerCluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+    <!-- Performance & Instant Navigation -->
+    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+    <script type="speculationrules">
+    {
+        "prerender": [
+            {
+                "source": "list",
+                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+                "eagerness": "moderate"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
- <header class="header" style="background:var(--color-primary); padding:10px 0;">
- <div class="container header-container">
- <a href="index.html" class="logo">Tout
- </button>
- <button class="filter-chip" data-category="tourisme">
- Tourisme
- </button>
- <button class="filter-chip" data-category="hebergement">
- Hôtels
- </button>
- <button class="filter-chip" data-category="restaurant">
- Restos
- </button>
- <button class="filter-chip" data-category="loisirs">
- Loisirs
- </button>
- <button class="filter-chip" data-category="commerce">
- Shopping
- </button>
- </div>
- </div>
+    <header class="header" style="background:var(--color-primary); padding:10px 0;">
+        <div class="container header-container">
+            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="histoire.html">Histoire</a></li>
+                    <li><a href="tourisme.html">Tourisme</a></li>
+                    <li><a href="culture.html">Culture</a></li>
+                    <li><a href="talents.html">Talents</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                    <li><a href="investir.html">Investir</a></li>
+                    <li><a href="medias.html">Médias</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="index.html" class="btn btn-outline" style="border:1px solid rgba(255,255,255,0.2);">Retour</a>
+                <button class="mobile-menu-toggle" aria-label="Menu">Menu</button>
+            </div>
+        </div>
+    </header>
 
- <!-- FAB Around Me -->
- <button class="fab-location" id="btn-locate-me" title="Autour de moi">
- </button>
+    <main style="height: calc(100vh - 60px); position: relative; overflow: hidden; margin-top: 60px;">
+        <!-- Map Container -->
+        <div id="map" style="width: 100%; height: 100%; z-index: 1;"></div>
 
- <!-- Bottom Sheet (Place Details) -->
- <div class="bottom-sheet" id="place-sheet">
- <div class="sheet-drag-handle"></div>
- <button class="sheet-close" id="sheet-close"></button>
+        <!-- Floating Search Bar -->
+        <div class="map-search-container">
+            <div class="search-input-wrapper">
+                <input type="text" id="map-search" placeholder="Rechercher un lieu, un hôtel...">
+            </div>
+        </div>
 
- <div class="sheet-content">
- <!-- Content injected via JS -->
- <div class="sheet-placeholder">
- <p>Sélectionnez un lieu sur la carte pour voir les détails.</p>
- </div>
- </div>
- </div>
- </main>
+        <!-- Floating Filters -->
+        <div class="map-filters-container">
+            <div class="filter-scroll">
+                <button class="filter-chip active" data-category="all">
+                    Tout
+                </button>
+                <button class="filter-chip" data-category="tourisme">
+                    Tourisme
+                </button>
+                <button class="filter-chip" data-category="hebergement">
+                    Hôtels
+                </button>
+                <button class="filter-chip" data-category="restaurant">
+                    Restos
+                </button>
+                <button class="filter-chip" data-category="loisirs">
+                    Loisirs
+                </button>
+                <button class="filter-chip" data-category="commerce">
+                    Shopping
+                </button>
+            </div>
+        </div>
 
- <!-- Leaflet JS -->
- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
- integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
- <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+        <!-- FAB Around Me -->
+        <button class="fab-location" id="btn-locate-me" title="Autour de moi" aria-label="Autour de moi" style="font-weight:700; font-size:0.85rem;">GPS</button>
 
- <script src="assets/js/script.js"></script>
- <script src="assets/js/map.js"></script>
+        <!-- Bottom Sheet (Place Details) -->
+        <div class="bottom-sheet" id="place-sheet">
+            <div class="sheet-drag-handle"></div>
+            <button class="sheet-close" id="sheet-close" aria-label="Fermer" style="font-size:1.1rem; line-height:1; font-weight:700;">✕</button>
 
- <!-- Supabase Configuration -->
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
- <script src="assets/js/supabaseClient.js"></script>
+            <div class="sheet-content">
+                <!-- Content injected via JS -->
+                <div class="sheet-placeholder">
+                    <p>Sélectionnez un lieu sur la carte pour voir les détails.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/map.js"></script>
+
+    <!-- Supabase Configuration -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabaseClient.js"></script>
 </body>
 
 </html>
