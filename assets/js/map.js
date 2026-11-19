@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return L.divIcon({
             className: 'custom-map-marker',
             html: `<div style="background-color: ${color}; width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
-                    <i class="ph ph-${iconName}" style="color: white; font-size: 16px;"></i>
+                    <span style="color:white; font-size:11px; font-weight:800; text-transform:uppercase;">${(category || "P")[0]}</span>
                    </div>`,
             iconSize: [32, 32],
             iconAnchor: [16, 32], // Bottom center
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnLocate = document.getElementById('btn-locate-me');
     btnLocate.addEventListener('click', () => {
         if (navigator.geolocation) {
-            btnLocate.innerHTML = '<i class="ph ph-spinner ph-spin"></i>'; // Loading state
+            btnLocate.innerText = '...'; // Loading state
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     const lat = position.coords.latitude;
@@ -238,11 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }).addTo(map);
 
                     map.flyTo([lat, lng], 15);
-                    btnLocate.innerHTML = '<i class="ph ph-navigation-arrow"></i>';
+                    btnLocate.innerText = 'GPS';
                 },
                 () => {
                     alert('Impossible de récupérer votre position.');
-                    btnLocate.innerHTML = '<i class="ph ph-navigation-arrow"></i>';
+                    btnLocate.innerText = 'GPS';
                 }
             );
         } else {
@@ -268,20 +268,20 @@ document.addEventListener('DOMContentLoaded', () => {
             <p style="margin-bottom: 15px; color: #555; line-height: 1.5;">${place.desc}</p>
             
             <div class="place-info-row">
-                <i class="ph ph-map-pin"></i>
+                <span style="font-weight:700; color:var(--color-primary);">Lieu : </span>
                 <span>${place.address}</span>
             </div>
             <div class="place-info-row">
-                <i class="ph ph-phone"></i>
+                <span style="font-weight:700; color:var(--color-primary);">Tél : </span>
                 <span>${place.phone}</span>
             </div>
 
             <div class="place-actions">
                 <a href="#" class="btn-place-action btn-call" onclick="window.location.href='tel:${place.phone}'">
-                    <i class="ph ph-phone"></i> Appeler
+                    Appeler
                 </a>
                 <a href="https://www.google.com/maps/dir/?api=1&destination=${place.coords[0]},${place.coords[1]}" target="_blank" class="btn-place-action btn-route">
-                    <i class="ph ph-arrow-bend-up-right"></i> Itinéraire
+                    Itinéraire
                 </a>
             </div>
         `;
@@ -308,16 +308,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper: Stars
     function generateStars(rating) {
-        let stars = '';
-        for (let i = 1; i <= 5; i++) {
-            if (i <= Math.floor(rating)) {
-                stars += '<i class="ph ph-star-fill"></i>';
-            } else if (i === Math.ceil(rating) && !Number.isInteger(rating)) {
-                stars += '<i class="ph ph-star-half-fill"></i>';
-            } else {
-                stars += '<i class="ph ph-star"></i>';
-            }
-        }
-        return stars;
-    }
+    return `<span style="font-weight:700; color:var(--color-accent); font-size:0.9rem;">Note : ${rating} / 5</span>`;
 });

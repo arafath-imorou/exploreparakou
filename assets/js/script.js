@@ -278,7 +278,7 @@ function closeMobileMenu() {
         document.body.classList.remove('menu-open');
         if (mobileMenuBtn) {
             const icon = mobileMenuBtn.querySelector('i');
-            if (icon) icon.classList.replace('ph-x', 'ph-list');
+            if (toggle) toggle.innerText = 'Menu';
             mobileMenuBtn.setAttribute('aria-expanded', 'false');
         }
     }
@@ -292,7 +292,7 @@ function openMobileMenu() {
         document.body.classList.add('menu-open');
         if (mobileMenuBtn) {
             const icon = mobileMenuBtn.querySelector('i');
-            if (icon) icon.classList.replace('ph-list', 'ph-x');
+            if (toggle) toggle.innerText = 'Fermer';
             mobileMenuBtn.setAttribute('aria-expanded', 'true');
         }
     }

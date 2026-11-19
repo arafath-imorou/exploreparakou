@@ -72,14 +72,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                         errorBox.style.display = 'block';
                         errorBox.innerText = error.message;
                     }
-                    btn.innerHTML = 'Se Connecter <i class="ph ph-sign-in"></i>';
+                    btn.innerHTML = 'Se Connecter ';
                 }
             } catch (err) {
                 if (errorBox) {
                     errorBox.style.display = 'block';
                     errorBox.innerText = err.message || "Erreur de connexion";
                 }
-                btn.innerHTML = 'Se Connecter <i class="ph ph-sign-in"></i>';
+                btn.innerHTML = 'Se Connecter ';
             }
         });
     }
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     preview.innerHTML = `
                         <img src="${evt.target.result}" style="width:100%; border-radius:8px; display:block; margin-bottom:4px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
                         <div style="font-size:0.75rem; color:#0E813F; font-weight:700;">
-                            <i class="ph ph-check-circle"></i> Format WebP (~${sizeKb} Ko)
+                            Format WebP (~${sizeKb} Ko)
                         </div>
                     `;
                 };
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.warn("[Cache Sync] Notice:", e);
         }
 
-        showToast("✅ Enregistré avec succès ! Vos modifications sont directement visibles sur le site.");
+        showToast("Enregistré avec succès ! Vos modifications sont directement visibles sur le site.");
     }
 
     window.escapeQuotes = function (str) {
@@ -352,8 +352,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td><strong>${t.name}</strong></td>
                     <td><span style="background:rgba(212,160,23,0.15); color:#925C00; padding:3px 8px; border-radius:4px; font-weight:600; font-size:0.8rem;">${t.role}</span></td>
                     <td>
-                        <button class="action-btn edit" title="Modifier" onclick="editTalent('${t.id}', '${escapeQuotes(t.name)}', '${escapeQuotes(t.role)}', '${escapeQuotes(t.description)}', '${escapeQuotes(t.page_link)}', '${escapeQuotes(t.image_url)}')"><i class="ph ph-pencil-simple" style="font-size:1.2rem;"></i></button>
-                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('talents', '${t.id}', loadTalents)"><i class="ph ph-trash" style="font-size:1.2rem;"></i></button>
+                        <button class="action-btn edit" title="Modifier" onclick="editTalent('${t.id}', '${escapeQuotes(t.name)}', '${escapeQuotes(t.role)}', '${escapeQuotes(t.description)}', '${escapeQuotes(t.page_link)}', '${escapeQuotes(t.image_url)}')">Modifier</button>
+                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('talents', '${t.id}', loadTalents)">Supprimer</button>
                     </td>
                 </tr>`;
         });
@@ -415,8 +415,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td><strong>${t.title}</strong></td>
                     <td><span style="background:rgba(14,129,63,0.12); color:#0E813F; padding:3px 8px; border-radius:4px; font-weight:600; font-size:0.8rem;">${t.category}</span></td>
                     <td>
-                        <button class="action-btn edit" title="Modifier" onclick="editTourisme('${t.id}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.category)}', '${escapeQuotes(t.description)}', '${escapeQuotes(t.link_details)}', '${escapeQuotes(t.link_map)}', '${escapeQuotes(t.image_url)}')"><i class="ph ph-pencil-simple" style="font-size:1.2rem;"></i></button>
-                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('tourisme', '${t.id}', loadTourisme)"><i class="ph ph-trash" style="font-size:1.2rem;"></i></button>
+                        <button class="action-btn edit" title="Modifier" onclick="editTourisme('${t.id}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.category)}', '${escapeQuotes(t.description)}', '${escapeQuotes(t.link_details)}', '${escapeQuotes(t.link_map)}', '${escapeQuotes(t.image_url)}')">Modifier</button>
+                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('tourisme', '${t.id}', loadTourisme)">Supprimer</button>
                     </td>
                 </tr>`;
         });
@@ -480,8 +480,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td><strong>${t.title}</strong></td>
                     <td><small style="color:#475569;">${t.description ? t.description.substring(0, 70) + '...' : ''}</small></td>
                     <td>
-                        <button class="action-btn edit" title="Modifier" onclick="editCulture('${t.id}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.description)}', '${escapeQuotes(t.image_url)}')"><i class="ph ph-pencil-simple" style="font-size:1.2rem;"></i></button>
-                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('culture', '${t.id}', loadCulture)"><i class="ph ph-trash" style="font-size:1.2rem;"></i></button>
+                        <button class="action-btn edit" title="Modifier" onclick="editCulture('${t.id}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.description)}', '${escapeQuotes(t.image_url)}')">Modifier</button>
+                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('culture', '${t.id}', loadCulture)">Supprimer</button>
                     </td>
                 </tr>`;
         });
@@ -540,8 +540,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td><strong>${t.title}</strong><br><small style="color:#0E813F;">${t.category}</small></td>
                     <td>${t.location}</td>
                     <td>
-                        <button class="action-btn edit" title="Modifier" onclick="editAgenda('${t.id}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.category)}', '${escapeQuotes(t.date_number)}', '${escapeQuotes(t.date_month)}', '${escapeQuotes(t.time)}', '${escapeQuotes(t.location)}', '${escapeQuotes(t.description)}', '${escapeQuotes(t.image_url)}')"><i class="ph ph-pencil-simple" style="font-size:1.2rem;"></i></button>
-                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('agenda', '${t.id}', loadAgenda)"><i class="ph ph-trash" style="font-size:1.2rem;"></i></button>
+                        <button class="action-btn edit" title="Modifier" onclick="editAgenda('${t.id}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.category)}', '${escapeQuotes(t.date_number)}', '${escapeQuotes(t.date_month)}', '${escapeQuotes(t.time)}', '${escapeQuotes(t.location)}', '${escapeQuotes(t.description)}', '${escapeQuotes(t.image_url)}')">Modifier</button>
+                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('agenda', '${t.id}', loadAgenda)">Supprimer</button>
                     </td>
                 </tr>`;
         });
@@ -608,8 +608,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td><strong style="color:var(--color-accent);">${t.period}</strong></td>
                     <td><strong>${t.title}</strong><br><small style="color:#475569;">${t.description ? t.description.substring(0, 80) + '...' : ''}</small></td>
                     <td>
-                        <button class="action-btn edit" title="Modifier" onclick="editHistoire('${t.id}', '${escapeQuotes(t.period)}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.description)}')"><i class="ph ph-pencil-simple" style="font-size:1.2rem;"></i></button>
-                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('histoire_timeline', '${t.id}', loadHistoire)"><i class="ph ph-trash" style="font-size:1.2rem;"></i></button>
+                        <button class="action-btn edit" title="Modifier" onclick="editHistoire('${t.id}', '${escapeQuotes(t.period)}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.description)}')">Modifier</button>
+                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('histoire_timeline', '${t.id}', loadHistoire)">Supprimer</button>
                     </td>
                 </tr>`;
         });
@@ -697,8 +697,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <td><strong>${t.title}</strong></td>
                     <td><span style="background:rgba(14,129,63,0.12); color:#0E813F; padding:3px 8px; border-radius:4px; font-weight:600; font-size:0.8rem;">${catLabel}</span></td>
                     <td>
-                        <button class="action-btn edit" title="Modifier" onclick="editMedia('${t.id}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.category)}', '${escapeQuotes(t.image_url)}')"><i class="ph ph-pencil-simple" style="font-size:1.2rem;"></i></button>
-                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('medias', '${t.id}', loadMedias)"><i class="ph ph-trash" style="font-size:1.2rem;"></i></button>
+                        <button class="action-btn edit" title="Modifier" onclick="editMedia('${t.id}', '${escapeQuotes(t.title)}', '${escapeQuotes(t.category)}', '${escapeQuotes(t.image_url)}')">Modifier</button>
+                        <button class="action-btn del" title="Supprimer" onclick="deleteRecord('medias', '${t.id}', loadMedias)">Supprimer</button>
                     </td>
                 </tr>`;
         });
@@ -745,7 +745,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             data.forEach(m => {
                 const date = new Date(m.created_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
                 const typeLabel = m.type === 'event' ? 'Événement' : (m.type === 'talent' ? 'Proposition Talent' : (m.type === 'signalement' ? 'Signalement' : 'Contact'));
-                const statusBadge = m.status === 'read' ? '<span style="color:#64748B; font-weight:600;"><i class="ph ph-check"></i> Lu</span>' : '<span style="color:#0E813F; font-weight:700;"><i class="ph ph-circle-fill" style="font-size:0.6rem;"></i> Nouveau</span>';
+                const statusBadge = m.status === 'read' ? '<span style="color:#64748B; font-weight:600;">Lu</span>' : '<span style="color:#0E813F; font-weight:700;">Nouveau</span>';
 
                 tbody.innerHTML += `
                     <tr>
@@ -754,8 +754,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <td><span style="background:#f1f5f9; padding:3px 8px; border-radius:4px; font-weight:600; font-size:0.8rem;">${typeLabel}</span></td>
                         <td><strong>${m.name || 'Anonyme'}</strong><br><small style="color:#64748B;">${m.email || m.phone || '-'}</small></td>
                         <td>
-                            <button class="btn btn-outline" style="padding:4px 10px; font-size:0.85rem;" onclick="openMsgModal('${m.id}')"><i class="ph ph-eye"></i> Ouvrir</button>
-                            <button class="action-btn del" title="Supprimer" onclick="deleteRecord('contact_messages', '${m.id}', loadMessages)"><i class="ph ph-trash" style="font-size:1.2rem;"></i></button>
+                            <button class="btn btn-outline" style="padding:4px 10px; font-size:0.85rem;" onclick="openMsgModal('${m.id}')">Ouvrir</button>
+                            <button class="action-btn del" title="Supprimer" onclick="deleteRecord('contact_messages', '${m.id}', loadMessages)">Supprimer</button>
                         </td>
                     </tr>`;
             });
@@ -881,7 +881,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             preview.style.display = 'block';
             preview.innerHTML = `
                 <img src="${img}" style="width:100%; border-radius:8px; display:block; margin-bottom:4px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
-                <div style="font-size:0.75rem; color:#64748B;"><i class="ph ph-image"></i> Image actuelle (WebP)</div>
+                <div style="font-size:0.75rem; color:#64748B;">Image actuelle (WebP)</div>
             `;
         }
 

@@ -5086,3 +5086,109 @@ main {
         margin: 0 auto;
     }
 }
+
+
+/* ==========================================================================
+   STYLE MINIMALISTE & TYPOGRAPHIQUE SANS ICONES NI STICKERS
+   ========================================================================== */
+
+.footer-social-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.footer-social-btn {
+    padding: 7px 16px !important;
+    border-radius: 9999px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0.86rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em !important;
+    transition: all 0.25s ease !important;
+    text-decoration: none !important;
+    width: auto !important;
+    height: auto !important;
+}
+
+.footer-social-btn:hover {
+    background: var(--color-accent) !important;
+    color: #07220E !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(212, 160, 23, 0.35) !important;
+    border-color: var(--color-accent) !important;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.header.scrolled .mobile-menu-toggle {
+    background: rgba(7, 34, 14, 0.06);
+    border-color: rgba(7, 34, 14, 0.18);
+    color: var(--color-primary);
+}
+
+.mobile-menu-toggle:hover {
+    background: var(--color-accent);
+    color: #07220E;
+}
+
+/* Masquer les boîtes d'icônes obsolètes */
+.pillar-icon-box,
+.exp-icon,
+.why-icon,
+.pulse-icon,
+.mayor-quote-icon {
+    display: none !important;
+}
+
+/* Boutons d'action Admin textuels */
+.action-btn.edit {
+    display: inline-block !important;
+    padding: 6px 14px !important;
+    background: #EBF5FF !important;
+    color: #1E40AF !important;
+    border-radius: 6px !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    margin-right: 6px !important;
+    border: 1px solid #BFDBFE !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+.action-btn.del {
+    display: inline-block !important;
+    padding: 6px 14px !important;
+    background: #FEF2F2 !important;
+    color: #991B1B !important;
+    border-radius: 6px !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    border: 1px solid #FECACA !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+.action-btn:hover {
+    filter: brightness(0.95);
+}

@@ -2,339 +2,111 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tourisme & Évasion | Explore Parakou</title>
-        <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
-    <style>
-        /* Specific overrides for this page */
-        body {
-            background-color: #fafbfc;
-        }
-    </style>
-    <!-- Performance & Instant Navigation -->
-    <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
-    <script type="speculationrules">
-    {
-        "prerender": [
-            {
-                "source": "list",
-                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
-                "eagerness": "moderate"
-            }
-        ]
-    }
-    </script>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Tourisme & Évasion | Explore Parakou</title>
+ <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
+ <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
+ <link rel="stylesheet" href="assets/css/style.css">
+ <style>
+ /* Specific overrides for this page */
+ body {
+ background-color: #fafbfc;
+ }
+ </style>
+ <!-- Performance & Instant Navigation -->
+ <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
+ <script type="speculationrules">
+ {
+ "prerender": [
+ {
+ "source": "list",
+ "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
+ "eagerness": "moderate"
+ }
+ ]
+ }
+ </script>
 </head>
 
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="histoire.html">Histoire</a></li>
-                    <li><a href="tourisme.html" class="active">Tourisme</a></li>
-                    <li><a href="culture.html">Culture</a></li>
-                    <li><a href="talents.html">Talents</a></li>
-                    <li><a href="agenda.html">Agenda</a></li>
-                    <li><a href="investir.html">Investir</a></li>
-                    <li><a href="medias.html">Médias</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <a href="carte.html" class="btn btn-outline" style="border-width:1px;">Carte <i
-                        class="ph ph-map-trifold"></i></a>
-                <button class="mobile-menu-toggle"><i class="ph ph-list"></i></button>
-            </div>
-        </div>
-    </header>
+ <header class="header">
+ <div class="container header-container">
+ <a href="index.html" class="logo"></a>
+ <button class="mobile-menu-toggle" aria-label="Menu">Menu</button>
+ </div>
+ </div>
+ </header>
 
-    <main>
-        <!-- 1. Immersive Hero -->
-        <section class="hero" style="height: 60vh;">
-            <img fetchpriority="high" decoding="async" src="assets/images/tourisme-hero.webp" alt="Vue aérienne Parakou" class="hero-bg">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-title">Découvrir Parakou</h1>
-                <p class="hero-subtitle">Préparez votre séjour et explorez les lieux incontournables.</p>
-                <div class="hero-buttons">
-                    <a href="#visiter" class="btn btn-primary">Visiter & Loisirs</a>
-                    <a href="#sejourner" class="btn btn-outline"
-                        style="background:rgba(255,255,255,0.1); backdrop-filter:blur(5px); border-color:white; color:white;">Où
-                        Dormir & Manger</a>
-                </div>
-            </div>
-        </section>
+ <main>
+ <!-- 1. Immersive Hero -->
+ <section class="hero" style="height: 60vh;">
+ Visiter & Loisirs</a>
+ <a href="#sejourner" class="filter-chip"
+ style="text-decoration:none; background:white; border:1px solid #ddd;">Hôtels & Restos</a>
+ <a href="carte.html" class="filter-chip"
+ style="text-decoration:none; background:white; border:1px solid #ddd;">Carte Interactive</a>
+ </div>
+ </div>
+ </div>
 
-        <!-- 2. Sticky Filter Bar -->
-        <div class="sticky-filters">
-            <div class="container">
-                <div class="filter-scroll" style="display:flex; gap:10px; overflow-x:auto;">
-                    <a href="#visiter" class="filter-chip active" style="text-decoration:none;"><i
-                            class="ph ph-compass"></i> Visiter & Loisirs</a>
-                    <a href="#sejourner" class="filter-chip"
-                        style="text-decoration:none; background:white; border:1px solid #ddd;"><i class="ph ph-bed"></i>
-                        Hôtels & Restos</a>
-                    <a href="carte.html" class="filter-chip"
-                        style="text-decoration:none; background:white; border:1px solid #ddd;"><i
-                            class="ph ph-map-trifold"></i> Carte Interactive</a>
-                </div>
-            </div>
-        </div>
+ <div class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
 
-        <div class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
+ <!-- 3. Category Grid (Entry Points) -->
+ <div class="cards-grid"
+ style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem;">
+ <div class="category-entry">
+ App
+ Store</button>
+ <button class="btn" style="background:transparent; border:1px solid white;">Google Play</button>
+ </div>
+ </div>
 
-            <!-- 3. Category Grid (Entry Points) -->
-            <div class="cards-grid"
-                style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-bottom: 4rem;">
-                <div class="category-entry">
-                    <img loading="lazy" decoding="async" src="assets/images/cat-sites.webp" alt="Sites">
-                    <div class="category-label">Sites Touristiques</div>
-                </div>
-                <div class="category-entry">
-                    <img loading="lazy" decoding="async" src="assets/images/cat-hotels.webp" alt="Hotels">
-                    <div class="category-label">Hébergements</div>
-                </div>
-                <div class="category-entry">
-                    <img loading="lazy" decoding="async" src="assets/images/cat-food.webp" alt="Restos">
-                    <div class="category-label">Gastronomie</div>
-                </div>
-                <!-- Reuse hero for leisure/market generic if needed, or specific -->
-                <div class="category-entry">
-                    <img loading="lazy" decoding="async" src="assets/images/experience-market.webp" alt="Loisirs">
-                    <div class="category-label">Marchés & Loisirs</div>
-                </div>
-            </div>
+ </div>
+ </main>
 
-            <!-- 4. SECTION A: VISITER (Sites & Loisirs) -->
-            <div id="visiter" style="margin-bottom: 6rem;">
-                <div class="section-header"
-                    style="margin-bottom:2rem; border-bottom:1px solid #eee; padding-bottom:1rem;">
-                    <h2 style="color:var(--color-primary); font-size:2rem;">Découvrir & S'évader</h2>
-                    <p style="color: #334155;">Les sites historiques, les marchés et les lieux de loisirs.</p>
-                </div>
-                <div class="cards-grid dynamic-grid" id="visiter-grid"
-                    style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap:2rem;">
-                    <p>Chargement...</p>
-                </div>
-            </div>
+ <!-- Premium Royal Green Footer -->
+ <!-- Premium Royal Green Footer -->
+ <footer class="footer-premium">
+ <div class="footer-pattern-overlay"></div>
+ <div class="container footer-container-inner">
+ <div class="footer-main-grid">
+ <!-- Col 1: Marque & Mission -->
+ <div class="footer-brand-col">
+ <a href="index.html" class="footer-logo-link">
+ ${item.category}</div>
+ <h3 class="card-title" style="font-size:1.35rem; font-weight:700; color:var(--color-primary); margin-bottom:0.6rem; font-family:var(--font-heading);">${item.title}</h3>
+ <p style="color: #334155; font-size:1rem; line-height:1.65; margin-bottom:14px;">${item.description}</p>
+ <div class="listing-actions" style="display:flex; align-items:center; gap:12px;">
+ ${item.link_details ? `<a href="${item.link_details}" class="btn btn-primary" style="padding:9px 22px; font-size:0.92rem; font-weight:700; display:inline-flex; align-items:center; gap:6px;">Découvrir le site</a>` : ''}
+ ${item.link_map ? `<a href="${item.link_map}" target="_blank" class="action-icon" title="Itinéraire Google Maps" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#F1F5F9; color:var(--color-primary); font-size:1.2rem; transition:all 0.2s;"></a>` : ''}
+ </div>
+ </div>
+ </div>
+ `;
 
-            <!-- 5. SECTION B: SEJOURNER (Hôtels & Restos) -->
-            <div id="sejourner" style="margin-bottom: 4rem;">
-                <div class="section-header"
-                    style="margin-bottom:2rem; border-bottom:1px solid #eee; padding-bottom:1rem;">
-                    <h2 style="color:var(--color-primary); font-size:2rem;">Séjourner & Déguster</h2>
-                    <p style="color: #334155;">Les meilleures adresses pour dormir et manger à Parakou.</p>
-                </div>
-                <div class="cards-grid dynamic-grid" id="sejourner-grid"
-                    style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap:2rem;">
-                    <p>Chargement...</p>
-                </div>
-            </div>
+ if (isSejourner) {
+ sejournerHtml += cardHtml;
+ } else {
+ visiterHtml += cardHtml;
+ }
+ });
 
-            <!-- 5. Expériences Locales -->
-            <section style="margin-top: 4rem;">
-                <h2 style="margin-bottom: 2rem;">Expériences Uniques</h2>
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; align-items:center;">
-                    <img loading="lazy" decoding="async" src="assets/images/experience-market.webp" alt="Marché Arzeke"
-                        style="border-radius:var(--radius-md); width:100%;">
-                    <div>
-                        <h3 style="font-size:2rem; margin-bottom:1rem; color:var(--color-primary);">Immersion au Marché
-                            Arzeke</h3>
-                        <p style="margin-bottom:1.5rem; opacity:0.8;">Perdez-vous dans les allées colorées du grand
-                            marché. Tissus, épices, artisanat... c'est le poumon économique et social de la ville. Une
-                            expérience sensorielle inoubliable.</p>
-                        <a href="#" class="btn btn-outline"
-                            style="color:var(--color-primary); border-color:var(--color-primary);">Lire le guide</a>
-                    </div>
-                </div>
-            </section>
+ visiterGrid.innerHTML = visiterHtml || '<p>Aucun lieu touristique trouvé.</p>';
+ sejournerGrid.innerHTML = sejournerHtml || '<p>Aucun hébergement ou restaurant trouvé.</p>';
+ }
 
-            <!-- 6. App CTA -->
-            <div class="app-cta" style="margin-top: 5rem;">
-                <h2 style="margin-bottom: 1rem;">Emportez Parakou avec vous</h2>
-                <p style="max-width:600px; margin:0 auto var(--spacing-md); opacity:0.9;">Téléchargez l'application
-                    Explore Parakou pour naviguer hors ligne, accéder aux audioguides et découvrir la ville facilement.
-                </p>
-                <div style="display:flex; justify-content:center; gap:1rem;">
-                    <button class="btn" style="background:white; color:black;"><i class="ph ph-apple-logo"></i> App
-                        Store</button>
-                    <button class="btn" style="background:transparent; border:1px solid white;"><i
-                            class="ph ph-google-play-logo"></i> Google Play</button>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-        <!-- Premium Royal Green Footer -->
-    <footer class="footer-premium">
-        <div class="footer-pattern-overlay"></div>
-        <div class="container footer-container-inner">
-            <div class="footer-main-grid">
-                <!-- Col 1: Marque & Mission -->
-                <div class="footer-brand-col">
-                    <a href="index.html" class="footer-logo-link">
-                        <img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou" class="footer-logo-img">
-                    </a>
-                    <div class="footer-brand-slogan">Parakou, <span>Cœur Battant du Borgou</span> 🇧🇯</div>
-                    <p class="footer-brand-desc">
-                        Plateforme officielle et citoyenne dédiée au rayonnement touristique, culturel, économique et humain de la Cité des Kobourou. Fièrement propulsée par <strong>ITA INNOVATE</strong>.
-                    </p>
-                    <div class="footer-social-links">
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
-                        <a href="https://wa.me/2290100000000" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
-                    </div>
-                </div>
-
-                <!-- Col 2: Patrimoine & Visite -->
-                <div class="footer-col">
-                    <h3 class="footer-col-title">Patrimoine & Visite</h3>
-                    <ul class="footer-links-list">
-                        <li><a href="index.html">Accueil général</a></li>
-                        <li><a href="histoire.html">Histoire & Dynasties</a></li>
-                        <li><a href="tourisme.html">Sites & Écotourisme</a></li>
-                        <li><a href="culture.html">Culture & Traditions</a></li>
-                        <li><a href="carte.html">Carte interactive</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 3: Acteurs & Rayonnement -->
-                <div class="footer-col">
-                    <h3 class="footer-col-title">Acteurs & Rayonnement</h3>
-                    <ul class="footer-links-list">
-                        <li><a href="talents.html">Talents & Savoir-Faire</a></li>
-                        <li><a href="agenda.html">Agenda des Événements</a></li>
-                        <li><a href="investir.html">Investir à Parakou</a></li>
-                        <li><a href="medias.html">Galerie & Vidéothèque</a></li>
-                        <li><a href="contact.html">Contact & Partenariats</a></li>
-                    </ul>
-                </div>
-
-                <!-- Col 4: Permanence & Contact -->
-                <div class="footer-col">
-                    <h3 class="footer-col-title">Permanence & Échange</h3>
-                    <div class="footer-badge-kbr">
-                        <i class="ph ph-crown"></i> Cité des Kobourou • Borgou
-                    </div>
-                    <div class="footer-contact-items">
-                        <div class="footer-contact-item">
-                            <i class="ph ph-map-pin"></i>
-                            <span>Hôtel de Ville & Espaces culturels, Parakou, Bénin</span>
-                        </div>
-                        <div class="footer-contact-item">
-                            <i class="ph ph-envelope"></i>
-                            <span>contact@exploreparakou.bj</span>
-                        </div>
-                        <div class="footer-contact-item">
-                            <i class="ph ph-phone"></i>
-                            <span>+229 01 00 00 00 00</span>
-                        </div>
-                    </div>
-                    <a href="contact.html?type=talent" class="footer-contact-cta">
-                        <i class="ph ph-paper-plane-tilt"></i> Proposer un talent / lieu
-                    </a>
-                </div>
-            </div>
-
-            <!-- Bottom Bar -->
-            <div class="footer-bottom-bar">
-                <div class="footer-bottom-left">
-                    <span>&copy; 2026 <strong>Explore Parakou</strong>. Tous droits réservés. Une initiative propulsée par <strong>ITA INNOVATE</strong>.</span>
-                </div>
-                <div class="footer-bottom-right">
-                    <a href="contact.html">Mentions légales</a>
-                    <a href="contact.html">Confidentialité</a>
-                    <a href="admin.html" class="footer-admin-link">
-                        <i class="ph ph-lock-key"></i> Espace Admin
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="assets/js/script.js"></script>
-    <script>
-        // Simple sticky header interaction
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-    </script>
-
-    <!-- Supabase Configuration -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="assets/js/supabaseClient.js"></script>
-        <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const visiterGrid = document.getElementById('visiter-grid');
-            const sejournerGrid = document.getElementById('sejourner-grid');
-
-            if (!visiterGrid || !sejournerGrid) return;
-
-            window.renderTourisme = function(data) {
-                if (!data || data.length === 0) {
-                    visiterGrid.innerHTML = '<p>Aucun lieu touristique trouvé.</p>';
-                    sejournerGrid.innerHTML = '<p>Aucun hébergement ou restaurant trouvé.</p>';
-                    return;
-                }
-
-                let visiterHtml = '';
-                let sejournerHtml = '';
-
-                data.forEach(item => {
-                    const catLower = (item.category || '').toLowerCase();
-                    const isSejourner = catLower.includes('hôtel') || catLower.includes('hotel') || catLower.includes('resto') || catLower.includes('restaurant');
-
-                    const cardHtml = `
-                        <div class="listing-card">
-                            <img loading="lazy" decoding="async" src="${item.image_url}" alt="${item.title}" class="listing-img" onerror="this.src='assets/images/tourisme-hero.webp'">
-                            <div class="listing-content">
-                                <div class="listing-category" style="display:inline-flex; align-items:center; gap:5px; background:rgba(212,160,23,0.12); color:#925C00; padding:4px 10px; border-radius:6px; font-weight:700; font-size:0.8rem; margin-bottom:8px;"><i class="ph ph-tag"></i> ${item.category}</div>
-                                <h3 class="card-title" style="font-size:1.35rem; font-weight:700; color:var(--color-primary); margin-bottom:0.6rem; font-family:var(--font-heading);">${item.title}</h3>
-                                <p style="color: #334155; font-size:1rem; line-height:1.65; margin-bottom:14px;">${item.description}</p>
-                                <div class="listing-actions" style="display:flex; align-items:center; gap:12px;">
-                                    ${item.link_details ? `<a href="${item.link_details}" class="btn btn-primary" style="padding:9px 22px; font-size:0.92rem; font-weight:700; display:inline-flex; align-items:center; gap:6px;"><i class="ph ph-compass"></i> Découvrir le site</a>` : ''}
-                                    ${item.link_map ? `<a href="${item.link_map}" target="_blank" class="action-icon" title="Itinéraire Google Maps" style="width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; background:#F1F5F9; color:var(--color-primary); font-size:1.2rem; transition:all 0.2s;"><i class="ph ph-map-pin"></i></a>` : ''}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-
-                    if (isSejourner) {
-                        sejournerHtml += cardHtml;
-                    } else {
-                        visiterHtml += cardHtml;
-                    }
-                });
-
-                visiterGrid.innerHTML = visiterHtml || '<p>Aucun lieu touristique trouvé.</p>';
-                sejournerGrid.innerHTML = sejournerHtml || '<p>Aucun hébergement ou restaurant trouvé.</p>';
-            }
-
-            if (window.fastSupabaseFetch) {
-                window.fastSupabaseFetch('tourisme', () => {
-                    return supabase.from('tourisme').select('*').order('created_at', { ascending: false });
-                }, window.renderTourisme);
-            } else {
-                supabase.from('tourisme').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
-                    if (!error && data) renderTourisme(data);
-                });
-            }
-        });
-    </script>
+ if (window.fastSupabaseFetch) {
+ window.fastSupabaseFetch('tourisme', () => {
+ return supabase.from('tourisme').select('*').order('created_at', { ascending: false });
+ }, window.renderTourisme);
+ } else {
+ supabase.from('tourisme').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
+ if (!error && data) renderTourisme(data);
+ });
+ }
+ });
+ </script>
 </body>
 
 </html>
