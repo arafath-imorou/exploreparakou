@@ -88,7 +88,7 @@
                     <button class="filter-link" data-filter="people">Portraits</button>
                 </div>
 
-                <div class="gallery-grid-masonry">
+                <div class="gallery-grid-masonry" id="medias-gallery-grid">
                     <!-- Item 1 -->
                     <div class="gallery-item" data-category="people">
                         <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1517506972230-01c6014b2d38?q=80&w=2670&auto=format&fit=crop"
@@ -374,6 +374,37 @@
     <!-- Supabase Configuration -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabaseClient.js"></script>
+
+    <!-- Dynamisation Galerie & Médias depuis Admin Supabase -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('medias-gallery-grid');
+            if (!grid) return;
+
+            window.renderMedias = function(data) {
+                if (!data || !Array.isArray(data) || data.length === 0) return;
+                const itemsHtml = data.map(item => `
+                    <div class="gallery-item dynamic-media-item" data-category="${item.category || 'city'}">
+                        <img loading="lazy" decoding="async" src="${item.image_url}" alt="${item.title}" onerror="this.src='assets/images/hero-bg.webp'">
+                        <div class="item-overlay">
+                            <span class="view-btn"><i class="ph ph-arrows-out-simple"></i></span>
+                            <div style="position:absolute; bottom:15px; left:15px; right:15px; color:#fff; font-weight:700; font-size:0.95rem; text-shadow:0 2px 4px rgba(0,0,0,0.6);">${item.title}</div>
+                        </div>
+                    </div>
+                `).join('');
+
+                const existingDynamic = grid.querySelectorAll('.dynamic-media-item');
+                existingDynamic.forEach(e => e.remove());
+                grid.insertAdjacentHTML('afterbegin', itemsHtml);
+            };
+
+            if (window.fastSupabaseFetch && window.supabase) {
+                window.fastSupabaseFetch('medias', () => {
+                    return window.supabase.from('medias').select('*').order('created_at', { ascending: false });
+                }, window.renderMedias);
+            }
+        });
+    </script>
 </body>
 
 </html>

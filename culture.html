@@ -315,7 +315,7 @@
                     </p>
                 </div>
 
-                <div class="lieux-grid">
+                <div class="lieux-grid" id="culture-lieux-grid">
                     <!-- Lieu 1 : Musée de Plein Air -->
                     <div class="lieu-card">
                         <div class="lieu-card-img-wrap">
@@ -560,6 +560,42 @@
     <!-- Supabase Configuration -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabaseClient.js"></script>
+
+    <!-- Dynamisation Culture depuis Admin Supabase -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('culture-lieux-grid');
+            if (!grid) return;
+
+            window.renderCulture = function(data) {
+                if (!data || !Array.isArray(data) || data.length === 0) return;
+                const customCards = data.map(item => `
+                    <div class="lieu-card dynamic-lieu-card">
+                        <div class="lieu-card-img-wrap">
+                            <img loading="lazy" decoding="async" src="${item.image_url}" alt="${item.title}" onerror="this.src='assets/images/culture-hero.webp'">
+                            <div class="lieu-badge"><i class="ph ph-map-pin"></i> ${item.location || 'Parakou'}</div>
+                        </div>
+                        <div class="lieu-card-body">
+                            <h3>${item.title}</h3>
+                            <span class="lieu-subtitle-tag">${item.category || 'Culture & Patrimoine'}</span>
+                            <p>${item.description || ''}</p>
+                            ${item.link ? `<a href="${item.link}" class="lieu-link">En savoir plus <i class="ph ph-arrow-right"></i></a>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+
+                const existingCustom = grid.querySelectorAll('.dynamic-lieu-card');
+                existingCustom.forEach(e => e.remove());
+                grid.insertAdjacentHTML('afterbegin', customCards);
+            };
+
+            if (window.fastSupabaseFetch && window.supabase) {
+                window.fastSupabaseFetch('culture', () => {
+                    return window.supabase.from('culture').select('*').order('created_at', { ascending: false });
+                }, window.renderCulture);
+            }
+        });
+    </script>
 </body>
 
 </html>

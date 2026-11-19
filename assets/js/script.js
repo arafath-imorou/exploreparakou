@@ -238,7 +238,23 @@ function reinitializePageScripts(newDoc, pageName) {
         }
     }
 
-    // 5. Exécuter les scripts inline de la nouvelle page si nécessaire
+        // 5. Culture
+    const cultureGrid = document.getElementById('culture-lieux-grid');
+    if (cultureGrid && window.fastSupabaseFetch && window.renderCulture) {
+        window.fastSupabaseFetch('culture', () => {
+            return window.supabase.from('culture').select('*').order('created_at', { ascending: false });
+        }, window.renderCulture);
+    }
+
+    // 6. Médias
+    const mediasGrid = document.getElementById('medias-gallery-grid');
+    if (mediasGrid && window.fastSupabaseFetch && window.renderMedias) {
+        window.fastSupabaseFetch('medias', () => {
+            return window.supabase.from('medias').select('*').order('created_at', { ascending: false });
+        }, window.renderMedias);
+    }
+
+    // 7. Exécuter les scripts inline de la nouvelle page si nécessaire
     if (newDoc) {
         const scripts = newDoc.querySelectorAll('main script, body > script:not([src])');
         scripts.forEach((oldScript) => {

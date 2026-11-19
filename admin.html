@@ -303,6 +303,7 @@
                 </li>
                 <li><a href="#" class="nav-link" data-target="panel-histoire"><i
                             class="ph ph-clock-counter-clockwise"></i> Histoire</a></li>
+                <li><a href="#" class="nav-link" data-target="panel-medias"><i class="ph ph-images"></i> Galerie & Médias</a></li>
                 <li><a href="#" class="nav-link" data-target="panel-messages"><i class="ph ph-envelope"></i> Boîte de
                         Réception</a></li>
                 <li><a href="index.html" style="margin-top:20px; border: 1px solid #ddd;"><i
@@ -608,6 +609,69 @@
                 </div>
             </div>
 
+        
+            <!-- PANEL MEDIAS (Photos & Vidéos) -->
+            <div class="admin-panel" id="panel-medias">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:1rem;">
+                    <div>
+                        <h3 class="admin-title" style="margin-bottom:4px;">Gestion de la Galerie & Médias</h3>
+                        <p style="color:#475569; margin:0;">Ajoutez, modifiez ou supprimez les photos et visuels affichés sur la page Médias.</p>
+                    </div>
+                    <span style="background:rgba(14,129,63,0.12); color:#0E813F; padding:6px 14px; border-radius:9999px; font-weight:700; font-size:0.85rem;">
+                        <i class="ph ph-file-image"></i> Format WebP garanti
+                    </span>
+                </div>
+
+                <div style="background:#f9f9f9; padding: 22px; border-radius: 12px; margin-bottom: 2rem; border:1px solid #eee;">
+                    <h4 id="media-form-title">Ajouter un Média à la Galerie</h4>
+                    <form id="media-form" style="margin-top: 15px;">
+                        <input type="hidden" id="med-id">
+                        <div class="form-group">
+                            <label>Titre / Légende (Ex: Cavaliers de la Gaani au Palais Royal)</label>
+                            <input type="text" id="med-title" required placeholder="Légende du visuel">
+                        </div>
+                        <div class="form-group">
+                            <label>Catégorie dans la galerie</label>
+                            <select id="med-cat" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:6px; font-family:inherit;">
+                                <option value="city">Ville & Paysages (city)</option>
+                                <option value="culture" selected>Culture & Traditions (culture)</option>
+                                <option value="people">Portraits & Habitants (people)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Photo du média <span style="color:#0E813F; font-size:0.85rem; font-weight:600;">(Convertie automatiquement en WebP)</span></label>
+                            <input type="hidden" id="med-img-old">
+                            <input type="file" id="med-img-upload" accept="image/*">
+                            <div id="med-img-preview" style="margin-top: 10px; max-width: 160px; display: none;"></div>
+                        </div>
+                        <div style="display:flex; gap:10px; margin-top:20px;">
+                            <button type="submit" class="btn btn-primary" id="btn-save-med">Enregistrer</button>
+                            <button type="button" class="btn btn-outline" id="btn-cancel-edit-med" style="display:none;"
+                                onclick="cancelEditing('medias')">Annuler</button>
+                        </div>
+                    </form>
+                </div>
+
+                <h4>Médias Présents dans la Galerie</h4>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Photo (WebP)</th>
+                                <th>Titre / Légende</th>
+                                <th>Catégorie</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="medias-tbody">
+                            <tr>
+                                <td colspan="4" style="text-align:center;">Chargement...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </main>
     </div>
 
@@ -615,6 +679,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabaseClient.js"></script>
     <script src="assets/js/admin.js"></script>
+
+
+    <!-- Notification Toast de Synchronisation WebP & Site Web -->
+    <div id="admin-toast" style="position:fixed; bottom:25px; right:25px; background:#07220E; color:#FFFFFF; padding:16px 24px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.25); border-left:5px solid #D4A017; font-weight:600; font-size:0.95rem; z-index:99999; display:none; align-items:center; gap:12px;">
+        <i class="ph ph-check-circle" style="font-size:1.4rem; color:#86EFAC;"></i>
+        <span id="admin-toast-text">Modification enregistrée et visible sur le site web !</span>
+    </div>
 
 </body>
 
