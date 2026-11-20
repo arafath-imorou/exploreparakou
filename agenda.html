@@ -4,251 +4,1352 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda Officiel | Explore Parakou</title>
-        <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
+    <title>Agenda Officiel des Événements | Explore Parakou</title>
+    <meta name="description" content="Découvrez l'agenda officiel des festivals, concerts, foires, cavalcades équestres et célébrations culturelles à Parakou. Cité Royale des Kobourou.">
+    
+    <link rel="preload" href="assets/fonts/Aptos.woff" as="font" type="font/woff" crossorigin>
     <link rel="preload" href="assets/fonts/Aptos-Bold.woff" as="font" type="font/woff" crossorigin>
     <link rel="stylesheet" href="assets/css/style.css">
+
     <style>
-        /* Immersive Page Specifics */
+        :root {
+            --brand-green-deep: #07220E;
+            --brand-green-mid: #0D3818;
+            --brand-gold: #D4A017;
+            --brand-gold-light: #E2B13C;
+            --brand-gold-subtle: #F9F5EB;
+            --brand-slate-dark: #0A192F;
+            --brand-slate-text: #1E293B;
+            --brand-slate-muted: #475569;
+            --brand-surface-card: #FFFFFF;
+            --brand-surface-bg: #F8FAFC;
+            --brand-border: #E2E8F0;
+        }
+
         body {
-            background-color: #fafafa;
+            background-color: var(--brand-surface-bg);
+            color: var(--brand-slate-text);
+            font-family: 'Aptos', sans-serif;
+            overflow-x: hidden;
         }
 
-        /* Sticky Filter Bar */
-        .filter-sticky {
-            position: sticky;
-            top: 80px;
-            /* Below fixed header */
-            z-index: 90;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            margin-bottom: 40px;
-        }
-
-        .filter-scroll {
+        /* -------------------------------------------------------------
+           1. HERO MAJESTUEUX & ROYAL
+        ------------------------------------------------------------- */
+        .agenda-hero {
+            position: relative;
+            min-height: 72vh;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 130px 20px 80px;
+            color: #ffffff;
+            overflow: hidden;
+            background-color: var(--brand-green-deep);
+        }
+
+        .agenda-hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .agenda-hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.02);
+            filter: brightness(0.65) contrast(1.1);
+        }
+
+        .agenda-hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: linear-gradient(180deg, 
+                rgba(7, 34, 14, 0.78) 0%, 
+                rgba(10, 25, 47, 0.82) 65%, 
+                rgba(7, 34, 14, 0.98) 100%);
+        }
+
+        .agenda-hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 980px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .agenda-royal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 7px 18px;
+            background: rgba(212, 160, 23, 0.16);
+            border: 1px solid rgba(212, 160, 23, 0.45);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            color: var(--brand-gold-light);
+            margin-bottom: 22px;
+            backdrop-filter: blur(8px);
+        }
+
+        .agenda-hero-title {
+            font-size: clamp(2.3rem, 5.5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .agenda-hero-title span {
+            background: linear-gradient(135deg, #ffffff 40%, var(--brand-gold-light) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .agenda-hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            line-height: 1.65;
+            color: #E2E8F0;
+            max-width: 760px;
+            margin: 0 auto 35px;
+            font-weight: 400;
+        }
+
+        .agenda-hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 45px;
+        }
+
+        .btn-royal-primary {
+            background: var(--brand-gold);
+            color: var(--brand-green-deep);
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid var(--brand-gold-light);
+            box-shadow: 0 8px 24px rgba(212, 160, 23, 0.28);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.98rem;
+        }
+
+        .btn-royal-primary:hover {
+            background: var(--brand-gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(212, 160, 23, 0.38);
+            color: var(--brand-green-deep);
+        }
+
+        .btn-royal-outline {
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            font-weight: 600;
+            padding: 14px 26px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.98rem;
+        }
+
+        .btn-royal-outline:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: #ffffff;
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        .agenda-hero-kpis {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 820px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .agenda-kpi-item {
+            text-align: center;
+        }
+
+        .agenda-kpi-val {
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 800;
+            color: var(--brand-gold-light);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .agenda-kpi-lbl {
+            font-size: 0.85rem;
+            color: #CBD5E1;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* -------------------------------------------------------------
+           2. BARRE INTELLIGENTE DE RECHERCHE & FILTRES
+        ------------------------------------------------------------- */
+        .agenda-filter-bar {
+            position: sticky;
+            top: 72px;
+            z-index: 85;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid var(--brand-border);
+            padding: 16px 0;
+            transition: all 0.3s ease;
+        }
+
+        .agenda-filter-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .agenda-filter-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .agenda-search-box {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .agenda-search-input {
+            width: 100%;
+            background: #F1F5F9;
+            border: 1px solid #E2E8F0;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: var(--brand-slate-dark);
+            outline: none;
+            transition: all 0.25s ease;
+        }
+
+        .agenda-search-input:focus {
+            background: #ffffff;
+            border-color: var(--brand-gold);
+            box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.2);
+        }
+
+        .agenda-time-tabs {
+            display: flex;
+            gap: 6px;
+            background: #F1F5F9;
+            padding: 4px;
+            border-radius: 10px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .agenda-time-btn {
+            border: none;
+            background: transparent;
+            padding: 8px 16px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--brand-slate-muted);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .agenda-time-btn.active {
+            background: #ffffff;
+            color: var(--brand-green-deep);
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .agenda-pills-row {
+            display: flex;
+            gap: 10px;
             overflow-x: auto;
-            padding-bottom: 5px;
+            padding-bottom: 4px;
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
 
-        .filter-scroll::-webkit-scrollbar {
+        .agenda-pills-row::-webkit-scrollbar {
             display: none;
         }
 
-        .filter-pill {
-            padding: 10px 24px;
-            border-radius: 50px;
-            background: #f0f2f5;
-            color: #1E293B;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
+        .cat-pill {
+            border: 1px solid #E2E8F0;
+            background: #ffffff;
+            color: var(--brand-slate-muted);
+            padding: 8px 18px;
+            border-radius: 999px;
+            font-size: 0.88rem;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            display: flex;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
             align-items: center;
             gap: 8px;
         }
 
-        .filter-pill:hover,
-        .filter-pill.active {
-            background: #0A192F;
-            /* Night Blue */
-            color: #E2B13C;
-            /* Ochre */
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(10, 25, 47, 0.15);
+        .cat-pill:hover {
+            border-color: var(--brand-gold);
+            color: var(--brand-slate-dark);
+            transform: translateY(-1px);
         }
 
-        /* Premium Event Card */
-        .event-card-premium {
-            background: white;
-            border-radius: 20px;
+        .cat-pill.active {
+            background: var(--brand-green-deep);
+            border-color: var(--brand-green-deep);
+            color: var(--brand-gold-light);
+            box-shadow: 0 4px 14px rgba(7, 34, 14, 0.2);
+        }
+
+        /* -------------------------------------------------------------
+           3. HEADLINER / À LA UNE (MAGAZINE STYLE)
+        ------------------------------------------------------------- */
+        .agenda-section {
+            padding: 70px 0;
+        }
+
+        .section-lead-header {
+            margin-bottom: 35px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .section-lead-eyebrow {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--brand-gold);
+            margin-bottom: 8px;
+        }
+
+        .section-lead-title {
+            font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+            font-weight: 800;
+            color: var(--brand-green-deep);
+            line-height: 1.15;
+            margin: 0;
+        }
+
+        .section-lead-desc {
+            color: var(--brand-slate-muted);
+            font-size: 1.05rem;
+            max-width: 620px;
+            margin: 6px 0 0;
+            line-height: 1.5;
+        }
+
+        .headliner-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1.1fr;
+            gap: 28px;
+            margin-bottom: 60px;
+        }
+
+        .headliner-main-card {
+            background: #ffffff;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-            transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--brand-border);
             display: flex;
             flex-direction: column;
-            height: 100%;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
 
-        .event-card-premium:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        .headliner-main-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
         }
 
-        .card-image-container {
+        .headliner-img-box {
             position: relative;
-            height: 240px;
+            height: 380px;
             overflow: hidden;
+            background: #000;
         }
 
-        .card-image-container img {
+        .headliner-img-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.6s;
+            transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .event-card-premium:hover .card-image-container img {
+        .headliner-main-card:hover .headliner-img-box img {
+            transform: scale(1.04);
+        }
+
+        .date-badge-architectural {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 14px;
+            padding: 10px 18px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(212, 160, 23, 0.3);
+            z-index: 3;
+        }
+
+        .date-badge-num {
+            display: block;
+            font-size: 1.65rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--brand-green-deep);
+        }
+
+        .date-badge-mth {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--brand-gold);
+            margin-top: 3px;
+        }
+
+        .vip-headliner-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: var(--brand-green-deep);
+            color: var(--brand-gold-light);
+            border: 1px solid var(--brand-gold);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            z-index: 3;
+        }
+
+        .headliner-body {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-category-tag {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--brand-gold);
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .headliner-title {
+            font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+            font-weight: 800;
+            color: var(--brand-green-deep);
+            line-height: 1.25;
+            margin: 0 0 16px;
+        }
+
+        .headliner-desc {
+            font-size: 1.02rem;
+            line-height: 1.65;
+            color: var(--brand-slate-muted);
+            margin-bottom: 24px;
+        }
+
+        .headliner-chips-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .info-chip {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--brand-slate-dark);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-chip.gold-chip {
+            background: var(--brand-gold-subtle);
+            border-color: rgba(212, 160, 23, 0.4);
+            color: var(--brand-green-deep);
+        }
+
+        .headliner-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        /* Side Headliners Stack */
+        .headliner-side-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .event-card-compact {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--brand-border);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .event-card-compact:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .event-card-compact-img {
+            position: relative;
+            height: 175px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .event-card-compact-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-card-compact:hover .event-card-compact-img img {
             transform: scale(1.05);
         }
 
-        .date-badge-floating {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: white;
-            border-radius: 12px;
-            padding: 8px 15px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            z-index: 2;
+        .event-card-compact-body {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
-        .date-number {
-            display: block;
-            font-size: 1.4rem;
-            font-weight: 800;
-            line-height: 1;
-            color: #0A192F;
-        }
-
-        .date-month {
-            display: block;
-            font-size: 0.75rem;
-            text-transform: uppercase;
+        .event-card-compact-title {
+            font-size: 1.18rem;
             font-weight: 700;
-            color: #E2B13C;
+            color: var(--brand-green-deep);
+            line-height: 1.3;
+            margin: 0 0 12px;
         }
 
-        .card-content {
+        .event-meta-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.88rem;
+            color: var(--brand-slate-muted);
+            margin-bottom: 18px;
+        }
+
+        .event-meta-row span strong {
+            color: var(--brand-slate-dark);
+        }
+
+        .card-footer-action {
+            margin-top: auto;
+        }
+
+        .btn-card-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px 16px;
+            background: #F1F5F9;
+            color: var(--brand-green-deep);
+            font-weight: 700;
+            font-size: 0.88rem;
+            border-radius: 10px;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-card-link:hover {
+            background: var(--brand-green-deep);
+            color: var(--brand-gold-light);
+            border-color: var(--brand-green-deep);
+        }
+
+        /* -------------------------------------------------------------
+           4. GRILLE DES ÉVÉNEMENTS (UPCOMING / FILTRABLES)
+        ------------------------------------------------------------- */
+        .agenda-events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 28px;
+        }
+
+        .event-card-standard {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--brand-border);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .event-card-standard:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.09);
+            border-color: rgba(212, 160, 23, 0.4);
+        }
+
+        .event-card-img-wrap {
+            position: relative;
+            height: 230px;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .event-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .event-card-standard:hover .event-card-img-wrap img {
+            transform: scale(1.06);
+        }
+
+        .event-card-body {
             padding: 24px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
-        .event-category-sm {
-            text-transform: uppercase;
-            font-size: 0.75rem;
+        .event-card-title {
+            font-size: 1.25rem;
             font-weight: 700;
-            letter-spacing: 1px;
-            color: #475569;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .event-title {
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: #0A192F;
-            margin-bottom: 15px;
+            color: var(--brand-green-deep);
             line-height: 1.3;
+            margin: 0 0 12px;
         }
 
-        .event-meta {
+        .event-card-desc {
+            font-size: 0.94rem;
+            line-height: 1.6;
+            color: var(--brand-slate-muted);
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .event-card-meta-list {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid #F1F5F9;
+            margin-bottom: 18px;
             display: flex;
             flex-direction: column;
             gap: 8px;
-            color: #334155;
-            font-size: 0.95rem;
-            margin-bottom: 25px;
+            font-size: 0.88rem;
+            color: var(--brand-slate-muted);
         }
 
-        .event-meta i {
-            color: #E2B13C;
-            margin-right: 8px;
-            font-size: 1.1rem;
-        }
-
-        .card-actions-row {
-            margin-top: auto;
+        .meta-line {
             display: flex;
+            align-items: center;
+            justify-content: space-between;
             gap: 10px;
         }
 
-        .btn-card-primary {
-            flex: 1;
-            background: #0A192F;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 10px;
+        .meta-line-left {
             font-weight: 600;
+            color: var(--brand-slate-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .meta-line-badge {
+            background: #F1F5F9;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--brand-slate-muted);
+            white-space: nowrap;
+        }
+
+        .btn-card-details {
+            width: 100%;
+            padding: 12px;
+            background: var(--brand-green-deep);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.92rem;
+            border-radius: 12px;
+            border: 1px solid var(--brand-green-deep);
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.25s ease;
+            text-align: center;
+            text-decoration: none;
+            display: block;
         }
 
-        .btn-card-primary:hover {
-            background: #152b4d;
+        .btn-card-details:hover {
+            background: var(--brand-gold);
+            color: var(--brand-green-deep);
+            border-color: var(--brand-gold);
+            box-shadow: 0 4px 14px rgba(212, 160, 23, 0.3);
         }
 
-        .btn-card-icon {
-            width: 45px;
-            height: 45px;
+        .no-events-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px dashed #CBD5E1;
+        }
+
+        .no-events-state h3 {
+            font-size: 1.4rem;
+            color: var(--brand-green-deep);
+            margin-bottom: 8px;
+        }
+
+        .no-events-state p {
+            color: var(--brand-slate-muted);
+            max-width: 480px;
+            margin: 0 auto 20px;
+        }
+
+        /* -------------------------------------------------------------
+           5. CALENDRIER INTERACTIF V2 & APERÇU DYNAMIQUE
+        ------------------------------------------------------------- */
+        .calendar-section-bg {
+            background: #F1F5F9;
+            padding: 90px 0;
+            position: relative;
+        }
+
+        .calendar-split-container {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .calendar-card-ui {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--brand-border);
+        }
+
+        .cal-nav-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+
+        .cal-month-title {
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--brand-green-deep);
+            margin: 0;
+            text-transform: capitalize;
+        }
+
+        .cal-nav-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .cal-btn-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--brand-slate-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cal-btn-arrow:hover {
+            background: var(--brand-green-deep);
+            color: var(--brand-gold-light);
+            border-color: var(--brand-green-deep);
+        }
+
+        .cal-weekdays-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--brand-slate-muted);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        .cal-days-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+
+        .cal-day-cell {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--brand-slate-dark);
+            background: #ffffff;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .cal-day-cell:hover:not(.pad) {
+            background: #F8FAFC;
+            border-color: #CBD5E1;
+            transform: translateY(-2px);
+        }
+
+        .cal-day-cell.pad {
+            opacity: 0.25;
+            cursor: default;
+            color: #94A3B8;
+        }
+
+        .cal-day-cell.has-event {
+            font-weight: 800;
+            color: var(--brand-green-deep);
+            background: var(--brand-gold-subtle);
+            border-color: rgba(212, 160, 23, 0.4);
+        }
+
+        .cal-day-cell.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--brand-gold);
+        }
+
+        .cal-day-cell.active-date {
+            background: var(--brand-green-deep) !important;
+            color: var(--brand-gold-light) !important;
+            border-color: var(--brand-green-deep) !important;
+            box-shadow: 0 6px 16px rgba(7, 34, 14, 0.25);
+        }
+
+        .cal-day-cell.active-date::after {
+            background: var(--brand-gold-light) !important;
+        }
+
+        /* Calendar Preview Side Panel */
+        .calendar-preview-panel {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--brand-border);
+            display: flex;
+            flex-direction: column;
+            min-height: 480px;
+        }
+
+        .preview-header-badge {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--brand-gold);
+            margin-bottom: 8px;
+        }
+
+        .preview-date-label {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--brand-green-deep);
+            margin: 0 0 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #F1F5F9;
+        }
+
+        .preview-events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            flex-grow: 1;
+        }
+
+        .preview-event-card {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 14px;
+            padding: 18px;
+            transition: all 0.2s ease;
+        }
+
+        .preview-event-card:hover {
+            border-color: var(--brand-gold);
+            background: #ffffff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+
+        .preview-event-cat {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--brand-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .preview-event-title {
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--brand-green-deep);
+            margin: 0 0 10px;
+            line-height: 1.35;
+        }
+
+        .preview-event-meta {
+            font-size: 0.85rem;
+            color: var(--brand-slate-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .preview-empty-state {
+            text-align: center;
+            padding: 40px 10px;
+            color: var(--brand-slate-muted);
+            margin: auto 0;
+        }
+
+        .preview-empty-state strong {
+            display: block;
+            color: var(--brand-green-deep);
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        /* -------------------------------------------------------------
+           6. BANNIÈRE ORGANISATEURS & PROMOTEURS (ROYAL GREEN)
+        ------------------------------------------------------------- */
+        .promoter-banner-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+
+        .promoter-royal-card {
+            background: linear-gradient(135deg, var(--brand-green-deep) 0%, #0D3818 100%);
+            border: 2px solid rgba(212, 160, 23, 0.4);
+            border-radius: 28px;
+            padding: clamp(35px, 6vw, 65px);
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(7, 34, 14, 0.2);
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .promoter-royal-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 160, 23, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .promoter-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(212, 160, 23, 0.18);
+            border: 1px solid rgba(212, 160, 23, 0.5);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--brand-gold-light);
+            margin-bottom: 18px;
+        }
+
+        .promoter-title {
+            font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+            font-weight: 800;
+            line-height: 1.15;
+            color: #ffffff;
+            margin: 0 0 16px;
+        }
+
+        .promoter-desc {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            color: #E2E8F0;
+            margin-bottom: 25px;
+            max-width: 580px;
+        }
+
+        .promoter-benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 0;
+        }
+
+        .promoter-benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #F8FAFC;
+            font-weight: 500;
+        }
+
+        .benefit-bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--brand-gold-light);
+            flex-shrink: 0;
+        }
+
+        .promoter-action-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 35px 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promoter-action-badge {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--brand-gold-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .promoter-action-heading {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 0 12px;
+        }
+
+        .promoter-action-text {
+            font-size: 0.92rem;
+            color: #CBD5E1;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* -------------------------------------------------------------
+           7. MODAL FICHE ÉVÉNEMENT (QUICK-VIEW PREMIUM)
+        ------------------------------------------------------------- */
+        .agenda-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(7, 34, 14, 0.75);
+            backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            color: #0A192F;
-            transition: 0.3s;
-            background: white;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .btn-card-icon:hover {
-            background: #f0f2f5;
-            color: #E2B13C;
+        .agenda-modal-backdrop.open {
+            opacity: 1;
+            visibility: visible;
         }
 
-        /* Hero Text */
-        .hero-title-lg {
-            font-size: clamp(2rem, 7.5vw, 3.5rem);
+        .agenda-modal-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 680px;
+            max-height: 90vh;
+            border-radius: 24px;
+            overflow-y: auto;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--brand-border);
+            transform: scale(0.94);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .agenda-modal-backdrop.open .agenda-modal-container {
+            transform: scale(1);
+        }
+
+        .agenda-modal-banner {
+            position: relative;
+            height: 260px;
+            background: #000;
+        }
+
+        .agenda-modal-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .agenda-modal-close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(4px);
+            z-index: 5;
+        }
+
+        .agenda-modal-close-btn:hover {
+            background: var(--brand-green-deep);
+            color: var(--brand-gold-light);
+            border-color: var(--brand-gold);
+        }
+
+        .agenda-modal-body {
+            padding: 30px;
+        }
+
+        .agenda-modal-date-tag {
+            display: inline-block;
+            background: var(--brand-gold-subtle);
+            border: 1px solid rgba(212, 160, 23, 0.4);
+            color: var(--brand-green-deep);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .agenda-modal-title {
+            font-size: 1.65rem;
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #E2B13C);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--brand-green-deep);
+            line-height: 1.25;
+            margin: 0 0 16px;
         }
 
-        @media (max-width: 768px) {
-            .hero-title-lg {
-                font-size: 2.8rem;
+        .agenda-modal-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            background: #F8FAFC;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            margin-bottom: 20px;
+        }
+
+        .agenda-modal-meta-col span {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--brand-slate-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .agenda-modal-meta-col strong {
+            font-size: 0.95rem;
+            color: var(--brand-slate-dark);
+        }
+
+        .agenda-modal-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--brand-slate-text);
+            margin-bottom: 25px;
+        }
+
+        .agenda-modal-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* -------------------------------------------------------------
+           8. RESPONSIVE MOBILE OPTIMIZATIONS
+        ------------------------------------------------------------- */
+        @media (max-width: 960px) {
+            .headliner-grid {
+                grid-template-columns: 1fr;
             }
 
-            .card-image-container {
-                height: 200px;
+            .headliner-img-box {
+                height: 280px;
+            }
+
+            .calendar-split-container {
+                grid-template-columns: 1fr;
+            }
+
+            .promoter-royal-card {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+
+            .agenda-hero {
+                min-height: auto;
+                padding: 110px 16px 60px;
+            }
+
+            .agenda-hero-kpis {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .agenda-filter-bar {
+                top: 56px;
+                padding: 12px 0;
+            }
+
+            .agenda-events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-card-ui,
+            .calendar-preview-panel {
+                padding: 20px 16px;
+            }
+
+            .cal-days-grid {
+                gap: 6px;
+            }
+
+            .cal-day-cell {
+                font-size: 0.85rem;
+                border-radius: 8px;
+            }
+
+            .agenda-modal-meta-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
-    <!-- Performance & Instant Navigation -->
+
+    <!-- Navigation & DNS Pre-fetch -->
     <link rel="dns-prefetch" href="https://ampktfwcpopkomrsckjm.supabase.co">
-    <script type="speculationrules">
-    {
-        "prerender": [
-            {
-                "source": "list",
-                "urls": ["index.html", "histoire.html", "tourisme.html", "culture.html", "talents.html", "agenda.html", "investir.html", "medias.html", "contact.html", "carte.html"],
-                "eagerness": "moderate"
-            }
-        ]
-    }
-    </script>
 </head>
 
 <body>
-    <!-- Header -->
+    <!-- Header Officiel -->
     <header class="header">
         <div class="container header-container">
             <a href="index.html" class="logo"><img decoding="async" src="assets/images/logo.webp" alt="Explore Parakou"></a>
@@ -266,204 +1367,458 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="contact.html#submit-event" class="btn btn-outline" style="border-color:white; color:white;">+
-                    Événement</a>
+                <a href="contact.html?type=agenda" class="btn btn-outline" style="border-color:white; color:white;">+ Événement</a>
                 <button class="mobile-menu-toggle" aria-label="Menu">Menu</button>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- 1. Hero Premium -->
-        <section class="hero-premium"
-            style="height: 70vh; position:relative; display:flex; align-items:flex-end; padding-bottom:80px;">
-            <div style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1;">
-                <img fetchpriority="high" decoding="async" src="assets/images/agenda-hero.webp" style="width:100%; height:100%; object-fit:cover;"
-                    alt="Parakou Nightlife">
-                <div
-                    style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(to top, #0A192F 10%, transparent 80%);">
-                </div>
-                <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.3);">
-                </div>
+        <!-- 1. Hero Section Royale -->
+        <section class="agenda-hero">
+            <div class="agenda-hero-bg">
+                <img fetchpriority="high" decoding="async" src="assets/images/agenda-hero.webp" alt="Parakou Vibrante et Festive">
             </div>
+            <div class="agenda-hero-overlay"></div>
 
-            <div class="container" style="position:relative; z-index:2; text-align:center;">
-
-                <h1 class="hero-title-lg">L'Agenda<br>Qui Bouge</h1>
-                <p style="color:rgba(255,255,255,0.9); font-size:1.2rem; max-width:500px; margin:0 auto 30px;">Concerts,
-                    festivals, business et rencontres. Découvrez ce qui se passe maintenant.</p>
-                <div style="display:flex; justify-content:center; gap:15px;">
-                    <a href="#today" class="btn btn-primary" style="background:#E2B13C; color:#0A192F;">Sortir
-                        Aujourd'hui</a>
-                    <a href="#calendar" class="btn btn-outline" style="border-color:white; color:white;">Voir le
-                        Calendrier</a>
+            <div class="container agenda-hero-content">
+                <div class="agenda-royal-badge">
+                    L'AGENDA OFFICIEL • CITÉ ROYALE DES KOBUROU
+                </div>
+                <h1 class="agenda-hero-title">
+                    L'Effervescence<br><span>de Parakou</span>
+                </h1>
+                <p class="agenda-hero-subtitle">
+                    Festivals impériaux, concerts live, foires d'affaires régionales, cavalcades légendaires et veillées de contes. Explorez la vitalité festive et l'énergie créatrice de la métropole du Septentrion.
+                </p>
+                <div class="agenda-hero-actions">
+                    <a href="#evenements" class="btn-royal-primary">Explorer le Programme</a>
+                    <a href="#calendrier" class="btn-royal-outline">Calendrier Interactif</a>
+                    <a href="contact.html?type=agenda" class="btn-royal-outline">+ Proposer un Événement</a>
+                </div>
+                <div class="agenda-hero-kpis">
+                    <div class="agenda-kpi-item">
+                        <div class="agenda-kpi-val">30+</div>
+                        <div class="agenda-kpi-lbl">Grands Événements / An</div>
+                    </div>
+                    <div class="agenda-kpi-item">
+                        <div class="agenda-kpi-val">100%</div>
+                        <div class="agenda-kpi-lbl">Fierté & Convivialité</div>
+                    </div>
+                    <div class="agenda-kpi-item">
+                        <div class="agenda-kpi-val">6</div>
+                        <div class="agenda-kpi-lbl">Pôles Festifs & Économiques</div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. Sticky Filters -->
-        <div class="filter-sticky">
+        <!-- 2. Barre Sticky de Recherche & Filtres -->
+        <section class="agenda-filter-bar">
+            <div class="container agenda-filter-container">
+                <div class="agenda-filter-top-row">
+                    <div class="agenda-search-box">
+                        <input type="text" id="agenda-search" class="agenda-search-input" placeholder="Rechercher par mot-clé, festival, lieu (ex: Bio Guéra, Arzeké)...">
+                    </div>
+                    <div class="agenda-time-tabs">
+                        <button class="agenda-time-btn active" data-time="all">Tout l'agenda</button>
+                        <button class="agenda-time-btn" data-time="month">Ce Mois-ci</button>
+                        <button class="agenda-time-btn" data-time="weekend">Ce Week-end</button>
+                        <button class="agenda-time-btn" data-time="upcoming">À Venir</button>
+                    </div>
+                </div>
+                <div class="agenda-pills-row">
+                    <button class="cat-pill active" data-cat="all">Tous les Événements</button>
+                    <button class="cat-pill" data-cat="Festivals & Célébrations">Festivals & Célébrations</button>
+                    <button class="cat-pill" data-cat="Arts & Musique Live">Arts & Musique Live</button>
+                    <button class="cat-pill" data-cat="Foires & Business">Foires & Business</button>
+                    <button class="cat-pill" data-cat="Sports & Cavalcades">Sports & Cavalcades</button>
+                    <button class="cat-pill" data-cat="Traditions Royales">Traditions Royales</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Section À la Une (Headliner Magazine) -->
+        <section class="agenda-section" style="padding-bottom: 30px;">
             <div class="container">
-                <div class="filter-scroll">
-                    <button class="filter-pill active">À la une</button>
-                    <button class="filter-pill">Concerts</button>
-                    <button class="filter-pill">Festivals</button>
-                    <button class="filter-pill">Business</button>
-                    <button class="filter-pill">Sport</button>
-                    <button class="filter-pill">Marchés</button>
-                    <button class="filter-pill">Culture</button>
+                <div class="section-lead-header">
+                    <div>
+                        <span class="section-lead-eyebrow">TEMPS FORTS DE LA SAISON</span>
+                        <h2 class="section-lead-title">À ne pas manquer</h2>
+                        <p class="section-lead-desc">Les grandes rencontres qui rassemblent la Cité et font vibrer le Septentrion béninois.</p>
+                    </div>
+                </div>
+
+                <div class="headliner-grid">
+                    <!-- Grand Headliner Principal -->
+                    <article class="headliner-main-card">
+                        <div class="headliner-img-box">
+                            <img loading="lazy" decoding="async" src="assets/images/culture-hero-final.webp" alt="Grand Festival des Danses Tèkè et Cavalerie Bariba">
+                            <div class="date-badge-architectural">
+                                <span class="date-badge-num">14</span>
+                                <span class="date-badge-mth">Fév</span>
+                            </div>
+                            <span class="vip-headliner-badge">ÉVÉNEMENT MAJEUR</span>
+                        </div>
+                        <div class="headliner-body">
+                            <span class="card-category-tag">Festivals & Célébrations</span>
+                            <h3 class="headliner-title">Grand Festival des Danses Tèkè & de la Cavalerie Bariba</h3>
+                            <p class="headliner-desc">
+                                La plus prestigieuse célébration vivante du Baruwuu à Parakou. Défilé majestueux des cavaliers en parures impériales, résonance solennelle des tambours sacrés et démonstrations équestres spectaculaires au pied de la statue du héros Bio Guéra.
+                            </p>
+                            <div class="headliner-chips-row">
+                                <span class="info-chip">Place Bio Guéra, Parakou</span>
+                                <span class="info-chip">16h00 • Cérémonie Officielle</span>
+                                <span class="info-chip gold-chip">Entrée Libre & Tout Public</span>
+                            </div>
+                            <div class="headliner-actions">
+                                <button class="btn-royal-primary" onclick="openEventQuickView('Grand Festival des Danses Tèkè & de la Cavalerie Bariba', 'Festivals & Célébrations', '14', 'Fév', '16h00', 'Place Bio Guéra, Parakou', 'La plus prestigieuse célébration vivante du Baruwuu à Parakou. Défilé majestueux des cavaliers en parures impériales, résonance solennelle des tambours sacrés et démonstrations équestres spectaculaires au pied de la statue du héros Bio Guéra.', 'assets/images/culture-hero-final.webp')">Détails & Programme</button>
+                                <a href="carte.html" class="btn-card-link" style="width: auto; padding: 14px 22px;">Localiser sur le plan</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Colonne Deux Événements Complémentaires -->
+                    <div class="headliner-side-stack">
+                        <!-- Événement 2 -->
+                        <article class="event-card-compact">
+                            <div class="event-card-compact-img">
+                                <img loading="lazy" decoding="async" src="assets/images/experience-market.webp" alt="Foire Commerciale et Agro-Pastorale d'Arzeké">
+                                <div class="date-badge-architectural" style="top: 12px; left: 12px; padding: 6px 14px;">
+                                    <span class="date-badge-num" style="font-size: 1.35rem;">20</span>
+                                    <span class="date-badge-mth" style="font-size: 0.7rem;">Fév</span>
+                                </div>
+                            </div>
+                            <div class="event-card-compact-body">
+                                <span class="card-category-tag">Foires & Business</span>
+                                <h3 class="event-card-compact-title">Foire Commerciale & Agro-Pastorale d'Arzeké</h3>
+                                <div class="event-meta-row">
+                                    <span>Lieu : <strong>Marché International Arzeké</strong></span>
+                                    <span>Horaires : <strong>09h00 - 18h00</strong></span>
+                                </div>
+                                <div class="card-footer-action">
+                                    <button class="btn-card-link" onclick="openEventQuickView('Foire Commerciale & Agro-Pastorale d\'Arzeké', 'Foires & Business', '20', 'Fév', '09h00 - 18h00', 'Marché International Arzeké', 'Grande vitrine des producteurs locaux, artisans et commerçants du Grand Nord. Dégustations de spécialités régionales, networking entrepreneurial et expositions de produits transformés.', 'assets/images/experience-market.webp')">Consulter la fiche</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Événement 3 -->
+                        <article class="event-card-compact">
+                            <div class="event-card-compact-img">
+                                <img loading="lazy" decoding="async" src="assets/images/PALAIS_ROYAL_DE_PARAKOU.webp" alt="Nuit des Contes et Veillée Royale des Kobourou">
+                                <div class="date-badge-architectural" style="top: 12px; left: 12px; padding: 6px 14px;">
+                                    <span class="date-badge-num" style="font-size: 1.35rem;">28</span>
+                                    <span class="date-badge-mth" style="font-size: 0.7rem;">Fév</span>
+                                </div>
+                            </div>
+                            <div class="event-card-compact-body">
+                                <span class="card-category-tag">Traditions Royales</span>
+                                <h3 class="event-card-compact-title">Nuit des Contes & Veillée Royale des Kobourou</h3>
+                                <div class="event-meta-row">
+                                    <span>Lieu : <strong>Cour d'Honneur du Palais Royal</strong></span>
+                                    <span>Horaires : <strong>20h00 - 23h30</strong></span>
+                                </div>
+                                <div class="card-footer-action">
+                                    <button class="btn-card-link" onclick="openEventQuickView('Nuit des Contes & Veillée Royale des Kobourou', 'Traditions Royales', '28', 'Fév', '20h00 - 23h30', 'Cour d\'Honneur du Palais Royal', 'Soirée contée sous les étoiles avec les sages et griots de Parakou. Récits de la genèse d\'Akpaki Dagbara, chants traditionnels baatonu et transmission intergénérationnelle du patrimoine immatériel.', 'assets/images/PALAIS_ROYAL_DE_PARAKOU.webp')">Consulter la fiche</button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Grille Complète des Sorties & Prochains Rendez-vous -->
+        <section id="evenements" class="agenda-section" style="background-color: #ffffff; border-top: 1px solid var(--brand-border); border-bottom: 1px solid var(--brand-border);">
+            <div class="container">
+                <div class="section-lead-header">
+                    <div>
+                        <span class="section-lead-eyebrow">PROGRAMME GLOBAL</span>
+                        <h2 class="section-lead-title">Prochaines Sorties & Festivals</h2>
+                        <p class="section-lead-desc">Consultez l'ensemble de la programmation officielle et planifiez vos sorties en famille ou entre amis.</p>
+                    </div>
+                </div>
+
+                <div class="agenda-events-grid" id="main-events-grid">
+                    <!-- Carte 1 -->
+                    <article class="event-card-standard" data-category="Festivals & Célébrations" data-title="Grand Festival des Danses Tèkè & de la Cavalerie Bariba" data-date="14 Fév">
+                        <div class="event-card-img-wrap">
+                            <img loading="lazy" decoding="async" src="assets/images/culture-hero-final.webp" alt="Grand Festival des Danses Tèkè">
+                            <div class="date-badge-architectural">
+                                <span class="date-badge-num">14</span>
+                                <span class="date-badge-mth">Fév</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="card-category-tag">Festivals & Célébrations</span>
+                            <h3 class="event-card-title">Grand Festival des Danses Tèkè</h3>
+                            <p class="event-card-desc">Célébration des rythmes guerriers et des cavaliers émérites de la tradition bariba. Immersion totale dans l'identité kobourou.</p>
+                            <div class="event-card-meta-list">
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Place Bio Guéra</span>
+                                    <span class="meta-line-badge">16h00</span>
+                                </div>
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Accès Tout Public</span>
+                                    <span class="meta-line-badge" style="color: var(--brand-green-deep); font-weight:700;">Gratuit</span>
+                                </div>
+                            </div>
+                            <button class="btn-card-details" onclick="openEventQuickView('Grand Festival des Danses Tèkè', 'Festivals & Célébrations', '14', 'Fév', '16h00', 'Place Bio Guéra', 'Célébration des rythmes guerriers et des cavaliers émérites de la tradition bariba. Immersion totale dans l\'identité kobourou.', 'assets/images/culture-hero-final.webp')">Détails & Programme</button>
+                        </div>
+                    </article>
+
+                    <!-- Carte 2 -->
+                    <article class="event-card-standard" data-category="Foires & Business" data-title="Foire Commerciale & Agro-Pastorale d'Arzeké" data-date="20 Fév">
+                        <div class="event-card-img-wrap">
+                            <img loading="lazy" decoding="async" src="assets/images/experience-market.webp" alt="Foire Commerciale d'Arzeké">
+                            <div class="date-badge-architectural">
+                                <span class="date-badge-num">20</span>
+                                <span class="date-badge-mth">Fév</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="card-category-tag">Foires & Business</span>
+                            <h3 class="event-card-title">Foire Commerciale d'Arzeké</h3>
+                            <p class="event-card-desc">Carrefour d'opportunités économiques avec plus de 100 exposants agroalimentaires, tisserands et artisans du Septentrion.</p>
+                            <div class="event-card-meta-list">
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Grand Marché Arzeké</span>
+                                    <span class="meta-line-badge">09h00 - 18h00</span>
+                                </div>
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Stands & Expos</span>
+                                    <span class="meta-line-badge">Entrée Libre</span>
+                                </div>
+                            </div>
+                            <button class="btn-card-details" onclick="openEventQuickView('Foire Commerciale d\'Arzeké', 'Foires & Business', '20', 'Fév', '09h00 - 18h00', 'Grand Marché Arzeké', 'Carrefour d\'opportunités économiques avec plus de 100 exposants agroalimentaires, tisserands et artisans du Septentrion.', 'assets/images/experience-market.webp')">Détails & Programme</button>
+                        </div>
+                    </article>
+
+                    <!-- Carte 3 -->
+                    <article class="event-card-standard" data-category="Traditions Royales" data-title="Nuit des Contes & Veillée Royale" data-date="28 Fév">
+                        <div class="event-card-img-wrap">
+                            <img loading="lazy" decoding="async" src="assets/images/PALAIS_ROYAL_DE_PARAKOU.webp" alt="Nuit des Contes Royaux">
+                            <div class="date-badge-architectural">
+                                <span class="date-badge-num">28</span>
+                                <span class="date-badge-mth">Fév</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="card-category-tag">Traditions Royales</span>
+                            <h3 class="event-card-title">Nuit des Contes & Veillée Royale</h3>
+                            <p class="event-card-desc">Veillée nocturne à la Cour Royale de Parakou avec récits des anciens, poésies épiques et chants des griots dépositaires de l'histoire.</p>
+                            <div class="event-card-meta-list">
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Cour Royale de Parakou</span>
+                                    <span class="meta-line-badge">20h00</span>
+                                </div>
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Patrimoine Immatériel</span>
+                                    <span class="meta-line-badge">Tradition</span>
+                                </div>
+                            </div>
+                            <button class="btn-card-details" onclick="openEventQuickView('Nuit des Contes & Veillée Royale', 'Traditions Royales', '28', 'Fév', '20h00', 'Cour Royale de Parakou', 'Veillée nocturne à la Cour Royale de Parakou avec récits des anciens, poésies épiques et chants des griots dépositaires de l\'histoire.', 'assets/images/PALAIS_ROYAL_DE_PARAKOU.webp')">Détails & Programme</button>
+                        </div>
+                    </article>
+
+                    <!-- Carte 4 -->
+                    <article class="event-card-standard" data-category="Arts & Musique Live" data-title="Kobourou Music Live & Rythmes Urbains" data-date="07 Mar">
+                        <div class="event-card-img-wrap">
+                            <img loading="lazy" decoding="async" src="assets/images/agenda-hero.webp" alt="Kobourou Music Live">
+                            <div class="date-badge-architectural">
+                                <span class="date-badge-num">07</span>
+                                <span class="date-badge-mth">Mar</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="card-category-tag">Arts & Musique Live</span>
+                            <h3 class="event-card-title">Kobourou Music Live</h3>
+                            <p class="event-card-desc">Concert géant réunissant la nouvelle vague d'artistes urbains du Borgou et les virtuoses des percussions traditionnelles.</p>
+                            <div class="event-card-meta-list">
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Espace Culturel Wémè</span>
+                                    <span class="meta-line-badge">19h30</span>
+                                </div>
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Concert & Scène Ouverte</span>
+                                    <span class="meta-line-badge">Vibes Live</span>
+                                </div>
+                            </div>
+                            <button class="btn-card-details" onclick="openEventQuickView('Kobourou Music Live', 'Arts & Musique Live', '07', 'Mar', '19h30', 'Espace Culturel Wémè', 'Concert géant réunissant la nouvelle vague d\'artistes urbains du Borgou et les virtuoses des percussions traditionnelles.', 'assets/images/agenda-hero.webp')">Détails & Programme</button>
+                        </div>
+                    </article>
+
+                    <!-- Carte 5 -->
+                    <article class="event-card-standard" data-category="Sports & Cavalcades" data-title="Grande Cavalcade Équestre & Tournoi Gaani" data-date="14 Mar">
+                        <div class="event-card-img-wrap">
+                            <img loading="lazy" decoding="async" src="assets/images/PLACE_BIO_GUERRA.webp" alt="Grande Cavalcade Équestre">
+                            <div class="date-badge-architectural">
+                                <span class="date-badge-num">14</span>
+                                <span class="date-badge-mth">Mar</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="card-category-tag">Sports & Cavalcades</span>
+                            <h3 class="event-card-title">Tournoi Équestre des Cavaliers</h3>
+                            <p class="event-card-desc">Démonstrations de dressage, courses d'honneur et défilé des écuries réputées du Baruwuu dans une ambiance populaire vibrante.</p>
+                            <div class="event-card-meta-list">
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Arènes Hippiques de Titirou</span>
+                                    <span class="meta-line-badge">15h30</span>
+                                </div>
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Équitation Royale</span>
+                                    <span class="meta-line-badge">Compétition</span>
+                                </div>
+                            </div>
+                            <button class="btn-card-details" onclick="openEventQuickView('Tournoi Équestre des Cavaliers', 'Sports & Cavalcades', '14', 'Mar', '15h30', 'Arènes Hippiques de Titirou', 'Démonstrations de dressage, courses d\'honneur et défilé des écuries réputées du Baruwuu dans une ambiance populaire vibrante.', 'assets/images/PLACE_BIO_GUERRA.webp')">Détails & Programme</button>
+                        </div>
+                    </article>
+
+                    <!-- Carte 6 -->
+                    <article class="event-card-standard" data-category="Foires & Business" data-title="Salon de l'Innovation & Tech du Borgou" data-date="21 Mar">
+                        <div class="event-card-img-wrap">
+                            <img loading="lazy" decoding="async" src="assets/images/Musee_plein_air.webp" alt="Salon de l'Innovation & Tech">
+                            <div class="date-badge-architectural">
+                                <span class="date-badge-num">21</span>
+                                <span class="date-badge-mth">Mar</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="card-category-tag">Foires & Business</span>
+                            <h3 class="event-card-title">Salon Innovation & Tech Borgou</h3>
+                            <p class="event-card-desc">Rencontre annuelle des startups, chercheurs universitaires et investisseurs. Hackathon, pitchs de solutions durables et networking.</p>
+                            <div class="event-card-meta-list">
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Université de Parakou</span>
+                                    <span class="meta-line-badge">10h00 - 18h00</span>
+                                </div>
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Propulsé par ITA</span>
+                                    <span class="meta-line-badge">Innovation</span>
+                                </div>
+                            </div>
+                            <button class="btn-card-details" onclick="openEventQuickView('Salon Innovation & Tech Borgou', 'Foires & Business', '21', 'Mar', '10h00 - 18h00', 'Université de Parakou', 'Rencontre annuelle des startups, chercheurs universitaires et investisseurs. Hackathon, pitchs de solutions durables et networking.', 'assets/images/Musee_plein_air.webp')">Détails & Programme</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Calendrier Interactif V2 -->
+        <section id="calendrier" class="calendar-section-bg">
+            <div class="container">
+                <div class="section-lead-header">
+                    <div>
+                        <span class="section-lead-eyebrow">PLANIFICATION INTÉRACTIVE</span>
+                        <h2 class="section-lead-title">Vue Calendrier de la Cité</h2>
+                        <p class="section-lead-desc">Cliquez sur n'importe quelle date surlignée pour afficher instantanément la programmation correspondante.</p>
+                    </div>
+                </div>
+
+                <div class="calendar-split-container">
+                    <!-- Module Calendrier Dynamique -->
+                    <div class="calendar-card-ui">
+                        <div class="cal-nav-bar">
+                            <h3 class="cal-month-title" id="cal-month-display">Février 2026</h3>
+                            <div class="cal-nav-controls">
+                                <button class="cal-btn-arrow" id="cal-prev-btn" aria-label="Mois précédent">&lt;</button>
+                                <button class="cal-btn-arrow" id="cal-next-btn" aria-label="Mois suivant">&gt;</button>
+                            </div>
+                        </div>
+                        <div class="cal-weekdays-grid">
+                            <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+                        </div>
+                        <div class="cal-days-grid" id="cal-days-container">
+                            <!-- Généré dynamiquement en JS -->
+                        </div>
+                    </div>
+
+                    <!-- Volet d'Aperçu Événements de la Date -->
+                    <div class="calendar-preview-panel">
+                        <span class="preview-header-badge">PROGRAMMATION DU JOUR</span>
+                        <h3 class="preview-date-label" id="preview-date-title">14 Février 2026</h3>
+                        <div class="preview-events-list" id="preview-events-content">
+                            <!-- Rempli dynamiquement au clic sur une date -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Espace Organisateurs & Promoteurs -->
+        <section class="promoter-banner-section">
+            <div class="container">
+                <div class="promoter-royal-card">
+                    <div>
+                        <div class="promoter-badge">ESPACE ORGANISATEURS • PARAKOU RAYONNE</div>
+                        <h2 class="promoter-title">Vous organisez un événement à Parakou ?</h2>
+                        <p class="promoter-desc">
+                            Donnez une visibilité officielle à vos festivals, spectacles, conférences et célébrations. Explore Parakou offre à vos projets un rayonnement direct auprès des habitants, des touristes et de la diaspora.
+                        </p>
+                        <div class="promoter-benefits-list">
+                            <div class="promoter-benefit-item">
+                                <span class="benefit-bullet"></span>
+                                Publication certifiée sur le portail touristique & culturel officiel
+                            </div>
+                            <div class="promoter-benefit-item">
+                                <span class="benefit-bullet"></span>
+                                Intégration immédiate dans le calendrier interactif et le plan de la ville
+                            </div>
+                            <div class="promoter-benefit-item">
+                                <span class="benefit-bullet"></span>
+                                Démarche 100% citoyenne, collaborative et gratuite
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="promoter-action-box">
+                        <span class="promoter-action-badge">PLATEFORME COLLABORATIVE</span>
+                        <h3 class="promoter-action-heading">Faites référencer votre date</h3>
+                        <p class="promoter-action-text">Transmettez vos affiches, dates et descriptifs à notre comité éditorial en moins de 2 minutes.</p>
+                        <a href="contact.html?type=agenda" class="btn-royal-primary" style="width: 100%;">Soumettre un Événement</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Détails & Programme -->
+    <div class="agenda-modal-backdrop" id="agenda-modal">
+        <div class="agenda-modal-container">
+            <button class="agenda-modal-close-btn" id="modal-close-btn" aria-label="Fermer">&times;</button>
+            <div class="agenda-modal-banner">
+                <img id="modal-img" src="" alt="Affiche de l'événement">
+            </div>
+            <div class="agenda-modal-body">
+                <span class="agenda-modal-date-tag" id="modal-badge-date">Date</span>
+                <span class="card-category-tag" id="modal-category" style="margin-left: 8px;">Catégorie</span>
+                <h3 class="agenda-modal-title" id="modal-title">Titre de l'événement</h3>
+                
+                <div class="agenda-modal-meta-grid">
+                    <div class="agenda-modal-meta-col">
+                        <span>Lieu de rendez-vous</span>
+                        <strong id="modal-location">Lieu</strong>
+                    </div>
+                    <div class="agenda-modal-meta-col">
+                        <span>Horaires</span>
+                        <strong id="modal-time">Heure</strong>
+                    </div>
+                </div>
+
+                <p class="agenda-modal-text" id="modal-desc">
+                    Descriptif complet de l'événement.
+                </p>
+
+                <div class="agenda-modal-actions">
+                    <button class="btn-royal-primary" id="btn-add-calendar">Ajouter à mon Agenda (.ics)</button>
+                    <a href="carte.html" class="btn-royal-outline" style="background:#F1F5F9; color:var(--brand-green-deep); border-color:#CBD5E1;">Voir sur la carte</a>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- 3. Section: Today / Featured -->
-        <section id="today" class="section" style="padding-top:20px;">
-            <div class="container">
-                <div class="row-between" style="margin-bottom:30px;">
-                    <div>
-                        <h2 style="font-size:2rem; margin-bottom:5px;">À ne pas manquer</h2>
-                        <p style="color: #334155;">Les événements majeurs du moment.</p>
-                    </div>
-                </div>
-
-                <!-- Featured Layout: 1 Large + 2 Normal -->
-                                <div class="featured-grid agenda-featured-grid dynamic-featured" style="margin-bottom:50px;">
-                    <div class="event-card-premium featured-card" style="height:auto;">
-                        <div class="card-image-container" style="height:320px;">
-                            <img loading="lazy" decoding="async" src="assets/images/DANSE TRADITIONNELLE DU GRAND NORD BENIN.webp" alt="Festival des Danses Traditionnelles">
-                            <div class="date-badge-floating">
-                                <span class="date-number">14</span>
-                                <span class="date-month">Fév</span>
-                            </div>
-                            <span style="position:absolute; bottom:20px; left:20px; background:#E2B13C; color:#0A192F; padding:5px 15px; font-weight:700; border-radius:4px; text-transform:uppercase; font-size:0.8rem;">À la une</span>
-                        </div>
-                        <div class="card-content">
-                            <span class="event-category-sm">Culture & Tradition</span>
-                            <h3 class="event-title" style="font-size:1.8rem;">Festival des Danses & Rythmes du Borgou</h3>
-                            <p style="margin-bottom:20px; font-size:1.05rem; color: #1E293B;">Grande célébration de la danse Tèkè et des cavaliers émérites de Parakou. Une immersion sensorielle unique au cœur des traditions kobourou.</p>
-                            <div class="event-meta" style="flex-direction:row; flex-wrap:wrap; gap:16px;">
-                                <span>Place Bio Guerra</span>
-                                <span>16h00</span>
-                            </div>
-                            <div class="card-actions-row" style="margin-top:15px;">
-                                <a href="contact.html?type=agenda" class="btn btn-primary" style="padding:12px 24px;">Participer</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="display:flex; flex-direction:column; gap:24px;">
-                        <div class="event-card-premium">
-                            <div class="card-image-container" style="height:180px;">
-                                <img loading="lazy" decoding="async" src="assets/images/MARCHE_ARZEKE.webp" alt="Foire Agro-Commerciale de Parakou">
-                                <div class="date-badge-floating">
-                                    <span class="date-number">20</span>
-                                    <span class="date-month">Fév</span>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <span class="event-category-sm">Économie & Terroir</span>
-                                <h3 class="event-title" style="font-size:1.3rem;">Foire des Produits du Septentrion</h3>
-                                <div class="event-meta">
-                                    <span>Grand Marché Arzeké</span>
-                                    <span>09h00 - 18h00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="event-card-premium">
-                            <div class="card-image-container" style="height:180px;">
-                                <img loading="lazy" decoding="async" src="assets/images/PALAIS ROYAL KOBOUROU.webp" alt="Nuit des Contes et Légendes">
-                                <div class="date-badge-floating">
-                                    <span class="date-number">28</span>
-                                    <span class="date-month">Fév</span>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <span class="event-category-sm">Patrimoine Oral</span>
-                                <h3 class="event-title" style="font-size:1.3rem;">Veillée Royale & Récits Historiques</h3>
-                                <div class="event-meta">
-                                    <span>Cour Royale de Parakou</span>
-                                    <span>20h00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-<!-- Section: Weekend -->
-                <div class="row-between" style="margin-bottom:30px;">
-                    <div>
-                        <h2 style="font-size:1.8rem;">Ce Week-end</h2>
-                        <p style="color: #334155;">Sorties prévues samedi et dimanche.</p>
-                    </div>
-                    <a href="#" class="btn btn-outline">Tout voir</a>
-                </div>
-
-                <div class="grid-3 dynamic-weekend"><p>Chargement des autres événements...</p></div></div></section>
-
-        <!-- 4. Interactive Calendar Section -->
-        <section id="calendar" class="section bg-light">
-            <div class="container">
-                <div class="split-layout">
-                    <div>
-                        <h2 style="margin-bottom:20px;">Vue Calendrier</h2>
-                        <p style="margin-bottom:30px; color: #334155;">Sélectionnez une date pour voir les événements
-                            disponibles.</p>
-
-                        <div class="calendar-modern"
-                            style="background:white; padding:30px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
-                            <div class="cal-header"
-                                style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                                <h3 style="font-size:1.5rem;">Février 2026</h3>
-                                <div style="display:flex; gap:10px;">
-                                    <button class="btn-icon-sm"></button>
-                                    <button class="btn-icon-sm"></button>
-                                </div>
-                            </div>
-                            <div class="cal-days-header"
-                                style="display:grid; grid-template-columns:repeat(7, 1fr); text-align:center; font-weight:700; color:#aaa; margin-bottom:15px;">
-                                <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
-                            </div>
-                            <div class="cal-grid"
-                                style="display:grid; grid-template-columns:repeat(7, 1fr); row-gap:15px;">
-                                <!-- Simple generated grid for demo -->
-                                <span class="cal-day-cell pad"></span><span class="cal-day-cell pad"></span><span
-                                    class="cal-day-cell pad"></span><span class="cal-day-cell">1</span><span
-                                    class="cal-day-cell">2</span><span class="cal-day-cell">3</span><span
-                                    class="cal-day-cell">4</span>
-                                <span class="cal-day-cell">5</span><span class="cal-day-cell">6</span><span
-                                    class="cal-day-cell">7</span><span class="cal-day-cell">8</span><span
-                                    class="cal-day-cell">9</span><span class="cal-day-cell">10</span><span
-                                    class="cal-day-cell">11</span>
-                                <span class="cal-day-cell">12</span><span class="cal-day-cell">13</span><span
-                                    class="cal-day-cell active-date">14</span><span
-                                    class="cal-day-cell has-event">15</span><span class="cal-day-cell">16</span><span
-                                    class="cal-day-cell">17</span><span class="cal-day-cell">18</span>
-                                <span class="cal-day-cell">19</span><span class="cal-day-cell">20</span><span
-                                    class="cal-day-cell">21</span><span class="cal-day-cell">22</span><span
-                                    class="cal-day-cell">23</span><span class="cal-day-cell">24</span><span
-                                    class="cal-day-cell">25</span>
-                                <span class="cal-day-cell">26</span><span class="cal-day-cell">27</span><span
-                                    class="cal-day-cell has-event">28</span><span class="cal-day-cell"></span><span
-                                    class="cal-day-cell"></span><span class="cal-day-cell"></span><span
-                                    class="cal-day-cell"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        style="background:#0A192F; border-radius:20px; padding:40px; color:white; display:flex; flex-direction:column; justify-content:center; text-align:center;">
-                        <i class="ph ph-calendar-plus" style="font-size: clamp(2rem, 7.5vw, 3.5rem); color:#E2B13C; margin-bottom:20px;"></i>
-                        <h2 style="color:white; margin-bottom:10px;">Votre événement ici ?</h2>
-                        <p style="opacity:0.8; margin-bottom:30px;">Organisateurs, donnez de la visibilité à vos
-                            projets. Soumettez votre événement gratuitement.</p>
-                        <a href="contact.html#submit-event" class="btn btn-primary"
-                            style="background:#E2B13C; color:#0A192F;">Soumettre maintenant</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-        <!-- Premium Royal Green Footer -->
+    <!-- Footer Royal Green -->
     <footer class="footer-premium">
         <div class="footer-pattern-overlay"></div>
         <div class="container footer-container-inner">
@@ -527,8 +1882,8 @@
                             <span>+229 01 00 00 00 00</span>
                         </div>
                     </div>
-                    <a href="contact.html?type=talent" class="footer-contact-cta">
-                        Proposer un talent / lieu
+                    <a href="contact.html?type=agenda" class="footer-contact-cta">
+                        Proposer un événement
                     </a>
                 </div>
             </div>
@@ -549,148 +1904,494 @@
         </div>
     </footer>
 
+    <!-- Scripts Généraux -->
     <script src="assets/js/script.js"></script>
-    <style>
-        /* Responsive adjustments for Premium Grid */
-        @media (max-width: 900px) {
-            .featured-grid {
-                grid-template-columns: 1fr;
-            }
 
-            .card-image-container {
-                height: 250px;
-            }
-
-            .hero-premium {
-                height: 60vh !important;
-            }
-        }
-    </style>
-
-    <!-- Supabase Configuration -->
+    <!-- Supabase Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/supabaseClient.js"></script>
 
-        <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const featGrid = document.querySelector('.dynamic-featured');
-        const weekendGrid = document.querySelector('.dynamic-weekend');
-
-        window.renderAgenda = function(events) {
-            if (!events || events.length === 0) {
-                if (featGrid) featGrid.innerHTML = '<p>Aucun événement programmé pour le moment.</p>';
-                if (weekendGrid) weekendGrid.innerHTML = '';
-                return;
+    <!-- Moteur Premium Agenda : Recherche, Filtres, Calendrier & Modal -->
+    <script>
+    (function() {
+        // Base de données par défaut riche et authentique
+        const defaultEvents = [
+            {
+                id: 'evt-1',
+                title: "Grand Festival des Danses Tèkè & de la Cavalerie Bariba",
+                category: "Festivals & Célébrations",
+                date_number: "14",
+                date_month: "Fév",
+                time: "16h00",
+                location: "Place Bio Guéra, Parakou",
+                description: "La plus prestigieuse célébration vivante du Baruwuu à Parakou. Défilé majestueux des cavaliers en parures impériales, résonance solennelle des tambours sacrés et démonstrations équestres spectaculaires au pied de la statue du héros Bio Guéra.",
+                image_url: "assets/images/culture-hero-final.webp",
+                year: 2026,
+                monthIndex: 1, // 0 = Jan, 1 = Fév
+                day: 14
+            },
+            {
+                id: 'evt-2',
+                title: "Foire Commerciale & Agro-Pastorale d'Arzeké",
+                category: "Foires & Business",
+                date_number: "20",
+                date_month: "Fév",
+                time: "09h00 - 18h00",
+                location: "Grand Marché Arzeké",
+                description: "Carrefour d'opportunités économiques avec plus de 100 exposants agroalimentaires, tisserands et artisans du Septentrion. Rencontres B2B et démonstrations culinaires.",
+                image_url: "assets/images/experience-market.webp",
+                year: 2026,
+                monthIndex: 1,
+                day: 20
+            },
+            {
+                id: 'evt-3',
+                title: "Nuit des Contes & Veillée Royale des Kobourou",
+                category: "Traditions Royales",
+                date_number: "28",
+                date_month: "Fév",
+                time: "20h00 - 23h30",
+                location: "Cour d'Honneur du Palais Royal",
+                description: "Veillée nocturne à la Cour Royale de Parakou avec récits des anciens, poésies épiques et chants des griots dépositaires de l'histoire séculaire d'Akpaki Dagbara.",
+                image_url: "assets/images/PALAIS_ROYAL_DE_PARAKOU.webp",
+                year: 2026,
+                monthIndex: 1,
+                day: 28
+            },
+            {
+                id: 'evt-4',
+                title: "Kobourou Music Live & Rythmes Urbains",
+                category: "Arts & Musique Live",
+                date_number: "07",
+                date_month: "Mar",
+                time: "19h30",
+                location: "Espace Culturel Wémè & Tabéra",
+                description: "Concert géant réunissant la nouvelle vague d'artistes urbains du Borgou et les virtuoses des percussions traditionnelles pour une fusion scénique exceptionnelle.",
+                image_url: "assets/images/agenda-hero.webp",
+                year: 2026,
+                monthIndex: 2, // 2 = Mars
+                day: 7
+            },
+            {
+                id: 'evt-5',
+                title: "Tournoi Équestre des Cavaliers Bariba",
+                category: "Sports & Cavalcades",
+                date_number: "14",
+                date_month: "Mar",
+                time: "15h30",
+                location: "Arènes Hippiques de Titirou",
+                description: "Démonstrations d'acrobatie, dressage traditionnel et courses d'honneur des plus grandes écuries du Grand Nord dans une atmosphère festive et populaire.",
+                image_url: "assets/images/PLACE_BIO_GUERRA.webp",
+                year: 2026,
+                monthIndex: 2,
+                day: 14
+            },
+            {
+                id: 'evt-6',
+                title: "Salon Innovation & Tech du Borgou",
+                category: "Foires & Business",
+                date_number: "21",
+                date_month: "Mar",
+                time: "10h00 - 18h00",
+                location: "Campus de l'Université de Parakou",
+                description: "Rencontre annuelle des créateurs de solutions numériques, startups et chercheurs du Nord Bénin. Conférences inspirantes et village des exposants.",
+                image_url: "assets/images/Musee_plein_air.webp",
+                year: 2026,
+                monthIndex: 2,
+                day: 21
             }
+        ];
 
-            const firstEvent = events[0] || null;
-            const featuredRightEvents = events.slice(1, 3);
-            const remainingEvents = events.slice(3);
+        let allEvents = [...defaultEvents];
+        let currentMonth = 1; // Février (0-indexé)
+        let currentYear = 2026;
+        let selectedDate = { year: 2026, month: 1, day: 14 };
 
-            if (featGrid) {
-                featGrid.innerHTML = '';
-                if (firstEvent) {
-                    featGrid.innerHTML += `
-                        <div class="event-card-premium featured-card" style="height:auto;">
-                            <div class="card-image-container" style="height:400px;">
-                                <img loading="lazy" decoding="async" src="${firstEvent.image_url}" alt="${firstEvent.title}">
-                                <div class="date-badge-floating">
-                                    <span class="date-number">${firstEvent.date_number}</span>
-                                    <span class="date-month">${firstEvent.date_month}</span>
-                                </div>
-                                <span style="position:absolute; bottom:20px; left:20px; background:#E2B13C; color:#0A192F; padding:5px 15px; font-weight:700; border-radius:4px; text-transform:uppercase; font-size:0.8rem;">À la une</span>
-                            </div>
-                            <div class="card-content">
-                                <span class="event-category-sm">${firstEvent.category}</span>
-                                <h3 class="event-title" style="font-size:2rem;">${firstEvent.title}</h3>
-                                <p style="margin-bottom:20px; font-size:1.1rem; color: #1E293B;">${firstEvent.description}</p>
-                                <div class="event-meta" style="flex-direction:row; flex-wrap:wrap; gap:20px;">
-                                    <span>${firstEvent.location}</span>
-                                    <span>${firstEvent.time}</span>
-                                </div>
-                                <div class="card-actions-row">
-                                    <button class="btn-card-primary" style="padding:15px;">Réserver</button>
-                                    <button class="btn-card-icon"></button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
+        const monthNames = [
+            "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+            "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+        ];
 
-                if (featuredRightEvents.length > 0) {
-                    let rightHtml = '<div style="display:flex; flex-direction:column; gap:30px;">';
-                    featuredRightEvents.forEach(ev => {
-                        rightHtml += `
-                            <div class="event-card-premium">
-                                <div class="card-image-container" style="height:180px;">
-                                    <img loading="lazy" decoding="async" src="${ev.image_url}" alt="${ev.title}">
-                                    <div class="date-badge-floating">
-                                        <span class="date-number">${ev.date_number}</span>
-                                        <span class="date-month">${ev.date_month}</span>
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <span class="event-category-sm">${ev.category}</span>
-                                    <h3 class="event-title">${ev.title}</h3>
-                                    <div class="event-meta">
-                                        <span>${ev.location}</span>
-                                        <span>${ev.time}</span>
-                                    </div>
-                                    <div class="card-actions-row">
-                                        <button class="btn-card-primary">Détails</button>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    });
-                    rightHtml += '</div>';
-                    featGrid.innerHTML += rightHtml;
-                }
-            }
+        // 1. GESTION DU MODAL RAPIDE (QUICK-VIEW)
+        const modal = document.getElementById('agenda-modal');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        let currentActiveModalEvent = null;
 
-            if (weekendGrid) {
-                weekendGrid.innerHTML = '';
-                if (remainingEvents.length > 0) {
-                    remainingEvents.forEach(ev => {
-                        weekendGrid.innerHTML += `
-                            <div class="event-card-premium">
-                                <div class="card-image-container">
-                                    <img loading="lazy" decoding="async" src="${ev.image_url}" alt="${ev.title}">
-                                    <div class="date-badge-floating">
-                                        <span class="date-number">${ev.date_number}</span>
-                                        <span class="date-month">${ev.date_month}</span>
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <span class="event-category-sm">${ev.category}</span>
-                                    <h3 class="event-title">${ev.title}</h3>
-                                    <div class="event-meta">
-                                        <span>${ev.location}</span>
-                                        <span>${ev.time}</span>
-                                    </div>
-                                    <div class="card-actions-row">
-                                        <button class="btn-card-primary">Détails</button>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    });
-                } else {
-                    weekendGrid.innerHTML = '<p>Revenez bientôt pour plus d\'événements.</p>';
-                }
-            }
+        window.openEventQuickView = function(title, category, dnum, dmonth, time, location, description, imgUrl) {
+            currentActiveModalEvent = { title, category, dnum, dmonth, time, location, description };
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-category').innerText = category;
+            document.getElementById('modal-badge-date').innerText = `${dnum} ${dmonth} 2026`;
+            document.getElementById('modal-location').innerText = location;
+            document.getElementById('modal-time').innerText = time;
+            document.getElementById('modal-desc').innerText = description;
+            document.getElementById('modal-img').src = imgUrl || 'assets/images/culture-hero-final.webp';
+            document.getElementById('modal-img').alt = title;
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        };
+
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
         }
 
-        if (window.fastSupabaseFetch) {
-            window.fastSupabaseFetch('agenda', () => {
-                return window.supabase.from('agenda').select('*').order('created_at', { ascending: false });
-            }, window.renderAgenda);
-        } else {
-            window.supabase.from('agenda').select('*').order('created_at', { ascending: false }).then(({ data, error }) => {
-                if (!error && data) renderAgenda(data);
+        if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
             });
         }
-    });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+
+        // Téléchargement fichier .ics pour calendrier Apple / Google / Outlook
+        const btnAddCal = document.getElementById('btn-add-calendar');
+        if (btnAddCal) {
+            btnAddCal.addEventListener('click', () => {
+                if (!currentActiveModalEvent) return;
+                const icsContent = 
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Explore Parakou//Agenda Officiel//FR
+BEGIN:VEVENT
+SUMMARY:${currentActiveModalEvent.title}
+DESCRIPTION:${currentActiveModalEvent.description}
+LOCATION:${currentActiveModalEvent.location}
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+                const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.setAttribute('download', `${currentActiveModalEvent.title.replace(/\s+/g, '_')}.ics`);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        }
+
+        // 2. MOTEUR DU CALENDRIER INTERACTIF
+        const calMonthDisplay = document.getElementById('cal-month-display');
+        const calDaysContainer = document.getElementById('cal-days-container');
+        const calPrevBtn = document.getElementById('cal-prev-btn');
+        const calNextBtn = document.getElementById('cal-next-btn');
+        const previewDateTitle = document.getElementById('preview-date-title');
+        const previewEventsContent = document.getElementById('preview-events-content');
+
+        function renderCalendar(year, month) {
+            if (!calDaysContainer || !calMonthDisplay) return;
+            calMonthDisplay.innerText = `${monthNames[month]} ${year}`;
+            calDaysContainer.innerHTML = '';
+
+            // Premier jour du mois (0 = Dim, 1 = Lun, etc.)
+            const firstDayIndex = new Date(year, month, 1).getDay();
+            // Décalage pour démarrer le Lundi (Lundi = 0, Dimanche = 6)
+            const startingDay = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+            // Cases vides du mois précédent
+            for (let i = startingDay; i > 0; i--) {
+                const dayNum = daysInPrevMonth - i + 1;
+                const cell = document.createElement('div');
+                cell.className = 'cal-day-cell pad';
+                cell.innerText = dayNum;
+                calDaysContainer.appendChild(cell);
+            }
+
+            // Jours du mois en cours
+            for (let d = 1; d <= daysInMonth; d++) {
+                const cell = document.createElement('div');
+                cell.className = 'cal-day-cell';
+                cell.innerText = d;
+
+                // Vérifier s'il y a un événement ce jour-là
+                const hasEvt = allEvents.some(ev => {
+                    const evD = parseInt(ev.date_number, 10);
+                    const evM = getMonthIndex(ev.date_month);
+                    return evD === d && (evM === month || ev.monthIndex === month);
+                });
+
+                if (hasEvt) cell.classList.add('has-event');
+
+                // Si c'est la date sélectionnée
+                if (selectedDate.year === year && selectedDate.month === month && selectedDate.day === d) {
+                    cell.classList.add('active-date');
+                }
+
+                cell.addEventListener('click', () => {
+                    selectedDate = { year, month, day: d };
+                    document.querySelectorAll('.cal-day-cell').forEach(c => c.classList.remove('active-date'));
+                    cell.classList.add('active-date');
+                    updatePreviewPanel(year, month, d);
+                });
+
+                calDaysContainer.appendChild(cell);
+            }
+        }
+
+        function getMonthIndex(mStr) {
+            if (!mStr) return -1;
+            const s = mStr.toLowerCase().trim();
+            if (s.startsWith('jan')) return 0;
+            if (s.startsWith('f')) return 1;
+            if (s.startsWith('mar')) return 2;
+            if (s.startsWith('av')) return 3;
+            if (s.startsWith('mai')) return 4;
+            if (s.startsWith('jui') && s.includes('n')) return 5;
+            if (s.startsWith('jui') && s.includes('l')) return 6;
+            if (s.startsWith('ao')) return 7;
+            if (s.startsWith('sep')) return 8;
+            if (s.startsWith('oct')) return 9;
+            if (s.startsWith('nov')) return 10;
+            if (s.startsWith('d')) return 11;
+            return -1;
+        }
+
+        function updatePreviewPanel(year, month, day) {
+            if (!previewDateTitle || !previewEventsContent) return;
+            const dateStr = `${day} ${monthNames[month]} ${year}`;
+            previewDateTitle.innerText = dateStr;
+
+            const dayEvents = allEvents.filter(ev => {
+                const evD = parseInt(ev.date_number, 10);
+                const evM = getMonthIndex(ev.date_month);
+                return evD === day && (evM === month || ev.monthIndex === month);
+            });
+
+            if (dayEvents.length === 0) {
+                previewEventsContent.innerHTML = `
+                    <div class="preview-empty-state">
+                        <strong>Aucun événement ce jour</strong>
+                        <p>Sélectionnez une date marquée d'un point doré pour voir les événements programmés, ou proposez votre sortie.</p>
+                        <a href="contact.html?type=agenda" class="btn-royal-outline" style="background:#F8FAFC; color:var(--brand-green-deep); border-color:#CBD5E1; margin-top:15px; font-size:0.85rem; padding:8px 16px;">+ Proposer pour cette date</a>
+                    </div>
+                `;
+            } else {
+                previewEventsContent.innerHTML = '';
+                dayEvents.forEach(ev => {
+                    const card = document.createElement('div');
+                    card.className = 'preview-event-card';
+                    card.innerHTML = `
+                        <div class="preview-event-cat">${ev.category || 'Événement'}</div>
+                        <h4 class="preview-event-title">${ev.title}</h4>
+                        <div class="preview-event-meta">
+                            <span>Lieu : <strong>${ev.location}</strong></span>
+                            <span>Heure : <strong>${ev.time}</strong></span>
+                        </div>
+                        <button class="btn-card-link" style="padding: 8px 14px; font-size: 0.82rem;" onclick="openEventQuickView('${escapeParam(ev.title)}', '${escapeParam(ev.category)}', '${ev.date_number}', '${ev.date_month}', '${escapeParam(ev.time)}', '${escapeParam(ev.location)}', '${escapeParam(ev.description)}', '${ev.image_url}')">Détails & Programme</button>
+                    `;
+                    previewEventsContent.appendChild(card);
+                });
+            }
+        }
+
+        function escapeParam(str) {
+            if (!str) return '';
+            return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        }
+
+        if (calPrevBtn) {
+            calPrevBtn.addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar(currentYear, currentMonth);
+            });
+        }
+
+        if (calNextBtn) {
+            calNextBtn.addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar(currentYear, currentMonth);
+            });
+        }
+
+        // 3. RECHERCHE EN DIRECT & FILTRAGE MULTI-CRITÈRES
+        const searchInput = document.getElementById('agenda-search');
+        const catPills = document.querySelectorAll('.cat-pill');
+        const timeTabs = document.querySelectorAll('.agenda-time-btn');
+        let activeCategory = 'all';
+        let activeTimeFilter = 'all';
+
+        function filterEvents() {
+            const query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+            const cards = document.querySelectorAll('#main-events-grid .event-card-standard');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const cat = card.getAttribute('data-category') || '';
+                const title = card.getAttribute('data-title') || '';
+                const desc = card.querySelector('.event-card-desc')?.innerText || '';
+                const place = card.querySelector('.meta-line-left')?.innerText || '';
+
+                const matchesQuery = !query || 
+                    title.toLowerCase().includes(query) || 
+                    desc.toLowerCase().includes(query) || 
+                    place.toLowerCase().includes(query) ||
+                    cat.toLowerCase().includes(query);
+
+                const matchesCategory = (activeCategory === 'all') || (cat.toLowerCase() === activeCategory.toLowerCase());
+
+                let matchesTime = true;
+                const dStr = card.getAttribute('data-date') || '';
+                if (activeTimeFilter === 'month') {
+                    matchesTime = dStr.toLowerCase().includes('fév');
+                } else if (activeTimeFilter === 'weekend') {
+                    matchesTime = dStr.includes('14') || dStr.includes('28') || dStr.includes('07');
+                } else if (activeTimeFilter === 'upcoming') {
+                    matchesTime = dStr.toLowerCase().includes('mar') || dStr.toLowerCase().includes('avr');
+                }
+
+                if (matchesQuery && matchesCategory && matchesTime) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Affichage de l'état vide si nécessaire
+            let emptyState = document.getElementById('agenda-no-results');
+            const grid = document.getElementById('main-events-grid');
+            if (visibleCount === 0) {
+                if (!emptyState && grid) {
+                    emptyState = document.createElement('div');
+                    emptyState.id = 'agenda-no-results';
+                    emptyState.className = 'no-events-state';
+                    emptyState.innerHTML = `
+                        <h3>Aucun événement correspondant</h3>
+                        <p>Aucun événement ne correspond à vos filtres actuels. Essayez de réinitialiser vos critères de recherche.</p>
+                        <button class="btn-royal-primary" onclick="resetFilters()">Réinitialiser les filtres</button>
+                    `;
+                    grid.appendChild(emptyState);
+                }
+            } else if (emptyState) {
+                emptyState.remove();
+            }
+        }
+
+        window.resetFilters = function() {
+            if (searchInput) searchInput.value = '';
+            activeCategory = 'all';
+            activeTimeFilter = 'all';
+            catPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-cat') === 'all'));
+            timeTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-time') === 'all'));
+            filterEvents();
+        };
+
+        if (searchInput) {
+            searchInput.addEventListener('input', filterEvents);
+        }
+
+        catPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                catPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                activeCategory = pill.getAttribute('data-cat');
+                filterEvents();
+            });
+        });
+
+        timeTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                timeTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                activeTimeFilter = tab.getAttribute('data-time');
+                filterEvents();
+            });
+        });
+
+        // 4. SYNCHRONISATION EN LIGNE VIA SUPABASE & RENDU DYNAMIQUE
+        window.renderAgendaFromData = function(events) {
+            if (!events || !Array.isArray(events) || events.length === 0) return;
+
+            // Enrichissement de la collection
+            allEvents = events.map((ev, idx) => ({
+                id: ev.id || `sup-${idx}`,
+                title: ev.title || 'Événement',
+                category: ev.category || 'Général',
+                date_number: ev.date_number || '01',
+                date_month: ev.date_month || 'Fév',
+                time: ev.time || '18h00',
+                location: ev.location || 'Parakou',
+                description: ev.description || '',
+                image_url: ev.image_url || 'assets/images/culture-hero-final.webp',
+                year: 2026,
+                monthIndex: getMonthIndex(ev.date_month),
+                day: parseInt(ev.date_number, 10) || 1
+            }));
+
+            // Rafraîchir la grille principale si des données fraîches sont reçues
+            const grid = document.getElementById('main-events-grid');
+            if (grid) {
+                grid.innerHTML = '';
+                allEvents.forEach(ev => {
+                    const article = document.createElement('article');
+                    article.className = 'event-card-standard';
+                    article.setAttribute('data-category', ev.category);
+                    article.setAttribute('data-title', ev.title);
+                    article.setAttribute('data-date', `${ev.date_number} ${ev.date_month}`);
+                    article.innerHTML = `
+                        <div class="event-card-img-wrap">
+                            <img loading="lazy" decoding="async" src="${ev.image_url}" alt="${ev.title}">
+                            <div class="date-badge-architectural">
+                                <span class="date-badge-num">${ev.date_number}</span>
+                                <span class="date-badge-mth">${ev.date_month}</span>
+                            </div>
+                        </div>
+                        <div class="event-card-body">
+                            <span class="card-category-tag">${ev.category}</span>
+                            <h3 class="event-card-title">${ev.title}</h3>
+                            <p class="event-card-desc">${ev.description}</p>
+                            <div class="event-card-meta-list">
+                                <div class="meta-line">
+                                    <span class="meta-line-left">${ev.location}</span>
+                                    <span class="meta-line-badge">${ev.time}</span>
+                                </div>
+                                <div class="meta-line">
+                                    <span class="meta-line-left">Événement Certifié</span>
+                                    <span class="meta-line-badge" style="color:var(--brand-green-deep); font-weight:700;">Officiel</span>
+                                </div>
+                            </div>
+                            <button class="btn-card-details" onclick="openEventQuickView('${escapeParam(ev.title)}', '${escapeParam(ev.category)}', '${ev.date_number}', '${ev.date_month}', '${escapeParam(ev.time)}', '${escapeParam(ev.location)}', '${escapeParam(ev.description)}', '${ev.image_url}')">Détails & Programme</button>
+                        </div>
+                    `;
+                    grid.appendChild(article);
+                });
+            }
+
+            renderCalendar(currentYear, currentMonth);
+            updatePreviewPanel(selectedDate.year, selectedDate.month, selectedDate.day);
+            filterEvents();
+        };
+
+        // Chargement initial du calendrier et du volet d'aperçu
+        renderCalendar(currentYear, currentMonth);
+        updatePreviewPanel(selectedDate.year, selectedDate.month, selectedDate.day);
+
+        // Appel asynchrone non-bloquant vers Supabase (Fast Cache)
+        if (window.fastSupabaseFetch && window.supabase) {
+            try {
+                window.fastSupabaseFetch('agenda', () => {
+                    return window.supabase.from('agenda').select('*').order('created_at', { ascending: false });
+                }, window.renderAgendaFromData);
+            } catch(e) {
+                console.log("[Agenda] Mode pré-rendu actif");
+            }
+        }
+    })();
     </script>
 </body>
 
